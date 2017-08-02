@@ -1,0 +1,6 @@
+int atoi (char *str);
+
+int atoi (char *str)
+{
+  
+}

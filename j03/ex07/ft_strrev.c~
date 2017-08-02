@@ -1,0 +1,6 @@
+char *ft_strrev(char *str);
+
+char *ft_strrev(char *str)
+{
+  
+}
