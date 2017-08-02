@@ -1,6 +1,8 @@
 int ft_putchar(char c);
 #include "../ft_putchar.c"
 
+#include <stdio.h>
+
 void print(int *table, int total)
 {
 	int i = 0;
@@ -22,7 +24,8 @@ void f (int index, int niveau, int *table, int offset){
 		if (index < niveau){
 			f(index + 1, niveau - 1, table, i + 1);
 		} else {
-			print(table, niveau);
+			printf("%d<>%d ", index, niveau);
+			print(table, index);
 		}
 		table[index]++ ;
 		i++;
