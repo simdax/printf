@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_comb2.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/03 09:21:22 by scornaz           #+#    #+#             */
+/*   Updated: 2017/08/03 10:53:44 by scornaz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 int ft_putchar(char c);
-#include "../ft_putchar.c"
+
 #include <stdio.h>
 void printNumber(int n)
 {
@@ -11,9 +23,10 @@ void printNumber(int n)
 	{
 		remainder = (n - 48) % 10;
 		divided = (n - 48) / 10;
-		printNumber(divided + 48);
-		printNumber(remainder + 48);
+		ft_putchar(divided + 48);
+		ft_putchar(remainder + 48);
 	} else {
+		ft_putchar(48);
 		ft_putchar(n);
 	}
 }

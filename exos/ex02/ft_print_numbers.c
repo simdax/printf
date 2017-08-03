@@ -6,12 +6,11 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/02 10:54:45 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/02 11:10:22 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/03 09:23:31 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int ft_putchar(char c);
-#include "../ft_putchar.c"
 
 void ft_print_numbers()
 {

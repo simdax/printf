@@ -6,12 +6,11 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/02 11:11:49 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/02 11:14:57 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/03 09:23:46 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int ft_putchar (char c);
-#include "../ft_putchar.c"
 
 void ft_is_negative(int n)
 {
