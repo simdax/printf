@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_negative.c                                   :+:      :+:    :+:   */
+/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/02 11:11:49 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/03 12:36:10 by scornaz          ###   ########.fr       */
+/*   Created: 2017/08/03 17:22:13 by scornaz           #+#    #+#             */
+/*   Updated: 2017/08/03 17:46:00 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_putchar (char c);
-
-void	ft_is_negative(int n)
+int		ft_iterative_factorial(int nb)
 {
-	if (n < 0)
+	int	somme;
+	int i;
+
+	i = 1;
+	somme = 1;
+	while (i < nb)
 	{
-		ft_putchar('N');
+		somme *= i;
+		i++;
 	}
-	else
-	{
-		ft_putchar('P');
-	}
+	return (somme);
 }

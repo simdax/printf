@@ -1,28 +1,28 @@
-int atoi (char *str);
 
-int atoi (char *str)
+int		atoi(char *str)
 {
-  int length = 0;
-  int res = 0;
-  
-  while(str[length])
-    {
-      length++;
-    }
-  length--;
+	int	length;
+	int	res;
+	int decimal;
+	int i;
 
-  while(str[length])
-    {
-      int decimal = 1;
-      int i = 0;
-      while(i < res)
+	length = 0;
+	res = 0;
+	while (str[length])
 	{
-	  decimal *= 10;
+		length++;
 	}
-      res += str[length] * decimal;
-      length--;
-    }
-
-  return res;
-  
+	length--;
+	while (str[length])
+	{
+		decimal = 1;
+		i = 0;
+		while (i < res)
+		{
+			decimal *= 10;
+		}
+		res += str[length] * decimal;
+		length--;
+	}
+	return (res);
 }
