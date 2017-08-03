@@ -6,33 +6,44 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/03 09:21:11 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/03 09:23:58 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/03 12:41:46 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_putchar(char c);
+int		ft_putchar(char c);
 
-void ft_print_comb ()
+void	print(int i, int j, int k)
 {
-	int i = 48;
-	int j = 0;
-	int k = 0;
+	ft_putchar(i);
+	ft_putchar(j);
+	ft_putchar(k);
+}
 
-	while(i < (48 + 8))
+void	print_sep(void)
+{
+	ft_putchar(',');
+	ft_putchar(' ');
+}
+
+void	ft_print_comb(void)
+{
+	int	i;
+	int	j;
+	int	k;
+
+	i = 48;
+	while (i < (48 + 8))
 	{
 		j = i + 1;
-		while (j < (48 + 9)) 
+		while (j < (48 + 9))
 		{
 			k = j + 1;
-			while (k < (48+10)) 
+			while (k < (48 + 10))
 			{
-				ft_putchar(i);
-				ft_putchar(j);
-				ft_putchar(k);
-				if(i != (48+7))
+				print(i, j, k);
+				if (i != (48 + 7))
 				{
-					ft_putchar(',');
-					ft_putchar(' ');
+					print_sep();
 				}
 				k++;
 			}

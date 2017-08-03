@@ -6,45 +6,47 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/03 09:21:22 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/03 10:53:44 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/03 12:44:15 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_putchar(char c);
+int		ft_putchar(char c);
 
-#include <stdio.h>
-void printNumber(int n)
+void	print_number(int n)
 {
+	int remainder;
+	int divided;
 
-	int remainder = 0;
-	int divided = 0;
-
-	if(n > (48 + 9))
+	if (n > (48 + 9))
 	{
 		remainder = (n - 48) % 10;
 		divided = (n - 48) / 10;
 		ft_putchar(divided + 48);
 		ft_putchar(remainder + 48);
-	} else {
+	}
+	else
+	{
 		ft_putchar(48);
 		ft_putchar(n);
 	}
 }
 
-void ft_print_comb2 ()
+void	ft_print_comb2(void)
 {
-	int i = 48;
-	int j = 0;
+	int i;
+	int j;
 
-	while(i < (48 + 98))
+	i = 48;
+	while (i < (48 + 98))
 	{
 		j = i + 1;
-		while(j < (48 + 99))
+		while (j < (48 + 99))
 		{
-			printNumber(i);
+			print_number(i);
 			ft_putchar(' ');
-			printNumber(j);	
-			if(i != 48 + 97){
+			print_number(j);
+			if (i != 48 + 97)
+			{
 				ft_putchar(',');
 				ft_putchar(' ');
 			}

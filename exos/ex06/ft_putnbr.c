@@ -6,25 +6,50 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/03 09:21:32 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/03 09:24:49 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/03 13:33:03 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_putchar(char c);
+int		ft_putchar(char c);
 
-void printNumber(int n)
+void	special(void)
 {
-	int remainder = 0;
-	int divided = 0;
+	ft_putchar('-');
+	ft_putnbr(214748364);
+	ft_putchar(56);
+}
 
-	if(n > (48 + 9))
+void	print_neg(int n)
+{
+	if (n == -2147483648)
 	{
-		remainder = (n - 48) % 10;
-		divided = (n - 48) / 10;
-		printNumber(divided + 48);
-		printNumber(remainder + 48);
-	} else {
-		ft_putchar(n);
+		special();
+	}
+	else
+	{
+		ft_putchar('-');
+		ft_putnbr(n - (n * 2));
 	}
 }
 
+void	ft_putnbr(int n)
+{
+	int remainder;
+	int divided;
+
+	if (n < 0)
+	{
+		print_neg(n);
+	}
+	else if (n > 9)
+	{
+		remainder = n % 10;
+		divided = n / 10;
+		ft_putnbr(divided);
+		ft_putnbr(remainder);
+	}
+	else
+	{
+		ft_putchar(48 + n);
+	}
+}
