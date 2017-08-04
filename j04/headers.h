@@ -7,9 +7,8 @@
 #include "./ex05/ft_sqrt.c" 
 #include "./ex06/ft_is_prime.c"
 #include "./ex07/ft_find_next_prime.c"
-
-/* "./ex06/ft_eight_queens_puzzle.c" */
-/* "./ex07/ft_eight_queens_puzzle_2.c" */
+#include "./ex08/ft_eight_queens_puzzle.c" 
+#include "./ex09/ft_eight_queens_puzzle_2.c"
 
 
 int ft_iterative_factorial(int nb);
@@ -20,6 +19,5 @@ int ft_fibonacci(int nb);
 int ft_sqrt(int nb);
 int ft_is_prime(int nb);
 int ft_find_next_prime(int nb);
-
-//ft_recursive_power.c
-//ft_sqrt.c
+int ft_eight_queens_puzzle(void);
+int ft_eight_queens_puzzle_2(void);

@@ -6,25 +6,25 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/03 18:37:37 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/04 07:47:26 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/04 09:21:27 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_sqrt(int nb)
 {
-	int	i;
+	int i;
+	int sqr;
 
-	if (nb < 0)
-		return (0);
 	i = 0;
-	while (i < 50000)
+	while (i < 46200)
 	{
-		if (nb < i * i)
+		sqr = i * i;
+		if (nb < sqr)
 			return (0);
-		else if (nb == i * i)
+		else if (nb == sqr)
 			return (i);
-		i++;
+		else
+			i++;
 	}
 	return (0);
 }
-

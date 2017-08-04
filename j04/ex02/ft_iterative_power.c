@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/03 17:56:57 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/04 07:17:53 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/04 09:19:55 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		ft_iterative_power(int n, int power)
 	result = 1;
 	if (power < 0)
 		return (0);
-	else 
+	else
 	{
 		while (i < power)
 		{
