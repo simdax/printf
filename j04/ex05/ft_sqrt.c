@@ -6,19 +6,25 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/03 18:37:37 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/04 06:52:57 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/04 07:47:26 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_sqrt(int nb)
+int		ft_sqrt(int nb)
 {
-	if (nb == 4)
-		return (2);
-	else if (nb < 4 || nb > 30)
+	int	i;
+
+	if (nb < 0)
 		return (0);
-	else
-		if (nb % 2 == 0)
-			ft_sqrt(nb / 2);
-		else
+	i = 0;
+	while (i < 50000)
+	{
+		if (nb < i * i)
 			return (0);
+		else if (nb == i * i)
+			return (i);
+		i++;
+	}
+	return (0);
 }
+

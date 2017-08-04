@@ -14,7 +14,14 @@ int main ()
 {
 	printf("%d\n", ft_iterative_factorial(16));
 	printf("%d\n", ft_recursive_factorial(20));
-	printf("%d\n", ft_iterative_power(3, 9));
-	printf("%d\n", ft_fibonacci(8));	
-	printf("%d\n", ft_sqrt(16));
+	int i;
+	for(i = 0; i < 3; i++)	
+	{
+		printf("%d\n", ft_recursive_power(3, i));	
+		printf("%d\n", ft_iterative_power(3, i));
+	}
+	for(i = 0; i < 50000; i ++)	
+	{
+		printf("sqrt = %d\n", ft_sqrt(i));
+	}
 }
