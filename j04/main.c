@@ -12,14 +12,9 @@
 
 int main () 
 {
-//	int a;
-
-//	a = 
 	printf("%d\n", ft_iterative_factorial(16));
 	printf("%d\n", ft_recursive_factorial(20));
 	printf("%d\n", ft_iterative_power(3, 9));
-	printf("%d\n", ft_recursive_power(3, 9));
-//	a = ft_recursive_power(3, 7);
-	//printf("%d\n", a);
-
+	printf("%d\n", ft_fibonacci(8));	
+	printf("%d\n", ft_sqrt(16));
 }
