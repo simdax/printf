@@ -10,7 +10,6 @@
 #include "./ex08/ft_eight_queens_puzzle.c" 
 #include "./ex09/ft_eight_queens_puzzle_2.c"
 
-
 int ft_iterative_factorial(int nb);
 int ft_recursive_factorial(int nb);
 int ft_iterative_power(int nb, int pow);
