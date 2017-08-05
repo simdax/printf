@@ -22,6 +22,7 @@ void ft_sort_integer_table(int *tab, int size);
 
 #include "ft_putchar.c"
 #include <stdio.h>
+#include <stdlib.h>
 
 int main ()
 {
@@ -65,14 +66,15 @@ printf(ft_strrev(str));
 printf("\n");
 printf(ft_strrev("youpoi"));
 printf("\n");
-printf("\n %d \n", ft_atoi("456"));
+printf("\n %d \n", ft_atoi("454566"));
+printf("\n %d \n", ft_atoi("-4566"));
 
-/* ft_sort_integer_table(tab, 7); */
-/* int i = 0; */
-/* while(i < 7) */
-/* { */
-/* 	printf("%d", tab[i]); */
-/* 	i++; */
-/* } */
+ft_sort_integer_table(tab, 7);
+int i = 0;
+while(i < 7)
+{
+	printf("%d", tab[i]);
+	i++;
+}
   
 }

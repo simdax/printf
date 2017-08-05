@@ -22,10 +22,15 @@ def draw(times, char):
     else:
         return 0
 
-def draw_door(stars, niveau):
+def draw_door(stars, niveau, ligne):
     stars = stars / 2 - niveau / 2
     draw(stars, '*')
-    draw(niveau, '|')
+    if x == 4:
+        draw(niveau - 2, '|')
+        draw(1, '$')
+        draw(1, '|')
+    else:
+        draw(niveau, '|')
     draw(stars, '*')
     if niveau % 2 == 0:
         draw(1, '*')
@@ -58,7 +63,7 @@ while i <= niveau:
         draw(triangle(lignes - x, 1), ' ')
         draw(1, '/')
         if niveau > 4 and i == niveau and x > 1:
-            draw_door(stars, niveau)
+            draw_door(stars, niveau, x)
         else:
             draw(stars, '*')
         print('\\')

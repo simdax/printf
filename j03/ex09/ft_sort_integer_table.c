@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/04 23:28:21 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/05 17:48:48 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/05 19:03:57 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,32 @@ void	swap(int *a, int *b)
 	*b = tmp;
 }
 
+int		is_sorted(int *tab, int size)
+{
+	size--;
+	while (size > 0)
+	{
+		if (tab[size + 1] < tab[size])
+			return (0);
+		size--;
+	}
+	return (1);
+}
+
 void	ft_sort_integer_table(int *tab, int size)
 {
 	int i;
-	int j;
 
-	while (i > 0)
+	while (is_sorted(tab, size))
 	{
-		if (tab[i] < tab[i + 1])
+		i = size - 1;
+		while (i > 0)
 		{
-			swap(&tab[i], &tab[i + 1]);
+			if (tab[i] < tab[i + 1])
+			{
+				swap(&tab[i], &tab[i + 1]);
+			}
+			i--;
 		}
-		i--;
 	}
-
 }
