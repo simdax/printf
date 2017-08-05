@@ -67,12 +67,12 @@ printf(ft_strrev("youpoi"));
 printf("\n");
 printf("\n %d \n", ft_atoi("456"));
 
-ft_sort_integer_table(tab, 7);
-int i = 0;
-while(i < 7)
-{
-	printf("%d", tab[i]);
-	i++;
-}
+/* ft_sort_integer_table(tab, 7); */
+/* int i = 0; */
+/* while(i < 7) */
+/* { */
+/* 	printf("%d", tab[i]); */
+/* 	i++; */
+/* } */
   
 }
