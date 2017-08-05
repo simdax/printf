@@ -30,7 +30,7 @@ int main ()
 int a = 0;
 int b = 0;
 char *str = "blabli";
-int tab[7] = {0, 2, 3, 1, 4, 8, 6};
+int tab[7] = {7, 6, 1, 4, 3, 5, 1};
 
 ft_ft(&a);
 printf("a : %d, b : %d\n", a, b);

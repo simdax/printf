@@ -6,47 +6,48 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/04 23:28:21 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/05 19:03:57 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/05 19:46:46 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_sort_integer_table(int *tab, int size);
+#include <unistd.h>
 
-void	swap(int *a, int *b)
+void	swap(int *tab, int i)
 {
 	int tmp;
 
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
+	tmp = tab[i];
+	tab[i] = tab[i + 1];
+	tab[i + 1] = tmp;
 }
 
-int		is_sorted(int *tab, int size)
+int		is_unsorted(int *tab, int size)
 {
-	size--;
-	while (size > 0)
+	size -= 2;
+	while (size >= 0)
 	{
 		if (tab[size + 1] < tab[size])
-			return (0);
+			return (1);
 		size--;
 	}
-	return (1);
+	return (0);
 }
 
 void	ft_sort_integer_table(int *tab, int size)
 {
 	int i;
 
-	while (is_sorted(tab, size))
-	{
-		i = size - 1;
-		while (i > 0)
+ 	while (is_unsorted(tab, size)) 
+ 	{ 
+		i = size - 2;
+		while (i >= 0)
 		{
-			if (tab[i] < tab[i + 1])
+			if (tab[i] > tab[i + 1])
 			{
-				swap(&tab[i], &tab[i + 1]);
-			}
+				swap(tab, i);
+ 			}
 			i--;
 		}
 	}
+
 }

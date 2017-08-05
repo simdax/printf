@@ -6,20 +6,20 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/04 23:28:12 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/05 17:50:09 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/05 19:24:04 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*copy_mutable_string(char *str, int size)
+char	*copy_mutable_string(char *source, int size)
 {
 	char	copy[size];
 	int		i;
 
 	i = 0;
-	while (*str)
+	while (*source)
 	{
-		copy[i] = *str;
-		str++;
+		copy[i] = *source;
+		source++;
 		i++;
 	}
 	return (copy);
