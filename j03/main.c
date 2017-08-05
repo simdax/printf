@@ -60,11 +60,12 @@ printf("length : %d \n", l);
 
 a=8; b=9;
 ft_swap(&a, &b);
-printf("a : %d, b : %d", a, b);
 
-ft_strrev(str);
-printf("a : %d, b : %d \n", a, b);
-printf("%d \n", ft_atoi("456"));
+printf(ft_strrev(str));
+printf("\n");
+printf(ft_strrev("youpoi"));
+printf("\n");
+printf("\n %d \n", ft_atoi("456"));
 
 ft_sort_integer_table(tab, 7);
 int i = 0;
