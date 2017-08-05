@@ -1,25 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/04 23:27:54 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/04 23:57:50 by scornaz          ###   ########.fr       */
+/*   Created: 2017/08/03 09:21:32 by scornaz           #+#    #+#             */
+/*   Updated: 2017/08/03 13:33:03 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_putchar(char c);
 
-void	ft_putstr(char *str)
+void	special(void)
 {
-	char j;
+	ft_putchar('-');
+	ft_putnbr(214748364);
+	ft_putchar(56);
+}
 
-	j = *str++;
-	while (j)
+void	print_neg(int n)
+{
+	if (n == -2147483648)
 	{
-		ft_putchar(j);
-		j = *str++;
+		special();
+	}
+	else
+	{
+		ft_putchar('-');
+		ft_putnbr(n - (n * 2));
+	}
+}
+
+void	ft_putnbr(int n)
+{
+	int remainder;
+	int divided;
+
+	if (n < 0)
+	{
+		print_neg(n);
+	}
+	else if (n > 9)
+	{
+		remainder = n % 10;
+		divided = n / 10;
+		ft_putnbr(divided);
+		ft_putnbr(remainder);
+	}
+	else
+	{
+		ft_putchar(48 + n);
 	}
 }

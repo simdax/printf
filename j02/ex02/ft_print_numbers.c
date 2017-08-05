@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/04 23:28:01 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/04 23:28:04 by scornaz          ###   ########.fr       */
+/*   Created: 2017/08/02 10:54:45 by scornaz           #+#    #+#             */
+/*   Updated: 2017/08/03 12:30:52 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str);
+int		ft_putchar(char c);
 
-int		ft_strlen(char *str)
+void	ft_print_numbers(void)
 {
-	int length;
+	char letter;
 
-	length = 0;
-	while (str[length] != '\0')
+	letter = 48;
+	while (letter < 58)
 	{
-		length++;
+		ft_putchar(letter);
+		letter++;
 	}
-	return (length);
 }
