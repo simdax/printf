@@ -9,9 +9,9 @@ def triangle(start, cr):
     else:
         return 1
 
-def calculate_spaces(niveau, lignes):
-    if(niveau > 0):
-        return lignes + calculate_spaces(niveau-1,lignes+1)
+def calculate_spaces(level, lignes):
+    if(level > 0):
+        return lignes + calculate_spaces(level-1,lignes+1)
     else:
         return 0
 
@@ -22,27 +22,45 @@ def draw(times, char):
     else:
         return 0
 
+def draw_door(stars, niveau):
+    stars = stars / 2 - niveau / 2
+    draw(stars, '*')
+    draw(niveau, '|')
+    draw(stars, '*')
+    if niveau % 2 == 0:
+        draw(1, '*')
 
-niveau = 5
+niveau = 6
 i = 1
+j = -2
 globLine=0
 while i <= niveau:
+    j += 1
     reverse = niveau - i
     lignes = i+2
-    levelMod = (i) / 2
-    levelMod2 = (i-1) /2
-    espaces = calculate_spaces(reverse,lignes) + 3*reverse
-#    print(levelMod2)
-#     print(i)
-#     print(lignes)
-#     print(espaces)
+    if i <= 3:
+        mod = 0
+    else:
+        mod = i/2 - 1
+    espaces = calculate_spaces(reverse,lignes) + 3*reverse 
+    if niveau > 3 and mod < niveau / 2:
+        plus = niveau/2 - mod - 1
+#        print(niveau/2 - mod - 1)
+ #       espaces += plus
     for x in range(0,lignes):
         globLine += 1
         draw(espaces, ' ')
-        stars = triangle(globLine, 2) + (i - 1)*4
+        amount = 4
+#        amount = triangle(i+1, 1) + 1 
+ #       if i % 2 == 0:
+  #xs          amount = 4
+        stars = triangle(globLine, 2) + ((i-1) * amount)
         draw(triangle(lignes - x, 1), ' ')
         draw(1, '/')
-        draw(stars, '*')
+        if niveau > 4 and i == niveau and x > 1:
+            draw_door(stars, niveau)
+        else:
+            draw(stars, '*')
         print('\\')
     i += 1
 
