@@ -1,0 +1,16 @@
+draw
+	
+
+triangle(fro, to, croissance)
+			   if(from == 0)
+			   return to
+			   else
+			   return triangle + triangle(from - 1, to, croissance) + croissance
+
+size(niveau)
+	triangle(1, niveau)	
+
+main
+	size = size(getSizeFromArgs)
+	draw
+	return 0
