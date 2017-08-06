@@ -25,7 +25,7 @@ def draw(times, char):
 def draw_door(stars, niveau, ligne):
     stars = stars / 2 - niveau / 2
     draw(stars, '*')
-    if niveau > 4 and x == 4:
+    if niveau > 4 and ligne == 4:
         draw(niveau - 2, '|')
         draw(1, '$')
         draw(1, '|')
@@ -51,10 +51,10 @@ def calcStars(globLine, i):
 
 niveau = 4
 i = 1
+j = 0
 globLine = 0
 width = calcStars(nbLines(niveau), niveau) + 2
 while i <= niveau:
-    reverse = niveau - i
     lignes = i + 2
     for x in range(0,lignes):
         globLine += 1
