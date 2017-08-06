@@ -25,16 +25,25 @@ def draw(times, char):
 def draw_door(stars, niveau, ligne):
     stars = stars / 2 - niveau / 2
     draw(stars, '*')
-    if x == 4:
+    if niveau > 4 and x == 4:
         draw(niveau - 2, '|')
         draw(1, '$')
         draw(1, '|')
     else:
         draw(niveau, '|')
-    draw(stars, '*')
+    draw(stars - 1, '*')
     if niveau % 2 == 0:
-        draw(1, '*')
+        draw(niveau/2, '*')
 
+def triangle_modulo(level):
+    if(level <= 3):
+        return 0
+    else:
+        if level%2 ==0:
+            return 2 + triangle_modulo(level - 1)
+        else:
+            return 1 + triangle_modulo(level - 1)
+        
 niveau = 6
 i = 1
 j = -2
@@ -43,35 +52,21 @@ while i <= niveau:
     j += 1
     reverse = niveau - i
     lignes = i+2
-    if i <= 3:
-        mod = 0
-    else:
-        mod = i/2 - 1
     espaces = calculate_spaces(reverse,lignes) + 3*reverse 
-    if niveau > 3 and mod < niveau / 2:
-        plus = niveau/2 - mod - 1
-#        print(niveau/2 - mod - 1)
- #       espaces += plus
     for x in range(0,lignes):
         globLine += 1
         draw(espaces, ' ')
-        amount = 4
-#        amount = triangle(i+1, 1) + 1 
- #       if i % 2 == 0:
-  #xs          amount = 4
-        stars = triangle(globLine, 2) + ((i-1) * amount)
+        amount = (i-1) * 4
+        amountPlus= triangle_modulo(i)
+        stars = triangle(globLine, 2) + amount + amountPlus
         draw(triangle(lignes - x, 1), ' ')
         draw(1, '/')
-        if niveau > 4 and i == niveau and x > 1:
+        if i == niveau and x > 1:
             draw_door(stars, niveau, x)
         else:
             draw(stars, '*')
         print('\\')
     i += 1
 
-
-#   /*\
-#  /***\
-# /**|**\
 
 
