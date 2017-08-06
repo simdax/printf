@@ -31,10 +31,10 @@ def draw_door(stars, niveau, ligne):
         draw(1, '|')
     else:
         draw(niveau, '|')
-    draw(stars - 1, '*')
-    if niveau % 2 == 0:
-        draw(niveau/2, '*')
-
+    draw(stars, '*')
+    if(niveau % 2 == 0):
+        draw(1, '*')
+            
 def nbLines(lvl):
     if lvl <= 0:
         return 0
