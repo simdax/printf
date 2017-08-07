@@ -6,11 +6,11 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 20:17:06 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/07 20:41:20 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/07 20:49:17 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int powerOf(int nb, int power)
+int		power_of(int nb, int power)
 {
 	if (power == 0)
 		return (1);
@@ -25,7 +25,7 @@ int		ft_sqrt(int base, int nb)
 	i = 1;
 	while (i < 46341)
 	{
-		pow = powerOf(base, i);
+		pow = power_of(base, i);
 		if (nb < pow)
 			return (i);
 		else if (nb == pow)
@@ -36,26 +36,30 @@ int		ft_sqrt(int base, int nb)
 	return (i);
 }
 
-char	*createString(int size)
+char	*create_string(int size)
 {
-	char *str[size];
-	
+	char *str[size + 1];
+
 	return (str);
 }
 
-void main()
+void	main(void)
 {
-	int length;
-	int base;
-	char *result;
+	int		length;
+	int		base;
+	char	*result;
+	int		l;
 
-	base = 5;
+	base = 2;
 	length = 20;
-	result = createString(ft_sqrt(base, length));
+	l = ft_sqrt(base, length);
+	printf("%d", l);
+	result = create_string(l);
 	result[0] = 'a';
 	result[1] = 'b';
 	printf("%s", result);
-/* 	while(*base) */
+
+// 	while(*base) 
 /* 		length++; */
 /* 	i = 0; */
 /* 	while (i < length) */
