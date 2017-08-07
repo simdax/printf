@@ -6,11 +6,11 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 16:33:39 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/07 17:05:33 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/07 19:45:48 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_putchar(char c);
+int		ft_putchar(char c);
 
 void	swap(char *x, char *y)
 {

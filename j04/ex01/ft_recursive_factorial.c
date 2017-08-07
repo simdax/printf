@@ -6,13 +6,13 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/03 17:32:51 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/03 18:23:02 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/07 19:44:49 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_recursive_factorial(int nb)
 {
-	if (nb > 19)
+	if (nb > 19 || nb < 0)
 		return (0);
 	if (nb > 0)
 	{

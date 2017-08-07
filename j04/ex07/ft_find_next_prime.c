@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/03 19:25:17 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/04 13:56:51 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/07 17:59:13 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	is_prime(int nb)
 
 int	limit(int nb)
 {
-	if (nb < 46200)
+	if (nb < 46341)
 		return (nb * nb);
 	else
 		return (2147483647);
