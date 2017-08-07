@@ -17,7 +17,7 @@ int		power_of(int nb, int power)
   return (nb * power_of(nb, power - 1));
 }
 
-int		ft_sqrt(int base, int nb)
+int		ft_sqrt(int nb, int base)
 {
   int i;
   int pow;
@@ -26,6 +26,7 @@ int		ft_sqrt(int base, int nb)
   while (i < 46341)
     {
       pow = power_of(base, i);
+      //      printf("%d\n", pow);
       if (nb < pow)
 	return (i);
       else if (nb == pow)
@@ -36,27 +37,18 @@ int		ft_sqrt(int base, int nb)
   return (i);
 }
 
-char	*create_string(int size)
-{
-  char *str[size + 1];
-
-  return (str);
-}
-
 void ft_put_nbr_base(int nb, char *str)
 {
-  int		base_length;
-  int		base;
+  int		result_length;
   char	*result;
-  int		l;
-
-  printf("coucou");
+  int		i;
   
-  base = 2;
-  base_length = 20;
-  l = ft_sqrt(base, base_length);
-  printf("%d", l);
-  result = create_string(l);
+  i = 0;
+  while(str[i])
+    i++;
+  result_length = ft_sqrt(nb, i);
+  printf("%d", result_length);
+  result = malloc(sizeof(result) * result_length + 1);
   result[0] = 'a';
   result[1] = 'b';
   printf("%s", result);
