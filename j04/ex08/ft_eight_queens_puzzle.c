@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 10:55:14 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/07 15:13:09 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/07 15:13:55 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	update_mat(int tab[8][8], int x, int y, int increment)
 	i = 0;
 	while (x + ++i < 8 && y - i >= 0)
 		tab[x + i][y - i] += increment;
-	p_mat(tab, 8);
 }
 
 int		put_queen(int tab[8][8], int col, int *solutions)
