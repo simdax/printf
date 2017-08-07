@@ -55,7 +55,7 @@ void ft_put_nbr_base(int nb, char *base)
   while(result_length > 0)
     {
       int pow = power_of(length_base, result_length - 1);
-      printf("%d\n", nb / pow);
+      printf("%d", base[nb / pow] - 48);
       if(nb - pow >= 0)
 	nb -= pow;
       result_length--;
