@@ -28,7 +28,7 @@ int		ft_sqrt(int nb, int base)
       pow = power_of(base, i);
       //      printf("%d\n", pow);
       if (nb < pow)
-	return (i - 1);
+	return (i);
       else if (nb == pow)
 	return (i);
       else
@@ -39,22 +39,31 @@ int		ft_sqrt(int nb, int base)
 
 void ft_put_nbr_base(int nb, char *base)
 {
-  int		result_length;
+  int	result_length;
+  int	length_base;
   char	*result;
-  int		i;
   
-  i = 0;
-  while(base[i])
-    i++;
-  result_length = ft_sqrt(nb, i);
-  //  printf("%d", result_length);
-  result = malloc(sizeof(result) * result_length + 1);
+  length_base = 0;
+  while(base[length_base])
+    length_base++;
+  result_length = ft_sqrt(nb, length_base);
+  //  printf("%d\n", result_length);
+  result = malloc(sizeof(result) * result_length + length_base);
 
-  printf("%d", nb / result_length);
+  /* printf("%d\n", result_length); */
+  /* printf("%d\n", power_of(length_base, result_length)); */
+  while(result_length > 0)
+    {
+      int pow = power_of(length_base, result_length - 1);
+      printf("%d\n", nb / pow);
+      if(nb - pow >= 0)
+	nb -= pow;
+      result_length--;
+    }
 
 }
 
 void	main(void)
 {
-  ft_put_nbr_base(42, "42");
+  ft_put_nbr_base(35, "42");
 }
