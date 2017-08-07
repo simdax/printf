@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 10:55:14 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/07 15:13:55 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/07 16:28:53 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int		put_queen(int tab[8][8], int col, int *solutions)
 		{
 			if (col == 7)
 			{
+				
 				(*solutions)++;
 			}
 			else
@@ -79,5 +80,6 @@ int		ft_eight_queens_puzzle(void)
 		}
 		i++;
 	}
+	put_queen(tab, 0, &solutions);
 	return (solutions);
 }
