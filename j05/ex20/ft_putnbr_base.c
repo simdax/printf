@@ -28,35 +28,29 @@ int		ft_sqrt(int nb, int base)
       pow = power_of(base, i);
       //      printf("%d\n", pow);
       if (nb < pow)
-	return (i);
+	return (i - 1);
       else if (nb == pow)
 	return (i);
       else
 	i++;
     }
-  return (i);
+  return (46341);
 }
 
-void ft_put_nbr_base(int nb, char *str)
+void ft_put_nbr_base(int nb, char *base)
 {
   int		result_length;
   char	*result;
   int		i;
   
   i = 0;
-  while(str[i])
+  while(base[i])
     i++;
   result_length = ft_sqrt(nb, i);
-  printf("%d", result_length);
+  //  printf("%d", result_length);
   result = malloc(sizeof(result) * result_length + 1);
-  result[0] = 'a';
-  result[1] = 'b';
-  printf("%s", result);
 
-  // 	while(*base) 
-  /* 		length++; */
-  /* 	i = 0; */
-  /* 	while (i < length) */
+  printf("%d", nb / result_length);
 
 }
 
