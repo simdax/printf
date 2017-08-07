@@ -6,9 +6,11 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 10:55:14 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/07 12:13:33 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/07 14:57:52 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdio.h>
 
 void	p_mat(int tab[8][8], int size)
 {
@@ -21,7 +23,7 @@ void	p_mat(int tab[8][8], int size)
 		j = 0;
 		while (j < size)
 		{
-			printf("%d", tab[i][j]);
+			printf("%d ", tab[i][j]);
 			j++;
 		}
 		i++;
@@ -30,65 +32,48 @@ void	p_mat(int tab[8][8], int size)
 	printf("\n");
 }
 
-void	update_mat(int tab[8][8], int x, int y)
+void	update_mat(int tab[8][8], int x, int y, int increment)
 {
 	int i;
 
 	i = 0;
-	while (x + i++ < 8 && y + i < 8)
-		tab[x + i][y + i] = 0;
+	while (i < 8)
+		tab[x][i++] += increment;
 	i = 0;
-	while (x - i++ >= 0 && y + i < 8)
-		tab[x - i][y + i] = 0;
+	while (i < 8)
+		tab[i++][y] += increment;
+	tab[x][y] -= increment;
 	i = 0;
-	while (x - i++ >= 0 && y - i >= 0)
-		tab[x - i][y - i] = 0;
+	while (x + ++i < 8 && y + i < 8)
+		tab[x + i][y + i] += increment;
 	i = 0;
-	while (x + i++ < 8 && y - i >= 0)
-		tab[x + i][y - i] = 0;
-	p_mat(tab, 8);
+	while (x - ++i >= 0 && y + i < 8)
+		tab[x - i][y + i] += increment;
+	i = 0;
+	while (x - ++i >= 0 && y - i >= 0)
+		tab[x - i][y - i] += increment;
+	i = 0;
+	while (x + ++i < 8 && y - i >= 0)
+		tab[x + i][y - i] += increment;
 }
 
-int		check_row(int tab[8][8], int col)
+int		put_queen(int tab[8][8], int col)
 {
 	int i;
+	int solution;
 
-	i = -1;
 	while (i < 8)
 	{
-		if (tab[col][i++])
-			return (1);
+		if(tab[i][col] == 0)
+		{
+			update_mat(tab, i, col, 1);
+			solution = put_queen(tab, col + i);
+			if (!solution) 
+				update_mat(tab, i, col, -1);
+		}
+		i++;
 	}
 	return (0);
-}
-
-int		put_queen(int tab[8][8], int x, int y)
-{
-	int i;
-
-	if (check_row(tab, x))
-	{
-		if (x == 7)
-			return (1);
-		else
-		{
-			i = 0;
-			while (i < 8)
-			{
-				if (tab[x][y])
-				{
-					tab[x][y] = 0;
-					update_mat(tab, x + i, y);
-					put_queen(tab, x + i, y + 1);
-				}
-				else
-					return (0);
-				i++;
-			}
-		}
-	}
-	else
-		return (0);
 }
 
 int		main(void)
@@ -105,12 +90,16 @@ int		main(void)
 		j = 0;
 		while (j < size)
 		{
-			tab[i][j] = 1;
+			tab[i][j] = 0;
 			j++;
 		}
 		i++;
 	}
-	i = 0;
-	printf("asdfasdf%d", put_queen(tab, 0, 0));
+
+	update_mat(tab, 7, 7, 1);
+	p_mat(tab, 8);
+	update_mat(tab, 0, 0, 1);
+	p_mat(tab, 8);
+
 	return (0);
 }
