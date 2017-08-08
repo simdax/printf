@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 10:55:14 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/07 19:45:13 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/08 09:21:53 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		put_queen(int tab[8][8], int col, int *solutions)
 		if (tab[i][col] == 0)
 		{
 			if (col == 7)
-			{				
+			{
 				(*solutions)++;
 			}
 			else

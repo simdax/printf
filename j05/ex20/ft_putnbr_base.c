@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 20:17:06 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/07 20:49:17 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/07 20:59:48 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,25 +43,35 @@ char	*create_string(int size)
 	return (str);
 }
 
-void	main(void)
+void ft_putnbr_base(int nbr, char *base)
 {
-	int		length;
-	int		base;
+	int		result_length;
 	char	*result;
-	int		l;
+	int		i;
+	int		j;
 
-	base = 2;
-	length = 20;
-	l = ft_sqrt(base, length);
-	printf("%d", l);
-	result = create_string(l);
-	result[0] = 'a';
-	result[1] = 'b';
+	i = 0;
+	while(base[i])
+		i++;
+	printf("%d", ft_sqrt(base, i));
+	result = create_string(ft_sqrt(base, i));
+	printf("%d\n", strlen(result));
+	i = 0;
+	j = 0;
+ 	while( < length)
+	{
+		result[j] = base{}
+		if(i == length)
+		{
+			j++;
+			i = 0;
+		}
+	}
 	printf("%s", result);
 
-// 	while(*base) 
-/* 		length++; */
-/* 	i = 0; */
-/* 	while (i < length) */
-		
+}
+
+void main(void)
+{
+	ft_putnbr_base(42, '42');
 }

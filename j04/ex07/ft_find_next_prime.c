@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/03 19:25:17 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/07 17:59:13 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/08 09:20:39 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	limit(int nb)
 
 int	ft_find_next_prime(int num)
 {
+	if (num <= 1)
+		return (2);
 	while (num < limit(num))
 	{
 		if (is_prime(num))
