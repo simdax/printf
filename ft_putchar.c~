@@ -2,5 +2,5 @@
 
 int ft_putchar(char c)
 {
-	wrtie(1, &c, 1;
+	write(1, &c, 1);
 }
