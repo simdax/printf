@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 16:33:39 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/07 19:45:48 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/08 16:21:39 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	permute(char *a, int l, int r)
 void	ft_eigth_queens_puzzle_2(void)
 {
 	char	str[9];
-	char	i;
+	int		i;
 
 	i = 0;
 	while (i < 8)

@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/03 17:22:13 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/08 09:16:20 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/08 16:20:13 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		ft_iterative_factorial(int nb)
 
 	if (nb == 0)
 		return (1);
-	if (nb < 0 || nb > 19)
+	if (nb < 0 || nb > 12)
 	{
 		return (0);
 	}
