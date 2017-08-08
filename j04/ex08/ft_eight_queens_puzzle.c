@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 10:55:14 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/08 09:21:53 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/08 09:45:36 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ void	update_mat(int tab[8][8], int x, int y, int increment)
 
 int		put_queen(int tab[8][8], int col, int *solutions)
 {
-	int i;
+	int row;
 	int solution;
 
-	while (i < 8)
+	while (row < 8)
 	{
-		if (tab[i][col] == 0)
+		if (tab[row][col] == 0)
 		{
 			if (col == 7)
 			{
@@ -50,12 +50,12 @@ int		put_queen(int tab[8][8], int col, int *solutions)
 			}
 			else
 			{
-				update_mat(tab, i, col, 1);
+				update_mat(tab, row, col, 1);
 				if (!put_queen(tab, col + 1, solutions))
-					update_mat(tab, i, col, -1);
+					update_mat(tab, row, col, -1);
 			}
 		}
-		i++;
+		row++;
 	}
 	return (0);
 }
