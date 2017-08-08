@@ -6,32 +6,64 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 16:30:37 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/08 17:06:27 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/08 17:57:30 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*sort_word(char *w1, char *w2)
+int ft_putchar(char c);
+
+int		sort_word(char *w1, char *w2)
 {
-	char	*result;
+	int		result;
+
 	if (*w1 < *w2)
-		return (w1);
+		return (0);
 	else if (*w1 > *w2)
-		return (w2);
+		return (1);
 	else
+		return (sort_word(++w1, ++w2));
+}
+
+void	swap(char **str1, char **str2)
+{
+	char *tmp;
+
+	tmp = *str1;
+	*str1 = *str2;
+	*str2 = tmp;
+}
+
+void	sort(char *argv[], int size)
+{
+	int i;
+	int j;
+
+	j = 0;
+	i = 0;
+ 	while (j < size - 1) 
+ 	{
+ 		i = size - 2;
+		while (i >= j)
+		{
+			if (sort_word(argv[i], argv[i + 1]))
+				swap(&argv[i], &argv[i + 1]);
+			i--;
+		}
+ 		j++; 
+ 	} 
+}
+
+int		main(int argc, char **argv)
+{
+	int i;
+
+	sort(++argv, --argc);
+	while (*argv)
 	{
-		result = sort_word(++w1, ++w2);
-		result--;
-		return result;
+		while(**argv)
+			ft_putchar(*(*argv)++);
+		ft_putchar('\n');
+		argv++;
 	}
-}
-
-char **sort(char **str_list)
-{
-	
-}
-
-int main(int argc, char **argv)
-{
-	printf("%s", sort_word("5weamiscoucou", "5weamis"));
 	return (0);
 }
