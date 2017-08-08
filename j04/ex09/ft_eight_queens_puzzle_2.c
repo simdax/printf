@@ -6,11 +6,11 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 16:33:39 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/08 16:21:39 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/08 20:30:03 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_putchar(char c);
+void		ft_putchar(char c);
 
 void	swap(char *x, char *y)
 {
@@ -74,7 +74,7 @@ void	permute(char *a, int l, int r)
 	}
 }
 
-void	ft_eigth_queens_puzzle_2(void)
+void	ft_eight_queens_puzzle_2(void)
 {
 	char	str[9];
 	int		i;
