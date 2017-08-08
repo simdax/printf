@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 20:17:06 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/08 11:37:07 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/08 11:45:52 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,12 @@ int		check_base(char *base, int base_len, char *str, int str_len)
 	if (base_len < 2 || str_len == 0)
 		return (0);
 	i = 0;
-	while (*str++)
+	while (*str)
+	{
 		if (*str == '+' || *str == '-')
 			return (0);
+		str++;
+	}
 	while (i < base_len)
 	{
 		if (base[i] == '+' || base[i] == '-')
@@ -87,5 +90,5 @@ int		ft_atoi_base(char *str, char *base)
 
 void	main(void)
 {
-	printf("%d", ft_atoi_base("jjj", "bcdefghij"));
+	printf("%d", ft_atoi_base("jjjj", "bcdefghij"));
 }

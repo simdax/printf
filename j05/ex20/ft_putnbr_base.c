@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 20:17:06 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/08 10:38:32 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/08 11:56:57 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,4 @@ void	ft_putnbr_base(int nb, char *base)
 		}
 		ft_putchar('\n');
 	}
-}
-
-void	main(void)
-{
-	ft_putnbr_base(999, "0123456789");
 }
