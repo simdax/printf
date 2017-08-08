@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 20:17:06 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/08 11:05:59 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/08 11:37:07 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,6 @@ int		power_of(int nb, int power)
 	if (power == 0)
 		return (1);
 	return (nb * power_of(nb, power - 1));
-}
-
-int		ft_sqrt(int nb, int base)
-{
-	int i;
-	int pow;
-
-	i = 1;
-	while (i < 46341)
-	{
-		pow = power_of(base, i);
-		if (nb <= pow)
-			return (i);
-		else
-			i++;
-	}
-	return (46341);
 }
 
 int		index_of(char *base, char c)
@@ -47,26 +30,56 @@ int		index_of(char *base, char c)
 			return (i);
 		i++;
 	}
+	return (-1);
+}
+
+int		check_base(char *base, int base_len, char *str, int str_len)
+{
+	int i;
+	int j;
+
+	if (base_len < 2 || str_len == 0)
+		return (0);
+	i = 0;
+	while (*str++)
+		if (*str == '+' || *str == '-')
+			return (0);
+	while (i < base_len)
+	{
+		if (base[i] == '+' || base[i] == '-')
+			return (0);
+		j = 0;
+		while (j < base_len)
+		{
+			if (j != i && base[i] == base[j])
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }
 
 int		ft_atoi_base(char *str, char *base)
 {
 	int		i;
-	int		length_base;
+	int		len_base;
 	int		str_len;
 	int		result;
 
 	result = 0;
-	length_base = 0;
-	while (base[length_base])
-		length_base++;
+	len_base = 0;
+	while (base[len_base])
+		len_base++;
 	str_len = 0;
 	while (str[str_len])
 		str_len++;
+	if (!check_base(base, len_base, str, str_len))
+		return (0);
 	i = 0;
 	while (str[i])
 	{
-		result += index_of(base, str[i]) * power_of(length_base, str_len - i - 1);
+		result += index_of(base, str[i]) * power_of(len_base, str_len - i - 1);
 		i++;
 	}
 	return (result);
@@ -74,5 +87,5 @@ int		ft_atoi_base(char *str, char *base)
 
 void	main(void)
 {
-	printf("%d", ft_atoi_base("99049", "03456789"));
+	printf("%d", ft_atoi_base("jjj", "bcdefghij"));
 }
