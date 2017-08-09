@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/04 23:28:15 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/09 12:57:16 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/09 13:08:50 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,12 @@ void	calc(int *res, char *str, int length)
 
 	decimal = 1;
 	i = length + 1;
-	while (str[i])
+	while (str[i] && str[i] != ' ')
 	{
 		decimal *= 10;
 		i++;
 	}
+	printf("%d", *res);
 	*res += (str[length] - 48) * decimal;
 }
 
@@ -64,6 +65,8 @@ int		ft_atoi(char *str)
 	res = 0;
 	while (str[length])
 	{
+		if (str[length] == ' ')
+			return (res);
 		calc(&res, str, length);
 		length++;
 	}
