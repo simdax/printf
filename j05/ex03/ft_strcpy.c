@@ -1,12 +1,24 @@
-char *strncpy(char *dest, char *src, unsigned int n)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/09 14:19:38 by scornaz           #+#    #+#             */
+/*   Updated: 2017/08/09 14:31:13 by scornaz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+char	*ft_strcpy(char *dest, char *src)
 {
-  int i;
-  
-  while(*src)
-    {
-      *dest = *src;
-      src++;
-      dest++;
-    }
-  return dest;
+	int i;
+
+	i = 0;
+	while (dest[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	return (dest);
 }

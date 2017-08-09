@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/04 23:28:15 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/09 13:08:50 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/09 14:01:07 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,42 @@ int		check_neg(char *str, int *length)
 		return (-1);
 }
 
-void	calc(int *res, char *str, int length)
+#include <stdio.h>
+#include <limits.h>
+
+int		check_size(char *str, int index)
 {
-	int decimal;
+	char *limit;
+
+	limit = "2147483647";
+	if (index == -1)
+		return (1);
+	if (str[index] == limit[index])
+		return check_size(str, index - 1);
+	else 
+		return (str[index] < limit[index]);
+	return (0);
+}
+
+int compare_string(char *str)
+{
+	int len;
+
+	len = 0;
+	while(str[len])
+		len++;
+	if (len > 9)
+		return (0);
+	if (len == 9)	
+		return check_size(str, 9);
+	return (0);
+}
+
+int		calc(int *res, char *str, int length, int is_neg)
+{
+	long decimal;
 	int i;
+	long test;
 
 	decimal = 1;
 	i = length + 1;
@@ -48,8 +80,19 @@ void	calc(int *res, char *str, int length)
 		decimal *= 10;
 		i++;
 	}
-	printf("%d", *res);
+	test = *res + (str[length] - 48) * decimal;
+	if (is_neg)
+	{
+		if (-test < INT_MIN)
+			return (0);
+	}
+	else 
+	{
+		if (test > INT_MAX)
+			return (0);
+	}
 	*res += (str[length] - 48) * decimal;
+	return (1);
 }
 
 int		ft_atoi(char *str)
@@ -67,7 +110,8 @@ int		ft_atoi(char *str)
 	{
 		if (str[length] == ' ')
 			return (res);
-		calc(&res, str, length);
+		if(!calc(&res, str, length, is_neg))
+			return (-1);
 		length++;
 	}
 	if (is_neg)
