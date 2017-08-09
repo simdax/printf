@@ -5,14 +5,26 @@ char *ft_strncpy(char *dest, char *src, unsigned int n);
 
 int main()
 {
-	char dest[46] = "coucou les supers megas gigas";
-	char src[46] = "loulous de ouf malade";
-	
-	printf("%s\n", ft_strncpy(dest, src, 10));
-	printf("%s\n", ft_strncpy(dest, src, 20));
+	char src[] = "loulous";
+	int i = 0;
 
-	printf("%s\n", strncpy(dest, src, 10));
-	printf("%s\n", strncpy(dest, src, 20));
+	while (i < 30)
+	{
+		char dest[46] = "coucou les supers megas gigas";
+		printf("%s\n", ft_strncpy(dest, src, i));
+		i += 5;
+	}
+
+	printf("\n \n");
+
+	i = 0;
+	while (i < 30)
+	{
+		char dest[46] = "coucou les supers megas gigas";
+		printf("%s\n", strncpy(dest, src, i));
+		i += 5;
+	}
+
 
 //	printf("%s\n", strcpy("coucou les", "loulous"));
 

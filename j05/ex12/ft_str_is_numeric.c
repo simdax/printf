@@ -6,11 +6,11 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 19:15:41 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/07 19:19:49 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/09 16:35:41 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	test(char c, char low, char high)
+int		test(char c, char low, char high)
 {
 	return (low <= c && c <= high);
 }

@@ -6,19 +6,22 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 18:59:49 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/07 18:59:54 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/09 16:06:14 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *ft_strlowcase(char *str)
+char	*ft_strlowcase(char *str)
 {
-	while(*str)
-    {
-		if(65 <= *str <= 90)
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (65 <= str[i] && str[i] <= 90)
 		{
-			*str += 32;
+			str[i] += 32;
 		}
-		str++;
-    }
+		i++;
+	}
 	return (str);
 }

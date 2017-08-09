@@ -6,21 +6,21 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 19:49:01 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/07 20:07:46 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/09 16:48:09 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*strcat(char *dest, char *src)
+char	*ft_strcat(char *dest, char *src)
 {
 	int i;
 	int j;
 
 	i = 0;
 	j = 0;
-	while(dest[i])
+	while (dest[i])
 		i++;
-	while(*src)
+	while (*src)
 		dest[i++] = *src++;
-	return dest;
+	dest[i++] = '\0';
+	return (dest);
 }
-

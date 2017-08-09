@@ -6,45 +6,59 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 18:47:13 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/07 19:10:45 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/09 16:25:26 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strlowcase(char *str)
 {
-	while (*str)
+	int i;
+
+	i = 0;
+	while (str[i])
 	{
-		if (65 <= *str <= 90)
+		if (65 <= str[i] && str[i] <= 90)
 		{
-			*str += 32;
+			str[i] += 32;
 		}
-		str++;
+		i++;
 	}
 	return (str);
+}
+
+void	upcase(char *str, int *gate, int i)
+{
+	if (*gate && 97 <= str[i] && str[i] <= 122)
+	{
+		str[i] -= 32;
+		*gate = 0;
+	}
 }
 
 char	*ft_strcapitalize(char *str)
 {
 	char	*seps;
 	int		i;
+	int		j;
+	int		gate;
 
-	seps = " ,-";
+	seps = " ,-+";
+	gate = 1;
 	str = ft_strlowcase(str);
-	while (*str)
+	i = 0;
+	while (str[i])
 	{
-		i = 0;
-		while (seps[i])
+		upcase(str, &gate, i);
+		j = 0;
+		while (seps[j])
 		{
-			if (*str == seps[i])
+			if (str[i] == seps[j])
 			{
-				str++;
-				if (*str)
-					*str = *str - 32;
-				else
-					return (str);
+				gate = 1;
 			}
+			j++;
 		}
-		str++;
+		i++;
 	}
 	return (str);
 }
