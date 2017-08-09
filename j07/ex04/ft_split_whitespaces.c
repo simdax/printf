@@ -6,37 +6,36 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 20:43:03 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/08 21:55:27 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/09 10:45:49 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	**ft_split_whitespaces(char *str)
-{
-	int		i;
-	int		mark;
-	char	**result;
+#include <stdio.h>
+#include <stdlib.h>
 
-	mark = 0;
-	i = 0;
-	while (str[i])
+int		count_words(char *str, int i, int boolean)
+{
+	if (str[i] == '\0')
+		return (0);
+	if (str[i] == ' ' || str[i] == '\n' || str[i] == '\t')
 	{
-		if (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i + 1] == '\0')
+		if (boolean)
 		{
-/* 			if (str[i + 1] == '\0') */
-/* 				i++; */
- 			*result = malloc(sizeof(char) * (i - mark) + 1);
-			while (mark != i)
-			{
-				*result[i] = str[mark];
-				printf("%c\n", str[mark]);
-				mark++;
-			}
-			//	printf("%c\n", result[j]);
-			*result[i + 1] = '\0';
-  			printf("new mot !\n", result[i]);
-			mark++;
-			result++;
+			boolean = 0;
+			return (1 + count_words(str, i + 1, boolean));
 		}
-		i++;
+		else
+			return (count_words(str, i + 1, boolean));
 	}
+	if (96 < str[i] || str[i] < 123)
+	{
+		boolean = 1;
+		return (count_words(str, i + 1, boolean));
+	}
+	return (count_words(str, i + 1, boolean));
+}
+
+void	ft_split_whitespaces(char *str)
+{
+	printf("%d", count_words(str, 0, 0));
 }
