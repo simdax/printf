@@ -6,11 +6,11 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 11:37:55 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/08 11:59:42 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/09 20:24:56 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_putchar(char c);
+int		ft_putchar(char c);
 
 int		power_of(int nb, int power)
 {
@@ -40,7 +40,6 @@ void	ft_putnbr_base(int nb, char *base)
 {
 	int		result_length;
 	int		length_base;
-	char	*result;
 	int		pow;
 
 	length_base = 0;
@@ -75,9 +74,4 @@ void	ft_putstr_non_printable(char *str)
 		}
 		str++;
 	}
-}
-
-int		main(void)
-{
-	ft_putstr_non_printable("Coucou\ntu vas bien ?");
 }

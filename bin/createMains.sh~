@@ -1,0 +1,6 @@
+for i in {0..$1}
+do
+	mkdir -p ex`printf "%02d" $i` 
+	touch ex`printf "%02d" $i`/main.c
+	cat ~/proto > ex`printf "%02d" $i`/main.c
+done

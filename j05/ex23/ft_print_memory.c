@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 12:01:03 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/09 11:12:31 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/09 20:28:24 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int		power_of(int nb, int power)
 void	ft_putnbr_base(int nb, char *base, int result_length)
 {
 	int		length_base;
-	char	*result;
 	int		pow;
 
 	length_base = 0;
@@ -40,7 +39,7 @@ void	ft_putnbr_base(int nb, char *base, int result_length)
 	}
 }
 
-void	print_non_printable(char c)
+void	print_non_printable(unsigned char c)
 {
 	if (0 >= c || c < 32)
 		ft_putchar('.');
@@ -48,14 +47,14 @@ void	print_non_printable(char c)
 		ft_putchar(c);
 }
 
-void	print(int *counter, int len, void *addr)
+void	print(unsigned int *counter, int len, void *addr)
 {
-	int plus_seize;
+	unsigned int plus_seize;
 
 	plus_seize = (*counter + len);
 	while (*counter < plus_seize)
 	{
-		ft_putnbr_base(*(char*)addr, "0123456789abcdef", 2);
+		ft_putnbr_base(*(unsigned char*)addr, "0123456789abcdef", 2);
 		if (*counter % 2 == 1)
 			ft_putchar(' ');
 		addr++;
@@ -67,7 +66,7 @@ void	print(int *counter, int len, void *addr)
 	plus_seize = (*counter + len);
 	while (*counter < plus_seize)
 	{
-		print_non_printable(*(char *)addr);
+		print_non_printable(*(unsigned char *)addr);
 		addr++;
 		(*counter)++;
 	}
@@ -75,7 +74,7 @@ void	print(int *counter, int len, void *addr)
 
 void	*ft_print_memory(void *addr, unsigned int size)
 {
-	int i;
+	unsigned int i;
 
 	i = 0;
 	while (i < size)

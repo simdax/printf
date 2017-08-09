@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 20:17:06 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/09 19:45:13 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/09 20:23:41 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,15 @@ int		index_of(char *base, char c)
 	return (-1);
 }
 
+void	check_neg(int *nb)
+{
+	if (*nb < 0)
+	{
+		ft_putchar('-');
+		*(nb) = -*(nb);
+	}
+}
+
 int		check_base(char *base, int base_len, char *str, int str_len)
 {
 	int i;
@@ -52,11 +61,10 @@ int		check_base(char *base, int base_len, char *str, int str_len)
 		if (base[i] == '+' || base[i] == '-')
 			return (0);
 		j = 0;
-		while (j < base_len)
+		while (j++ < base_len)
 		{
 			if (j != i && base[i] == base[j])
 				return (0);
-			j++;
 		}
 		i++;
 	}
@@ -82,6 +90,8 @@ int		ft_atoi_base(char *str, char *base)
 	i = 0;
 	while (str[i])
 	{
+		if (index_of(base, str[i]) == -1)
+			return (0);
 		result += index_of(base, str[i]) * power_of(len_base, str_len - i - 1);
 		i++;
 	}

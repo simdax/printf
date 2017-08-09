@@ -6,11 +6,9 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 20:09:25 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/09 20:34:41 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/09 18:13:40 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 int				find_str_len(char *str)
 {
@@ -21,6 +19,8 @@ int				find_str_len(char *str)
 		res++;
 	return (res);
 }
+
+#include <stdio.h>
 
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {

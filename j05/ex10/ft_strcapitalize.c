@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 18:47:13 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/09 16:25:26 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/09 20:08:14 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_strcapitalize(char *str)
 	int		j;
 	int		gate;
 
-	seps = " ,-+";
+	seps = " ,+";
 	gate = 1;
 	str = ft_strlowcase(str);
 	i = 0;

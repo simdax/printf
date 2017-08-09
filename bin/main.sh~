@@ -1,0 +1,8 @@
+
+# if [
+#    ex$1
+# echo	
+# break	
+# ]
+
+norminette -R CheckForbiddenSourceHeader $1
