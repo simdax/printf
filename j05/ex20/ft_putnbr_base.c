@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 20:17:06 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/08 11:56:57 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/09 19:20:49 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,26 +36,50 @@ int		ft_sqrt(int nb, int base)
 	return (46341);
 }
 
+int		check_rep(char *base, int len)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (i < len)
+	{
+		j = i + 1;
+		while (j < len - 1)
+		{
+			if (base[i] == base[j])
+			{
+				return (0);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
 void	ft_putnbr_base(int nb, char *base)
 {
 	int		result_length;
 	int		length_base;
-	char	*result;
 	int		pow;
 
 	length_base = 0;
 	while (base[length_base])
 		length_base++;
-	if (length_base > 1)
+	if (check_rep(base, length_base))
 	{
-		result_length = ft_sqrt(nb, length_base);
-		while (result_length > 0)
+		if (length_base > 1)
 		{
-			pow = power_of(length_base, result_length - 1);
-			ft_putchar(base[nb / pow]);
-			nb = nb % pow;
-			result_length--;
+			result_length = ft_sqrt(nb, length_base);
+			while (result_length > 0)
+			{
+				pow = power_of(length_base, result_length - 1);
+				ft_putchar(base[nb / pow]);
+				nb = nb % pow;
+				result_length--;
+			}
+			ft_putchar('\n');
 		}
-		ft_putchar('\n');
 	}
 }
