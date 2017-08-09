@@ -6,9 +6,11 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 20:17:06 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/09 19:20:49 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/09 19:55:41 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdio.h>
 
 int		ft_putchar(char c);
 
@@ -28,8 +30,10 @@ int		ft_sqrt(int nb, int base)
 	while (i < 46341)
 	{
 		pow = power_of(base, i);
-		if (nb <= pow)
+		if (nb < pow)
 			return (i);
+		if (nb == pow)
+			return (i + 1);
 		else
 			i++;
 	}
@@ -44,6 +48,8 @@ int		check_rep(char *base, int len)
 	i = 0;
 	while (i < len)
 	{
+		if (base[i] == '+' || base[i] == '-')
+			return (0);
 		j = i + 1;
 		while (j < len - 1)
 		{
@@ -58,16 +64,26 @@ int		check_rep(char *base, int len)
 	return (1);
 }
 
+void	check_neg(int *nb)
+{
+	if (*nb < 0)
+	{
+		ft_putchar('-');
+		*(nb) = -*(nb);
+	}
+}
+
 void	ft_putnbr_base(int nb, char *base)
 {
 	int		result_length;
 	int		length_base;
 	int		pow;
 
+	check_neg(&nb);
 	length_base = 0;
 	while (base[length_base])
 		length_base++;
-	if (check_rep(base, length_base))
+	if (check_rep(base, length_base + 1))
 	{
 		if (length_base > 1)
 		{

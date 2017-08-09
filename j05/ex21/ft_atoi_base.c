@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 20:17:06 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/08 11:45:52 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/09 19:45:13 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,4 @@ int		ft_atoi_base(char *str, char *base)
 		i++;
 	}
 	return (result);
-}
-
-void	main(void)
-{
-	printf("%d", ft_atoi_base("jjjj", "bcdefghij"));
 }
