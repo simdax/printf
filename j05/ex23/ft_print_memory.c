@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 12:01:03 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/08 14:29:12 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/09 11:12:31 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	print(int *counter, int len, void *addr)
 	plus_seize = (*counter + len);
 	while (*counter < plus_seize)
 	{
-		ft_putnbr_base(*(char *)addr, "0123456789abcdef", 2);
+		ft_putnbr_base(*(char*)addr, "0123456789abcdef", 2);
 		if (*counter % 2 == 1)
 			ft_putchar(' ');
 		addr++;
