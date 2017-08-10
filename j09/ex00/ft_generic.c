@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
+/*   ft_generic.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/03 17:32:51 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/08 09:58:45 by scornaz          ###   ########.fr       */
+/*   Created: 2017/08/10 16:48:23 by scornaz           #+#    #+#             */
+/*   Updated: 2017/08/10 16:52:07 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_recursive_factorial(int nb)
+#include <unistd.h>
+
+void	ft_generic(void)
 {
-	if (nb == 0)
-		return (1);
-	if (nb > 15 || nb < 0)
-		return (0);
-	if (nb > 0)
-	{
-		return (nb * ft_recursive_factorial(nb - 1));
-	}
-	else
-	{
-		return (1);
-	}
+	write(1, "Tut tut ; tut tut\n", 20);
 }

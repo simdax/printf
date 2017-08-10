@@ -3,12 +3,12 @@
 #include <stdlib.h>
 #include <string.h>
 
+char *ft_concat_params(int argc, char **argv);
+
 int main()
 {
 	int nb;
 	char str[];
 
-	printf("%s", str);
-	printf("%d", nb);
-	return (0);
+	char *ft_concat_params(nb, &str);
 }

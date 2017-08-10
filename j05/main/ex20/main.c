@@ -8,6 +8,7 @@ int main()
 		ft_putnbr_base(i, "01");
 		i++;
 	}
+	ft_putnbr_base(24441423, "gtaio luSnemf");
 	ft_putnbr_base(16, "0123456789abcdefg");
 	ft_putnbr_base(42, "01234567");
 	ft_putnbr_base(42, "01234ABC");

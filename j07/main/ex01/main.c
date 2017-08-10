@@ -13,13 +13,12 @@ int main()
 	int *tab;
 
 	tab = ft_range(nb, nb1);
-	printf("%p", tab);
-	printf("%d", tab[0]);
-/* 	while(*tab) */
-/* 	{ */
-
-/* 		tab++; */
-/* 	} */
+	int i = 0;
+	while(i < nb1 - nb)
+	{
+		printf("%d\n", tab[i]);
+		i++;
+	}
 
 	return (0);
 }

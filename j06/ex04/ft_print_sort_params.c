@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 16:30:37 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/08 17:57:30 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/10 15:37:29 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@ int ft_putchar(char c);
 
 int		sort_word(char *w1, char *w2)
 {
-	int		result;
-
 	if (*w1 < *w2)
 		return (0);
 	else if (*w1 > *w2)
@@ -55,8 +53,6 @@ void	sort(char *argv[], int size)
 
 int		main(int argc, char **argv)
 {
-	int i;
-
 	sort(++argv, --argc);
 	while (*argv)
 	{
