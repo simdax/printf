@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/10 09:18:18 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/10 10:38:11 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/10 11:35:15 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,26 @@ int		calc(int *res, char num, int is_neg)
 	return (1);
 }
 
+int		test(char **str, int *is_neg)
+{
+	if (**str == ' ')
+		;
+	else if (is_num(**str) || **str == '+')
+	{
+		*is_neg = 0;
+		if (**str == '+')
+			(*str)++;
+	}
+	else if (**str == '-')
+	{
+		*is_neg = 1;
+		(*str)++;
+	}
+	else
+		return (0);
+	return (1);
+}
+
 int		ft_atoi(char *str)
 {
 	int is_neg;
@@ -53,24 +73,8 @@ int		ft_atoi(char *str)
 	while (*str)
 	{
 		if (is_neg == -1)
-		{
-//			printf("char =%c et is_neg %d\n", *str, is_neg);
-			if (*str == ' ')
-				;
-			else if (is_num(*str) || *str == '+')
-			{
-				is_neg = 0;
-				if (*str == '+')
-					str++;
-			}
-			else if (*str == '-')
-			{
-				is_neg = 1;
-				str++;
-			}
-			else
+			if (!test(&str, &is_neg))
 				return (res);
-		}
 		if (is_neg != -1)
 		{
 			if (is_num(*str))

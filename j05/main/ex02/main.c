@@ -17,7 +17,7 @@ int main()
 	printf("%d\n", ft_atoi(" -2147483648"));
 	printf("%d\n", ft_atoi("+2147483647"));
 	printf("%d\n", ft_atoi("   fdsnfja"));
-	printf("%d\n", ft_atoi("  45612345645135456456421"));
+	printf("%d\n", ft_atoi("45612345645135456456421"));
 	printf("%d\n", ft_atoi("0123456789"));
 	
 	printf("%d\n", ft_atoi("?  456$#12345645135456456421"));
@@ -36,9 +36,9 @@ int main()
 	printf("%d\n", atoi(" -2147483648"));
 	printf("%d\n", atoi("+2147483647"));
 	printf("%d\n", atoi("   fdsnfja"));
-	printf("%d\n", atoi("       45612345645135456456421"));
-
+	printf("%d\n", atoi("45612345645135456456421"));
 	printf("%d\n", atoi("0123456789"));
+
 	printf("%d\n", atoi("?  456$#12345645135456456421"));
 	printf("%d\n", atoi("{?  456$#12345645135456456421"));
 	printf("%d\n", atoi("45?65+  456$#12345645135456456421"));
