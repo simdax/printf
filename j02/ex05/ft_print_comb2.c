@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/03 09:21:22 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/03 12:44:15 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/10 14:21:35 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,15 @@ void	ft_print_comb2(void)
 	int j;
 
 	i = 48;
-	while (i < (48 + 98))
+	while (i < (48 + 99))
 	{
 		j = i + 1;
-		while (j < (48 + 99))
+		while (j < (48 + 100))
 		{
 			print_number(i);
 			ft_putchar(' ');
 			print_number(j);
-			if (i != 48 + 97)
+			if (i != 48 + 98)
 			{
 				ft_putchar(',');
 				ft_putchar(' ');

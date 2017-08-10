@@ -6,31 +6,13 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/03 09:21:32 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/03 13:33:03 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/10 14:19:04 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_putchar(char c);
-
-void	special(void)
-{
-	ft_putchar('-');
-	ft_putnbr(214748364);
-	ft_putchar(56);
-}
-
-void	print_neg(int n)
-{
-	if (n == -2147483648)
-	{
-		special();
-	}
-	else
-	{
-		ft_putchar('-');
-		ft_putnbr(n - (n * 2));
-	}
-}
+void	special(void);
+void	print_neg(int n);
 
 void	ft_putnbr(int n)
 {
@@ -51,5 +33,25 @@ void	ft_putnbr(int n)
 	else
 	{
 		ft_putchar(48 + n);
+	}
+}
+
+void	special(void)
+{
+	ft_putchar('-');
+	ft_putnbr(214748364);
+	ft_putchar(56);
+}
+
+void	print_neg(int n)
+{
+	if (n == -2147483648)
+	{
+		special();
+	}
+	else
+	{
+		ft_putchar('-');
+		ft_putnbr(n - (n * 2));
 	}
 }
