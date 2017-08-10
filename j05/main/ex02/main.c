@@ -10,6 +10,7 @@ int main()
 //	printf("%d\n", INT_MAX - INT_MAX < 0);
 
 	printf("%d\n", ft_atoi("+0422"));
+	printf("%d\n", ft_atoi("+04+22"));
 	printf("%d\n", ft_atoi("     0422"));
 	printf("%d\n", ft_atoi(" 4 2"));
 	printf("%d\n", ft_atoi("-42"));
@@ -28,6 +29,7 @@ int main()
 	printf("\n ////////// \n\n");
 
 	printf("%d\n", atoi("+0422"));
+	printf("%d\n", atoi("+04+22"));
 	printf("%d\n", atoi("    0422"));
 	printf("%d\n", atoi(" 4  2"));
 	printf("%d\n", atoi("-42"));
