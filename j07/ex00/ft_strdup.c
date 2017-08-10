@@ -6,9 +6,11 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 19:10:07 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/08 19:25:28 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/09 21:26:52 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
 
 char	*ft_strdup(char *src)
 {
@@ -18,9 +20,9 @@ char	*ft_strdup(char *src)
 	length = 0;
 	while (src[length])
 		length++;
-	copy = malloc(sizeof(src) * length + 1);
+	copy = (char*)malloc(sizeof(src) * length + 1);
 	if (!copy)
-		return ('\0');
+		return (NULL);
 	length = 0;
 	while (*src)
 	{
