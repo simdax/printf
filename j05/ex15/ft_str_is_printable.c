@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 19:18:09 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/09 16:37:11 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/10 12:25:06 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		ft_str_is_printable(char *str)
 {
 	while (*str)
 	{
-		if (!test(*str, 0, 31))
+		if (!test(*str, 0, 32))
 		{
 			return (0);
 		}
