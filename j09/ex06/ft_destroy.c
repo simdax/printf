@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_generic.c                                       :+:      :+:    :+:   */
+/*   ft_destroy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/10 16:48:23 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/10 17:33:45 by scornaz          ###   ########.fr       */
+/*   Created: 2017/08/11 09:26:06 by scornaz           #+#    #+#             */
+/*   Updated: 2017/08/11 09:32:01 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
+#include "ft_ultimator.h"
 
-void	ft_generic(void)
+voidft_destroy(char ***factory)
 {
-	write(1, "Tut tut ; tut tut\n", 18);
+	while (**factory)
+		free(**factory++);
+	while (*factory)
+		free(*factory++);
+	while(factory)
+		free(factory++);
 }

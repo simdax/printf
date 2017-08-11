@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_generic.c                                       :+:      :+:    :+:   */
+/*   ft_scrambler.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/10 16:48:23 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/10 17:33:45 by scornaz          ###   ########.fr       */
+/*   Created: 2017/08/11 11:21:35 by scornaz           #+#    #+#             */
+/*   Updated: 2017/08/11 11:48:36 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_generic(void)
+void	ft_scrambler(int ***a, int *b, int *******c, int ****d)
 {
-	write(1, "Tut tut ; tut tut\n", 18);
+	int	tmp;
+	int	tmp2;
+	int	tmp3;
+	int	tmp4;
+
+	tmp = ***a;
+	tmp2 = *b;
+	tmp3 = *******c;
+	tmp4 = ****d;
+	*******c = tmp;
+	****d = tmp3;
+	*b = tmp4;
+	***a = tmp2;
 }

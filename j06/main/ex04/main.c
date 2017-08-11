@@ -3,13 +3,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <time.h>
-
-void ft_takes_place(int hour);
-
 int main()
 {
 	int nb = 0;
-	while(nb < 24)
-		ft_takes_place(nb++);
+	char str[] = "que tal";
+
+	printf("%s", str);
+	printf("%d", nb);
+	return (0);
 }

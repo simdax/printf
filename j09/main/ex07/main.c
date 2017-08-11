@@ -3,12 +3,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+unsigned int ft_collatz_conjecture(unsigned int base);
+
 int main()
 {
-	int nb = 0;
-	char str[] = "que tal";
-
-	printf("%s", str);
-	printf("%d", nb);
+	unsigned int	base = 0;
+	
+	while (base < 15)
+		printf("%d\n", ft_collatz_conjecture(base++));
 	return (0);
 }

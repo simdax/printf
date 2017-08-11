@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_generic.c                                       :+:      :+:    :+:   */
+/*   ft_antidote.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/10 16:48:23 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/10 17:33:45 by scornaz          ###   ########.fr       */
+/*   Created: 2017/08/11 09:17:29 by scornaz           #+#    #+#             */
+/*   Updated: 2017/08/11 09:22:28 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_generic(void)
+void	swap(int *a, int *b)
 {
-	write(1, "Tut tut ; tut tut\n", 18);
+	int tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = *a;
+}
+
+int		ft_antidote(int i, int j, int k)
+{
+	if (j > k)
+		swap(&j, &k);
+	if (i > j)
+		swap(&i, &j);
+	if (j > k)
+		swap(&j, &k);
+	return (j);
 }

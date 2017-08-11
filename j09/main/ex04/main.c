@@ -3,12 +3,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+char *ft_rot42(char *str);
+
 int main()
 {
-	int nb = 0;
-	char str[] = "que tal";
+	char str[] = "abcdefghijklmnopqstuvwzy mon coco ABCDEFGHIJKLMNOPQRSTUVWXYZque tal";
 
-	printf("%s", str);
-	printf("%d", nb);
+	printf("%s\n", str);
+	printf("%s", ft_rot42(str));
 	return (0);
 }

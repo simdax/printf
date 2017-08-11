@@ -3,12 +3,19 @@
 #include <stdlib.h>
 #include <string.h>
 
+void ft_destroy(char ***factory);
+
+char	*factory()
+{
+
+}
+
 int main()
 {
-	int nb = 0;
-	char str[] = "que tal";
+	char **factory;
 
-	printf("%s", str);
-	printf("%d", nb);
+	printf("%p", factory);
+	ft_destroy(&factory);
+	printf("%p", factory);
 	return (0);
 }

@@ -1,0 +1,1 @@
+ls -l -T bomb.txt | cut -d ' ' -f7,8,9,10,11,12

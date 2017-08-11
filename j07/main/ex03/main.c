@@ -8,7 +8,10 @@ char *ft_concat_params(int argc, char **argv);
 int main()
 {
 	int nb;
-	char str[];
-
-	char *ft_concat_params(nb, &str);
+	char **str;
+	
+	str[0] = (char*)(sizeof(char) * 12);
+	str[0] = "io ;es";
+	ft_concat_params(nb, str);
+	return (0);
 }

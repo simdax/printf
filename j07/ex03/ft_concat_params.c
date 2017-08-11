@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_generic.c                                       :+:      :+:    :+:   */
+/*   ft_concat_params.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/10 16:48:23 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/10 17:33:45 by scornaz          ###   ########.fr       */
+/*   Created: 2017/08/10 16:35:13 by scornaz           #+#    #+#             */
+/*   Updated: 2017/08/10 19:11:25 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_generic(void)
+char	*ft_concat_params(int len, char **argv)
 {
-	write(1, "Tut tut ; tut tut\n", 18);
+	int		i;
+	char	*res;
+
+	while (argv[len])
+	{
+		i = 0;
+		while (*(argv[len]))
+		{
+			*res = *(argv[len]);
+			res++;
+			i++;
+		}
+		len++;
+	}
+	*res = '\0';
 }
