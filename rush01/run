@@ -1,0 +1,11 @@
+#!/bin/sh
+
+
+while true
+do
+clear
+norminette *.c *.h
+cc -Wall -Wextra -Werror main.c algo.c
+./a.out `cat grilleTest`
+sleep 4
+done

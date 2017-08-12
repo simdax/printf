@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 09:47:32 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/12 11:44:28 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/12 13:24:20 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,62 +26,43 @@ int		calc_sum(char *str)
 	return (i);
 }
 
-char	*find_forbidden(char *str, int i)
+int		is_line_ok(char *str)
 {
-	while ()
-	{
+	int i;
 
-	}
-	return ();
-}
-
-char		*others_ints(char *str)
-{
-	char	*ints;
-	int 	len;
-	int 	i;
-	int 	j;
-	char	*forbidden;
-
-	len = 0;
 	i = 0;
 	while (str[i])
 	{
 		if (str[i] == '.')
-			len++;
+			return (0);
 		i++;
 	}
-	ints = (char*)malloc(sizeof(ints) * (len + 1));
-	i = 0;
-	j = 0;
-	while (str[i])
-	{
-		if (str[i] == '.')
-		{
-			if (is_already(str, i))
-				j++; 
-			ints[j] = j + 49;
-			adapt_ints(ints, str);
-		}
-		i++;
-	}
-	ints[j] = '\0';
-	return (ints);
+	return (1);
 }
 
-int		solve(char *ligne, int i)
+int		resolve(char mat[10][10], int row, int col)
 {
-	printf("%s\n", others_ints(ligne));
-	if (i < 9)
+	int i;
+
+	i = 0;
+/* 	while (i < 9) */
+/* 	{ */
+	if (is_line_ok(mat[row]) && row == 8)
 	{
-		if (ligne[i] == '.')
-		{
-			ligne[i] = i + 49;
-		}
-		solve(ligne, i + 1);
+		printf("OK!");
+		return (1);
 	}
-	else 
-		return (calc_sum(ligne) == 45);
+	else {
+		if (mat[row][col] == '.')
+		{
+			mat[row][col] = i + 48;
+		}
+		if (col == 8)
+			resolve(mat, row + 1, 0);
+		else
+			resolve(mat, row, col + 1);
+	}
+//		i++;
+		//}
 	return (0);
 }
-

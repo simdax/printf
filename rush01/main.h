@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/12 09:33:50 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/12 10:21:16 by scornaz          ###   ########.fr       */
+/*   Created: 2017/08/12 09:34:13 by scornaz           #+#    #+#             */
+/*   Updated: 2017/08/12 13:26:59 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#ifndef __MAIN_H
+# define __MAIN_H
 
-int		main(int argc, char **argv)
-{
-	int i;
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <limits.h>
 
-	i = 1;
-	printf("%d", solve(argv[1], 0));
-	while (i < argc)
-	{
-//		printf("%s", argv[i]);
-		i++;
-	}
-	return (0);
-}
+int		resolve(char mat[10][10], int row, int col);
+
+#endif
