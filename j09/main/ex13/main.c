@@ -3,12 +3,17 @@
 #include <stdlib.h>
 #include <string.h>
 
+int ft_compact(char **tab, int length);
+
 int main()
 {
-	int nb = 0;
-	char str[] = "que tal";
-
-	printf("%s", str);
-	printf("%d", nb);
+	char *str[9] = { "fdsf", NULL, "muchahco","","muchahco","muchahco","muchahco","ok dak" };
+	printf("%d", ft_compact(str, 8));
+	int i = 0;
+	while (str[i])
+	{
+		printf("%s\n", str[i]);
+		i++;
+	}
 	return (0);
 }

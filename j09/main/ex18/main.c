@@ -3,12 +3,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main()
-{
-	int nb = 0;
-	char str[] = "que tal";
+char *ft_join(char **tab, char *sep);
 
-	printf("%s", str);
-	printf("%d", nb);
+int main(int argc, char **argv)
+{
+	(void)argc;
+	printf("%s", ft_join(argv, "%%"));
 	return (0);
 }

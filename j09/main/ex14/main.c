@@ -3,12 +3,21 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "../../ex14/ft_perso.h"
+
+t_perso **ft_decrypt(char *str);
+
 int main()
 {
-	int nb = 0;
-	char str[] = "que tal";
+	char str[] = "45|bob;30|Sim;18|Jean";
+	**t_perso persos;
+	
+	persos = ft_decrypt(str);
+	while (*persos)
+	{
+		printf("%d\n", (*persos)->age);
+		printf("%s\n", (*persos)->name);
+	}
 
-	printf("%s", str);
-	printf("%d", nb);
 	return (0);
 }
