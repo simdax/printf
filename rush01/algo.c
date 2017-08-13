@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 09:47:32 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 17:23:07 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 18:07:25 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	check(char **mat, int row, int col, int nb)
 	return (nb + 48);
 }
 
-int		test(char **mat, int row, int col, int *solutions)
+int		test(char **mat, int row, int col, int *solutions, char ***sol)
 {
 	int i;
 
@@ -67,32 +67,36 @@ int		test(char **mat, int row, int col, int *solutions)
 			mat[row][col] = check(mat, row, col, i);
 			if (mat[row][col] != '.')
 			{
-				resolve(mat, row, col + 1, solutions);
-				if (*solutions < 1)
+				resolve(mat, row, col + 1, solutions, sol);
+				if (*solutions < 2)
 					mat[row][col] = '.';
 				else
 					return (0);
 			}
 		}
 		else
-			return (resolve(mat, row, col + 1, solutions));
+			return (resolve(mat, row, col + 1, solutions, sol));
 		i++;
 	}
 	return (0);
 }
 
-int		resolve(char **mat, int row, int col, int *solutions)
+int		resolve(char **mat, int row, int col, int *solutions, char ***sol)
 {
 	if (is_line_ok(mat[row]) && row == 8)
 	{
 		*(solutions) += 1;
+		if (*solutions == 1)
+		{
+			*sol = copy_from(mat, 0);
+		}
 		return (1);
 	}
 	else
 	{
 		if (col > 8)
-			return (resolve(mat, row + 1, 0, solutions));
+			return (resolve(mat, row + 1, 0, solutions, sol));
 		else
-			return (test(mat, row, col, solutions));
+			return (test(mat, row, col, solutions, sol));
 	}
 }
