@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 11:58:53 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 07:09:50 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 07:41:40 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	print_mat(char mat[9][9])
 		while (j < 9)
 		{
 			write(1, &mat[i][j], 1);
+			write(1, " ", 1);
 			j++;
 		}
 		write(1, "\n", 1);
@@ -57,6 +58,5 @@ int		main(int argc, char **argv)
 		i++;
 	}
 	resolve(mat, 0, 0);
-	print_mat(mat);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 09:34:13 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 06:34:40 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 07:39:19 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@
 # include <limits.h>
 
 int		resolve(char mat[9][9], int row, int col);
+void	print_mat(char mat[9][9]);
 
 #endif
