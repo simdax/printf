@@ -19,4 +19,4 @@ int ft_sqrt(int nb);
 int ft_is_prime(int nb);
 int ft_find_next_prime(int nb);
 int ft_eight_queens_puzzle(void);
-int ft_eight_queens_puzzle_2(void);
+void ft_eight_queens_puzzle_2(void);

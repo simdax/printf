@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 09:47:32 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 11:03:51 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 12:04:14 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,40 +55,43 @@ char	check(char mat[9][9], int row, int col, int nb)
 	return (nb + 48);
 }
 
-int		resolve(char mat[9][9], int row, int col)
+int		test(char mat[9][9], int row, int col, int *solutions)
 {
 	int i;
 
+	i = 1;
+	while (i < 10)
+	{
+		if (mat[row][col] == '.')
+		{
+			mat[row][col] = check(mat, row, col, i);
+			if (mat[row][col] != '.')
+			{
+				resolve(mat, row, col + 1, solutions);
+				mat[row][col] = '.';
+			}
+		}
+		else
+			return (resolve(mat, row, col + 1, solutions));
+		i++;
+	}
+	return (0);
+}
+
+int		resolve(char mat[9][9], int row, int col, int *solutions)
+{
 	if (is_line_ok(mat[row]) && row == 8)
 	{
+		(*solutions)++;
 		print_mat(mat);
 		write(1, "\n", 1);
 		return (1);
-	} 
-	else {
+	}
+	else
+	{
 		if (col > 8)
-			return (resolve(mat, row + 1, 0));
+			return (resolve(mat, row + 1, 0, solutions));
 		else
-		{
-			i = 1;
-			while (i < 10)
-			{
-				if (mat[row][col] == '.')
-				{
-					mat[row][col] = check(mat, row, col, i);
-					if (mat[row][col] != '.')
-					{
-						if (!resolve(mat, row, col + 1))
-							mat[row][col] = '.';
- 						else
- 							return (1);
-					}
-				}
-				else 
-					return (resolve(mat, row, col + 1));
-				i++;
-			}
-			return (0);
-		}
+			return (test(mat, row, col, solutions));
 	}
 }
