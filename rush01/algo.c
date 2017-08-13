@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 09:47:32 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 15:25:10 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 15:26:28 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int		test(char mat[9][9], int row, int col, int *solutions)
 	return (0);
 }
 
-int		resolve(char mat[9][9], int row, int col, int *solutions)
+int		resolve(char mat[9][9], int row, int col, char *solution[9][9])
 {
 	if (is_line_ok(mat[row]) && row == 8)
 	{

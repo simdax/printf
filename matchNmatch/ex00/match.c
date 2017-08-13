@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 13:38:06 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/12 19:39:38 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 15:31:09 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,13 @@
 
 int		match(char *s1, char *s2)
 {
-	if (*s2 == '*')
-	{
-		if (!(*(s2 + 1)))
-			return (1);
-		else if (*(s2 + 1) != *s1)
-			match(++s1, s2);
-		else
-			s2++;
-	}
-	if (*s1 == '\0' && *s2 == '\0')
-	{
+	if (!*s1 && !*s2)
 		return (1);
-	}
-	if (*s1 && *s1 == *s2)
+	if (*s1 == *s2)
 		return (match(++s1, ++s2));
+	if (*s1 && *s2 == '*')
+		return (match(s1, ++s2) || match(s1++, s2));
+	if (!*s1 && *s2 == '*')
+		return (match(s1, ++s2));
 	return (0);
 }
