@@ -6,13 +6,13 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 11:58:53 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 06:33:03 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 07:09:50 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-void	print_mat(char mat[10][10])
+void	print_mat(char mat[9][9])
 {
 	int i;
 	int j;
@@ -31,7 +31,7 @@ void	print_mat(char mat[10][10])
 	}
 }
 
-void	update_mat_string(char mat[10][10], char *str, int row)
+void	update_mat_string(char mat[9][9], char *str, int row)
 {
 	int i;
 
@@ -47,7 +47,7 @@ void	update_mat_string(char mat[10][10], char *str, int row)
 int		main(int argc, char **argv)
 {
 	int		i;
-	char	mat[10][10];
+	char	mat[9][9];
 
 	(void)argc;
 	i = 0;
@@ -56,7 +56,7 @@ int		main(int argc, char **argv)
 		update_mat_string(mat, argv[i + 1], i);
 		i++;
 	}
-//	resolve(mat, 0, 0);
+	resolve(mat, 0, 0);
 	print_mat(mat);
 	return (0);
 }

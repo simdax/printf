@@ -6,25 +6,11 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 09:47:32 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 06:25:06 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 07:33:38 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
-
-int		calc_sum(char *str)
-{
-	int i;
-
-	i = 0;
-	while (*str)
-	{
-		if ('1' <= *str && *str <= '9')
-			i += *str - 48;
-		str++;
-	}
-	return (i);
-}
 
 int		is_line_ok(char *str)
 {
@@ -40,29 +26,70 @@ int		is_line_ok(char *str)
 	return (1);
 }
 
-int		resolve(char mat[10][10], int row, int col)
+int		check(char mat[9][9], int row, int col, int nb)
+{
+	int i;
+	//int j;
+
+	i = 0;
+	while (i < 9)
+	{
+		if (i != col && (mat[row][i]) == nb + 48)
+			if (i != row && (mat[i][col]) == nb + 48)
+				return (0);
+		i++;
+	}
+/* 	i = row / 3; */
+/* 	while (i < row / 3 + 3) */
+/* 	{ */
+/* 		j = col / 3; */
+/* 		while (j < col / 3 + 3) */
+/* 		{ */
+/* 			if (i != nb && (mat[row][i] == nb + 48 || mat[i][col] == nb + 48)) */
+/* 				return (0); */
+/* 			j++; */
+/* 		} */
+/* 		i++; */
+/* 	} */
+	return (nb);
+}
+
+int		resolve(char mat[9][9], int row, int col)
 {
 	int i;
 
-	i = '0';
-/* 	while (i < 9) */
-/* 	{ */
-	if (is_line_ok(mat[row]) && row == 8)
+	i = 1;
+//	printf("fdfs%d", col);
+	while (i < 10)
 	{
-		printf("OK!");
-		return (1);
-	}
-	else {
-		if (mat[row][col] == '.')
+		if (is_line_ok(mat[row]) && row == 8)
 		{
-			mat[row][col] = i + 48;
+			write(1, "OK!", 3);
+			return (1);
 		}
-		if (col == 8)
-			resolve(mat, row + 1, 0);
 		else
-			resolve(mat, row, col + 1);
+		{
+			if (mat[row][col] == '.')
+			{
+				mat[row][col] = check(mat, row, col, i);
+				if (mat[row][col])
+				{
+					if (col == 8)
+					{
+						if (!resolve(mat, row + 1, 0))
+							mat[row][col] = '.';
+					}
+					else
+					{
+						if (!resolve(mat, row, col + 1))
+							mat[row][col] = '.';
+					}
+				}
+				else
+					mat[row][col] = '.';
+			}
+		}
+		i++;
 	}
-//		i++;
-		//}
 	return (0);
 }
