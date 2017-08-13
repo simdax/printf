@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 11:58:53 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 18:52:08 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 19:35:47 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,23 @@ int		main(int argc, char **argv)
 	char	**sol;
 	int		solutions;
 
-	(void)argc;
 	sol = NULL;
 	solutions = 0;
-	mat = copy_from(argv, 1);
-	resolve(mat, 0, &solutions, &sol);
-	if (solutions == 1)
+	if (argc > 10 || !check_input(argv))
 	{
-		print_mat(sol);
+		write(1, ERR, LEN_ERR);
+		return (0);
 	}
 	else
-		write(1, "Erreur", 10);
-	return (0);
+	{
+		mat = copy_from(argv, 1);
+		resolve(mat, 0, &solutions, &sol);
+		if (solutions == 1)
+		{
+			print_mat(sol);
+		}
+		else
+			write(1, ERR, LEN_ERR);
+		return (1);
+	}
 }
