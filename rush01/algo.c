@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 09:47:32 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 18:50:41 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 18:52:51 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		is_line_ok(char *str)
 	return (1);
 }
 
-char	check(char **mat, int pos, int row, int col, int nb)
+char	check(char **mat, int pos, int nb)
 {
 	int i;
 	int j;
@@ -35,8 +35,6 @@ char	check(char **mat, int pos, int row, int col, int nb)
 	
 	r = pos / 9;
 	c = pos % 9;
-	(void)row;
-	(void)col;	
 	i = 0;
 	while (i < 9)
 	{
@@ -61,7 +59,7 @@ char	check(char **mat, int pos, int row, int col, int nb)
 	return (nb + 48);
 }
 
-int		test(char **mat, int pos, int row, int col, int *solutions, char ***sol)
+int		test(char **mat, int pos, int *solutions, char ***sol)
 {
 	int i;
 	int r;
@@ -69,17 +67,15 @@ int		test(char **mat, int pos, int row, int col, int *solutions, char ***sol)
 	
 	r = pos / 9;
 	c = pos % 9;
-	(void)row;
-	(void)col;
 	i = 1;
 	while (i < 10)
 	{
 		if (mat[r][c] == '.')
 		{
-			mat[r][c] = check(mat, pos, r, c, i);
+			mat[r][c] = check(mat, pos, i);
 			if (mat[r][c] != '.')
 			{
-				resolve(mat, pos + 1, r, c + 1, solutions, sol);
+				resolve(mat, pos + 1, solutions, sol);
 				if (*solutions < 2)
 					mat[r][c] = '.';
 				else
@@ -87,13 +83,13 @@ int		test(char **mat, int pos, int row, int col, int *solutions, char ***sol)
 			}
 		}
 		else
-			return (resolve(mat, pos + 1, r, c + 1, solutions, sol));
+			return (resolve(mat, pos + 1, solutions, sol));
 		i++;
 	}
 	return (0);
 }
 
-int		resolve(char **mat, int pos, int row, int col, int *solutions, char ***sol)
+int		resolve(char **mat, int pos, int *solutions, char ***sol)
 {
 	int r;
 	int c;
@@ -111,5 +107,5 @@ int		resolve(char **mat, int pos, int row, int col, int *solutions, char ***sol)
 		return (1);
 	}
 	else
-		return (test(mat, pos, row, col, solutions, sol));
+		return (test(mat, pos, solutions, sol));
 }
