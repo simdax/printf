@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 11:58:53 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 15:26:39 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 15:46:20 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		main(int argc, char **argv)
 	char	mat[9][9];
 	char	solutions[9][9];
 
-	solutions = 0;
+//	solutions = 0;
 	(void)argc;
 	i = 0;
 	while (i < 9)
@@ -59,7 +59,7 @@ int		main(int argc, char **argv)
 		i++;
 	}
 	resolve(mat, 0, 0, &solutions);
-	if (solutions == 1)
+	if (*(solutions)[0] != NULL)
 	{
 		print_mat(mat);
 	}

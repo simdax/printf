@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 09:47:32 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 15:26:28 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 15:44:02 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	check(char mat[9][9], int row, int col, int nb)
 	return (nb + 48);
 }
 
-int		test(char mat[9][9], int row, int col, int *solutions)
+int		test(char mat[9][9], int row, int col, char (*solutions)[9][9])
 {
 	int i;
 
@@ -68,7 +68,8 @@ int		test(char mat[9][9], int row, int col, int *solutions)
 			if (mat[row][col] != '.')
 			{
 				resolve(mat, row, col + 1, solutions);
-				if (*solutions < 2)
+				printf("%p", solutions);
+				if (!*solutions)
 					mat[row][col] = '.';
 				else
 					return (0);
@@ -81,12 +82,11 @@ int		test(char mat[9][9], int row, int col, int *solutions)
 	return (0);
 }
 
-int		resolve(char mat[9][9], int row, int col, char *solution[9][9])
+int		resolve(char mat[9][9], int row, int col, char (*solutions)[9][9])
 {
 	if (is_line_ok(mat[row]) && row == 8)
 	{
-		(*solutions)++;
-		print_mat(mat);
+		*(solutions)[0] = "io";
 		write(1, "\n", 1);
 		return (1);
 	}
