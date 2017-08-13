@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 09:47:32 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 18:49:16 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 18:50:41 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,29 @@ char	check(char **mat, int pos, int row, int col, int nb)
 {
 	int i;
 	int j;
+	int r;
+	int c;
 	
-	pos = 20;
+	r = pos / 9;
+	c = pos % 9;
+	(void)row;
+	(void)col;	
 	i = 0;
 	while (i < 9)
 	{
-		if (i != col && (mat[row][i]) == nb + 48)
+		if (i != c && (mat[r][i]) == nb + 48)
 			return ('.');
-		if (i != row && (mat[i][col]) == nb + 48)
+		if (i != r && (mat[i][c]) == nb + 48)
 			return ('.');
 		i++;
 	}
-	i = (row / 3) * 3;
-	while (i < ((row / 3) * 3) + 3)
+	i = (r / 3) * 3;
+	while (i < ((r / 3) * 3) + 3)
 	{
-		j = (col / 3) * 3;
-		while (j < ((col / 3) * 3) + 3)
+		j = (c / 3) * 3;
+		while (j < ((c / 3) * 3) + 3)
 		{
-			if (i != row && j != col && (mat[i][j]) == nb + 48)
+			if (i != r && j != c && (mat[i][j]) == nb + 48)
 				return ('.');
 			j++;
 		}
