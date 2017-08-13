@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 09:47:32 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 08:42:53 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 09:16:33 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,25 @@ int		is_line_ok(char *str)
 	return (1);
 }
 
-int		check(char mat[9][9], int row, int col, int nb)
+char	check(char mat[9][9], int row, int col, int nb)
 {
 	int i;
-//	int j;
 
 	i = 0;
 	while (i < 9)
 	{
 		if (i != col && (mat[row][i]) == nb + 48)
-			return (0);
+			return ('.');
 		if (i != row && (mat[i][col]) == nb + 48)
-			return (0);
+			return ('.');
 		i++;
 	}
-/* 	i = row / 3; */
-/* 	while (i < row / 3 + 3) */
+/* 	int j; */
+/* 	i = (row / 3) * 3; */
+/* 	while (i < ((row / 3) * 3) + 3) */
 /* 	{ */
-/* 		j = col / 3; */
-/* 		while (j < col / 3 + 3) */
+/* 		j = (col / 3) * 3; */
+/* 		while (j < ((col / 3) * 3) + 3) */
 /* 		{ */
 /* 			if (i != row && j != col && (mat[i][j]) == nb + 48) */
 /* 					return (0); */
@@ -52,8 +52,7 @@ int		check(char mat[9][9], int row, int col, int nb)
 /* 		} */
 /* 		i++; */
 /* 	} */
-	printf("retourne %d;", nb);
-	return (nb);
+	return (nb + 48);
 }
 
 int		resolve(char mat[9][9], int row, int col)
@@ -67,7 +66,9 @@ int		resolve(char mat[9][9], int row, int col)
 		return (1);
 	}
 	if (col > 8)
+	{
 		return (resolve(mat, row + 1, 0));
+	}
 	else
 	{
 		i = 1;
@@ -76,14 +77,11 @@ int		resolve(char mat[9][9], int row, int col)
 			if (mat[row][col] == '.')
 			{
 				mat[row][col] = check(mat, row, col, i);
-				if (mat[row][col])
+				if (mat[row][col] != '.')
 				{
-					mat[row][col] += 48;
 					if (!resolve(mat, row, col + 1))
 						mat[row][col] = '.';
 				}
-				else
-					mat[row][col] = '.';
 			} else {
 				return (resolve(mat, row, col + 1));
 			}
