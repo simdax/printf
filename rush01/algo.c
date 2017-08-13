@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 09:47:32 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 09:33:50 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 09:57:42 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int		is_line_ok(char *str)
 char	check(char mat[9][9], int row, int col, int nb)
 {
 	int i;
+	int j;
 
 	i = 0;
 	while (i < 9)
@@ -39,7 +40,6 @@ char	check(char mat[9][9], int row, int col, int nb)
 			return ('.');
 		i++;
 	}
-	int j;
 	i = (row / 3) * 3;
 	while (i < ((row / 3) * 3) + 3)
 	{
@@ -47,10 +47,7 @@ char	check(char mat[9][9], int row, int col, int nb)
 		while (j < ((col / 3) * 3) + 3)
 		{
 			if (i != row && j != col && (mat[i][j]) == nb + 48)
-			{
-//				printf("doublon de %c entre %d,%d et %d,%d \n", nb + 48, row, col,  i, j);
 				return ('.');
-			}
 			j++;
 		}
 		i++;
@@ -64,32 +61,36 @@ int		resolve(char mat[9][9], int row, int col)
 
 	if (is_line_ok(mat[row]) && row == 8)
 	{
+		printf("at print, %d %d", row, col);
 		print_mat(mat);
 		write(1, "\n", 1);
 		return (1);
-	}
-	if (col > 8)
-	{
-		return (resolve(mat, row + 1, 0));
-	}
-	else
-	{
-		i = 1;
-		while (i < 10)
+	} 
+	else {
+		if (col > 8)
+			return (resolve(mat, row + 1, 0));
+		else
 		{
-			if (mat[row][col] == '.')
+			i = 1;
+			while (i < 10)
 			{
-				mat[row][col] = check(mat, row, col, i);
-				if (mat[row][col] != '.')
+				if (mat[row][col] == '.')
 				{
-					if (!resolve(mat, row, col + 1))
-						mat[row][col] = '.';
+					mat[row][col] = check(mat, row, col, i);
+					if (mat[row][col] != '.')
+					{
+						
+						if (!resolve(mat, row, col + 1))
+							mat[row][col] = '.';
+						else
+							return (0);
+					}
 				}
-			} else {
-				return (resolve(mat, row, col + 1));
+				else
+					return (resolve(mat, row, col + 1));
+				i++;
 			}
-			i++;
+			return (0);
 		}
-		return (0);
 	}
 }
