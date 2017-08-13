@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 09:47:32 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 12:04:14 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 15:25:10 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,10 @@ int		test(char mat[9][9], int row, int col, int *solutions)
 			if (mat[row][col] != '.')
 			{
 				resolve(mat, row, col + 1, solutions);
-				mat[row][col] = '.';
+				if (*solutions < 2)
+					mat[row][col] = '.';
+				else
+					return (0);
 			}
 		}
 		else
