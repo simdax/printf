@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 09:47:32 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 09:57:42 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 11:03:51 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int		resolve(char mat[9][9], int row, int col)
 
 	if (is_line_ok(mat[row]) && row == 8)
 	{
-		printf("at print, %d %d", row, col);
 		print_mat(mat);
 		write(1, "\n", 1);
 		return (1);
@@ -79,14 +78,13 @@ int		resolve(char mat[9][9], int row, int col)
 					mat[row][col] = check(mat, row, col, i);
 					if (mat[row][col] != '.')
 					{
-						
 						if (!resolve(mat, row, col + 1))
 							mat[row][col] = '.';
-						else
-							return (0);
+ 						else
+ 							return (1);
 					}
 				}
-				else
+				else 
 					return (resolve(mat, row, col + 1));
 				i++;
 			}

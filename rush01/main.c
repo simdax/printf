@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 11:58:53 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 09:37:49 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 11:06:13 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	update_mat_string(char mat[9][9], char *str, int row)
 		i++;
 	}
 }
-
 
 int		main(int argc, char **argv)
 {
