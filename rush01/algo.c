@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 09:47:32 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 15:44:02 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 16:15:34 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		is_line_ok(char *str)
 	return (1);
 }
 
-char	check(char mat[9][9], int row, int col, int nb)
+char	check(char **mat, int row, int col, int nb)
 {
 	int i;
 	int j;
@@ -55,7 +55,7 @@ char	check(char mat[9][9], int row, int col, int nb)
 	return (nb + 48);
 }
 
-int		test(char mat[9][9], int row, int col, char (*solutions)[9][9])
+int		test(char **mat, int row, int col, int *solutions)
 {
 	int i;
 
@@ -68,8 +68,7 @@ int		test(char mat[9][9], int row, int col, char (*solutions)[9][9])
 			if (mat[row][col] != '.')
 			{
 				resolve(mat, row, col + 1, solutions);
-				printf("%p", solutions);
-				if (!*solutions)
+				if (*solutions < 2)
 					mat[row][col] = '.';
 				else
 					return (0);
@@ -82,12 +81,11 @@ int		test(char mat[9][9], int row, int col, char (*solutions)[9][9])
 	return (0);
 }
 
-int		resolve(char mat[9][9], int row, int col, char (*solutions)[9][9])
+int		resolve(char **mat, int row, int col, int *solutions)
 {
 	if (is_line_ok(mat[row]) && row == 8)
 	{
-		*(solutions)[0] = "io";
-		write(1, "\n", 1);
+		*(solutions) += 1;
 		return (1);
 	}
 	else
