@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 09:47:32 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 18:52:51 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 19:00:18 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int		is_line_ok(char *str)
 char	check(char **mat, int pos, int nb)
 {
 	int i;
-	int j;
 	int r;
 	int c;
 	
@@ -45,17 +44,8 @@ char	check(char **mat, int pos, int nb)
 		i++;
 	}
 	i = (r / 3) * 3;
-	while (i < ((r / 3) * 3) + 3)
-	{
-		j = (c / 3) * 3;
-		while (j < ((c / 3) * 3) + 3)
-		{
-			if (i != r && j != c && (mat[i][j]) == nb + 48)
-				return ('.');
-			j++;
-		}
-		i++;
-	}
+	if (check_square(mat, r, c, nb))
+		return ('.');
 	return (nb + 48);
 }
 
@@ -96,7 +86,6 @@ int		resolve(char **mat, int pos, int *solutions, char ***sol)
 
 	r = pos / 9;
 	c = pos % 9;
-
 	if (pos == 81)
 	{
 		*(solutions) += 1;

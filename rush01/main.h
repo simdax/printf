@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 09:34:13 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 18:52:19 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 18:59:52 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <limits.h>
 
+int		check_square(char **mat, int r, int c, int nb);
 int		resolve(char **mat, int pos, int *solutions, char ***sol);
 void	print_mat(char **mat);
 char	**copy_from(char **src, int incr);
