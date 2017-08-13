@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 09:47:32 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 09:16:33 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 09:33:50 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,22 @@ char	check(char mat[9][9], int row, int col, int nb)
 			return ('.');
 		i++;
 	}
-/* 	int j; */
-/* 	i = (row / 3) * 3; */
-/* 	while (i < ((row / 3) * 3) + 3) */
-/* 	{ */
-/* 		j = (col / 3) * 3; */
-/* 		while (j < ((col / 3) * 3) + 3) */
-/* 		{ */
-/* 			if (i != row && j != col && (mat[i][j]) == nb + 48) */
-/* 					return (0); */
-/* 			j++; */
-/* 		} */
-/* 		i++; */
-/* 	} */
+	int j;
+	i = (row / 3) * 3;
+	while (i < ((row / 3) * 3) + 3)
+	{
+		j = (col / 3) * 3;
+		while (j < ((col / 3) * 3) + 3)
+		{
+			if (i != row && j != col && (mat[i][j]) == nb + 48)
+			{
+//				printf("doublon de %c entre %d,%d et %d,%d \n", nb + 48, row, col,  i, j);
+				return ('.');
+			}
+			j++;
+		}
+		i++;
+	}
 	return (nb + 48);
 }
 
