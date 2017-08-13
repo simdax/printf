@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 09:47:32 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 08:30:00 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 08:42:53 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,15 @@ int		is_line_ok(char *str)
 int		check(char mat[9][9], int row, int col, int nb)
 {
 	int i;
-	//int j;
+//	int j;
 
 	i = 0;
 	while (i < 9)
 	{
 		if (i != col && (mat[row][i]) == nb + 48)
-			if (i != row && (mat[i][col]) == nb + 48)
-				return (0);
+			return (0);
+		if (i != row && (mat[i][col]) == nb + 48)
+			return (0);
 		i++;
 	}
 /* 	i = row / 3; */
@@ -45,12 +46,13 @@ int		check(char mat[9][9], int row, int col, int nb)
 /* 		j = col / 3; */
 /* 		while (j < col / 3 + 3) */
 /* 		{ */
-/* 			if (i != nb && (mat[row][i] == nb + 48 || mat[i][col] == nb + 48)) */
-/* 				return (0); */
+/* 			if (i != row && j != col && (mat[i][j]) == nb + 48) */
+/* 					return (0); */
 /* 			j++; */
 /* 		} */
 /* 		i++; */
 /* 	} */
+	printf("retourne %d;", nb);
 	return (nb);
 }
 
