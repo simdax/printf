@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 09:47:32 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 18:07:25 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 18:49:16 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,12 @@ int		is_line_ok(char *str)
 	return (1);
 }
 
-char	check(char **mat, int row, int col, int nb)
+char	check(char **mat, int pos, int row, int col, int nb)
 {
 	int i;
 	int j;
-
+	
+	pos = 20;
 	i = 0;
 	while (i < 9)
 	{
@@ -55,35 +56,47 @@ char	check(char **mat, int row, int col, int nb)
 	return (nb + 48);
 }
 
-int		test(char **mat, int row, int col, int *solutions, char ***sol)
+int		test(char **mat, int pos, int row, int col, int *solutions, char ***sol)
 {
 	int i;
-
+	int r;
+	int c;
+	
+	r = pos / 9;
+	c = pos % 9;
+	(void)row;
+	(void)col;
 	i = 1;
 	while (i < 10)
 	{
-		if (mat[row][col] == '.')
+		if (mat[r][c] == '.')
 		{
-			mat[row][col] = check(mat, row, col, i);
-			if (mat[row][col] != '.')
+			mat[r][c] = check(mat, pos, r, c, i);
+			if (mat[r][c] != '.')
 			{
-				resolve(mat, row, col + 1, solutions, sol);
+				resolve(mat, pos + 1, r, c + 1, solutions, sol);
 				if (*solutions < 2)
-					mat[row][col] = '.';
+					mat[r][c] = '.';
 				else
 					return (0);
 			}
 		}
 		else
-			return (resolve(mat, row, col + 1, solutions, sol));
+			return (resolve(mat, pos + 1, r, c + 1, solutions, sol));
 		i++;
 	}
 	return (0);
 }
 
-int		resolve(char **mat, int row, int col, int *solutions, char ***sol)
+int		resolve(char **mat, int pos, int row, int col, int *solutions, char ***sol)
 {
-	if (is_line_ok(mat[row]) && row == 8)
+	int r;
+	int c;
+
+	r = pos / 9;
+	c = pos % 9;
+
+	if (pos == 81)
 	{
 		*(solutions) += 1;
 		if (*solutions == 1)
@@ -93,10 +106,5 @@ int		resolve(char **mat, int row, int col, int *solutions, char ***sol)
 		return (1);
 	}
 	else
-	{
-		if (col > 8)
-			return (resolve(mat, row + 1, 0, solutions, sol));
-		else
-			return (test(mat, row, col, solutions, sol));
-	}
+		return (test(mat, pos, row, col, solutions, sol));
 }

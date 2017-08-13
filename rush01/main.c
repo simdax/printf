@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 11:58:53 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 18:07:09 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 18:29:43 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		main(int argc, char **argv)
 	sol = NULL;
 	solutions = 0;
 	mat = copy_from(argv, 1);
-	resolve(mat, 0, 0, &solutions, &sol);
+	resolve(mat, 0, 0, 0, &solutions, &sol);
 	if (solutions == 1)
 	{
 		print_mat(sol);
