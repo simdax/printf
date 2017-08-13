@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 09:47:32 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 19:00:18 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 19:02:06 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	check(char **mat, int pos, int nb)
 	int i;
 	int r;
 	int c;
-	
+
 	r = pos / 9;
 	c = pos % 9;
 	i = 0;
@@ -54,7 +54,7 @@ int		test(char **mat, int pos, int *solutions, char ***sol)
 	int i;
 	int r;
 	int c;
-	
+
 	r = pos / 9;
 	c = pos % 9;
 	i = 1;
@@ -62,8 +62,7 @@ int		test(char **mat, int pos, int *solutions, char ***sol)
 	{
 		if (mat[r][c] == '.')
 		{
-			mat[r][c] = check(mat, pos, i);
-			if (mat[r][c] != '.')
+			if ((mat[r][c] = check(mat, pos, i)) != '.')
 			{
 				resolve(mat, pos + 1, solutions, sol);
 				if (*solutions < 2)
