@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 09:47:32 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 21:09:11 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 19:57:29 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,7 @@ int		test(char **mat, int pos, int *solutions, char ***sol)
 			}
 		}
 		else
-		{
-			if ((mat[r][c] = check(mat, pos, i)) != '.')
-				return (resolve(mat, pos + 1, solutions, sol));
-			else
-				exit(-1);
-		}
+			return (resolve(mat, pos + 1, solutions, sol));
 		i++;
 	}
 	return (0);

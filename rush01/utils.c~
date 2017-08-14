@@ -1,0 +1,79 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/13 17:37:30 by scornaz           #+#    #+#             */
+/*   Updated: 2017/08/13 20:25:59 by scornaz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "headers.h"
+
+int		check_input(char **argv)
+{
+	int len;
+
+	argv++;
+	len = 0;
+	while (*argv)
+	{
+		while ((*argv)[len])
+		{
+			if ((*argv)[len] < '0' && '9' < (*argv)[len])
+				if ((*argv)[len] != '.')
+					return (0);
+			len++;
+		}
+		if (len > 9)
+			return (0);
+		argv++;
+	}
+	return (1);
+}
+
+char	**copy_from(char **src, int incr)
+{
+	int		i;
+	int		j;
+	char	**dest;
+
+	i = 0;
+	dest = malloc(sizeof(char*) * 10);
+	while (i < 9)
+	{
+		j = 0;
+		dest[i] = malloc(sizeof(char) * 10);
+		while (j < 9)
+		{
+			dest[i][j] = src[i + incr][j];
+			j++;
+		}
+		dest[i][9] = '\0';
+		i++;
+	}
+	dest[9] = NULL;
+	return (dest);
+}
+
+int		check_square(char **mat, int r, int c, int nb)
+{
+	int i;
+	int j;
+
+	i = (r / 3) * 3;
+	while (i < ((r / 3) * 3) + 3)
+	{
+		j = (c / 3) * 3;
+		while (j < ((c / 3) * 3) + 3)
+		{
+			if (i != r && j != c && (mat[i][j]) == nb + 48)
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}

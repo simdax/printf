@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 19:10:07 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/09 21:26:52 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/14 09:48:34 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,15 @@ char	*ft_strdup(char *src)
 	length = 0;
 	while (src[length])
 		length++;
+	if (!length)
+		;
 	copy = (char*)malloc(sizeof(src) * length + 1);
-	if (!copy)
-		return (NULL);
 	length = 0;
 	while (*src)
 	{
 		*(copy + length) = *src++;
 		length++;
 	}
+	copy[length] = '\0';
 	return (copy);
 }

@@ -5,7 +5,7 @@ while true
 do
 clear
 norminette *.c *.h
-cc -Wall -Wextra -Werror main.c algo.c utils.c
-./a.out `cat grilleTest`
-sleep 4
+cc -Wall -Wextra -Werror algo.c utils.c main.c
+./a.out "9...7...." "2...9...3" ".6..124.." "84...1.9." "5.....8.." ".31..4..." "..37..68." ".9..5.741" "47......." | cat -e
+sleep 1
 done

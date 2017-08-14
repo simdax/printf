@@ -1,0 +1,17 @@
+//  curl -v --cookie "_intra_42_session_production=d58d89495f7e970d0827cc093176f936" https://projects.intra.42.fr/projects/piscine-c-match-n-match/slots
+
+var doc;
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+		var parser = new DOMParser();
+		doc = parser.parseFromString(xhttp.response, "text/html");
+    }
+};
+xhttp.withCredentials = true;
+xhttp.open("GET", "https://projects.intra.42.fr/projects/piscine-c-match-n-match/slots", true);
+xhttp.send();
+
+function get_slots(day) {
+	return doc.querySelectorAll("table")[4].querySelectorAll("td")[day+1].querySelectorAll(".fc-event-container")[1].children;
+		}

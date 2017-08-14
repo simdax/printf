@@ -1,16 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/12 09:47:32 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 21:09:11 by scornaz          ###   ########.fr       */
+/*   Created: 2017/08/13 17:37:30 by scornaz           #+#    #+#             */
+/*   Updated: 2017/08/13 20:58:52 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers.h"
+
+int		check_input(char **argv)
+{
+	int 	len;
+
+	argv++;
+	while (*argv)
+	{
+		len = 0;
+		while ((*argv)[len])
+		{
+			if ((*argv)[len] < '0' || '9' < (*argv)[len])
+			{
+				if ((*argv)[len] != '.')
+					return (0);
+			}
+			len++;
+		}
+		if (len > 9)
+			return (0);
+		argv++;
+	}
+	return (1);
+}
 
 char	check(char **mat, int pos, int nb)
 {
@@ -33,6 +57,50 @@ char	check(char **mat, int pos, int nb)
 	if (check_square(mat, r, c, nb))
 		return ('.');
 	return (nb + 48);
+}
+
+char	**copy_from(char **src, int incr)
+{
+	int		i;
+	int		j;
+	char	**dest;
+
+	i = 0;
+	dest = malloc(sizeof(char*) * 10);
+	while (i < 9)
+	{
+		j = 0;
+		dest[i] = malloc(sizeof(char) * 10);
+		while (j < 9)
+		{
+			dest[i][j] = src[i + incr][j];
+			j++;
+		}
+		dest[i][9] = '\0';
+		i++;
+	}
+	dest[9] = NULL;
+	return (dest);
+}
+
+int		check_square(char **mat, int r, int c, int nb)
+{
+	int i;
+	int j;
+
+	i = (r / 3) * 3;
+	while (i < ((r / 3) * 3) + 3)
+	{
+		j = (c / 3) * 3;
+		while (j < ((c / 3) * 3) + 3)
+		{
+			if (i != r && j != c && (mat[i][j]) == nb + 48)
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
 
 int		test(char **mat, int pos, int *solutions, char ***sol)
@@ -58,33 +126,8 @@ int		test(char **mat, int pos, int *solutions, char ***sol)
 			}
 		}
 		else
-		{
-			if ((mat[r][c] = check(mat, pos, i)) != '.')
-				return (resolve(mat, pos + 1, solutions, sol));
-			else
-				exit(-1);
-		}
+			return (resolve(mat, pos + 1, solutions, sol));
 		i++;
 	}
 	return (0);
-}
-
-int		resolve(char **mat, int pos, int *solutions, char ***sol)
-{
-	int r;
-	int c;
-
-	r = pos / 9;
-	c = pos % 9;
-	if (pos == 81)
-	{
-		*(solutions) += 1;
-		if (*solutions == 1)
-		{
-			*sol = copy_from(mat, 0);
-		}
-		return (1);
-	}
-	else
-		return (test(mat, pos, solutions, sol));
 }

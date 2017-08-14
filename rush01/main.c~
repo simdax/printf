@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 11:58:53 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/13 21:01:50 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/13 20:11:06 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,29 +33,6 @@ void	print_mat(char **mat)
 	}
 }
 
-int		test_grid(char **mat)
-{
-	int i;
-	int j;
-	int pos;
-
-	i = 0;
-	pos = 0;
-	while (mat[i])
-	{
-		j = 0;
-		if (mat[i][j] != '.')
-		{
-			if (!check(mat, pos, mat[i][j]))
-				return (0);
-			pos++;
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-
 int		main(int argc, char **argv)
 {
 	char	**mat;
@@ -64,7 +41,6 @@ int		main(int argc, char **argv)
 
 	sol = NULL;
 	solutions = 0;
-	(void)argc;
 	if (argc > 10 || !check_input(argv))
 		write(1, ERR, LEN_ERR);
 	else

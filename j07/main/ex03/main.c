@@ -5,13 +5,8 @@
 
 char *ft_concat_params(int argc, char **argv);
 
-int main()
+int main(int argc, char **argv)
 {
-	int nb;
-	char **str;
-	
-	str[0] = (char*)(sizeof(char) * 12);
-	str[0] = "io ;es";
-	ft_concat_params(nb, str);
+	printf("%s", ft_concat_params(argc, argv));
 	return (0);
 }
