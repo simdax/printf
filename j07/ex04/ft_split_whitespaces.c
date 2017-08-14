@@ -6,12 +6,10 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 20:43:03 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/14 13:33:03 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/14 13:57:48 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
 #include <stdlib.h>
 
 int		count_words(char *str, int i, int boolean)
@@ -47,6 +45,8 @@ char	*str_copy(char *src, int len)
 		if (!is_sep(src[i++]))
 			real_len++;
 	}
+	if (real_len == 0)
+		return (0);
 	i = 0;
 	dest = (char*)malloc(sizeof(char) * (real_len + 1));
 	while (i++ < len)
@@ -71,7 +71,8 @@ int		put_words(char *str, int i, int boolean, char ***str_tab)
 		if (boolean)
 		{
 			**str_tab = str_copy(str, i);
-			(*str_tab)++;
+			if (**str_tab)
+				(*str_tab)++;
 			return (put_words(++str + i, 0, 0, str_tab));
 		}
 		else
@@ -87,8 +88,8 @@ char	**ft_split_whitespaces(char *str)
 	int		size;
 
 	size = count_words(str, 0, 0) + 1;
- 	result = (char**)malloc(sizeof(char*) * (size));
- 	put_words(str, 0, 0, &result);
+	result = (char**)malloc(sizeof(char*) * (size));
+	put_words(str, 0, 0, &result);
 	result++;
 	*result = NULL;
 	return (result - size);
