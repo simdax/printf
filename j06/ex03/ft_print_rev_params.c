@@ -6,11 +6,11 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 15:25:58 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/14 18:47:03 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/15 12:20:43 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
+int		ft_putchar(char c);
 
 int		main(int argc, char *argv[])
 {

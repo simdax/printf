@@ -6,11 +6,11 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 16:30:37 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/14 19:07:47 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/15 12:20:52 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
+int		ft_putchar(char c);
 
 int		sort_word(char *w1, char *w2)
 {

@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/14 19:26:47 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/14 20:15:29 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/15 12:27:03 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 
 typedef struct 	s_stock_par
 {
-	int size_param;
-	char *str;
-	char *copy;
-	char **tab;
+	int			size_param;
+	char 		*str;
+	char		*copy;
+	char		**tab;
 }				t_stock_par;
 
 struct s_stock_par *ft_param_to_tab(int ac, char **av);

@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/15 10:09:50 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/15 11:15:07 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/15 12:16:53 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,15 @@
 
 int main(int argc, char **argv)
 {
-	if (argc > 3)
+	int		arg1;
+	int		arg2;
+	char	*op;
+	
+	(void)op;
+	if (argc != 4)
 		return (1);
-	(void)argv;
-	calc(2, 3, &ft_add);
+	check(argv, &arg1, &arg2);
+	op = argv[2];
+	calc(arg1, arg2, op);
 	return (0);
 }

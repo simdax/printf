@@ -6,11 +6,11 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 16:30:37 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/10 15:37:29 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/14 19:07:47 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_putchar(char c);
+void	ft_putchar(char c);
 
 int		sort_word(char *w1, char *w2)
 {
@@ -38,17 +38,17 @@ void	sort(char *argv[], int size)
 
 	j = 0;
 	i = 0;
- 	while (j < size - 1) 
- 	{
- 		i = size - 2;
+	while (j < size - 1)
+	{
+		i = size - 2;
 		while (i >= j)
 		{
 			if (sort_word(argv[i], argv[i + 1]))
 				swap(&argv[i], &argv[i + 1]);
 			i--;
 		}
- 		j++; 
- 	} 
+		j++;
+	}
 }
 
 int		main(int argc, char **argv)
@@ -56,7 +56,7 @@ int		main(int argc, char **argv)
 	sort(++argv, --argc);
 	while (*argv)
 	{
-		while(**argv)
+		while (**argv)
 			ft_putchar(*(*argv)++);
 		ft_putchar('\n');
 		argv++;
