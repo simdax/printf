@@ -1,10 +1,22 @@
-int ft_putchar(char);
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/14 19:00:56 by scornaz           #+#    #+#             */
+/*   Updated: 2017/08/14 19:05:31 by scornaz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void ft_putstr(char *str)
+void	ft_putchar(char c);
+
+void	ft_putstr(char *str)
 {
-  while (*str)
-    {
-      ft_putchar(*str);
-      str++;
-    }
+	while (*str)
+	{
+		ft_putchar(*str);
+		str++;
+	}
 }
