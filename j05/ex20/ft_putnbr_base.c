@@ -6,39 +6,14 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 20:17:06 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/09 19:55:41 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/16 15:17:01 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <unistd.h>
 
 int		ft_putchar(char c);
-
-int		power_of(int nb, int power)
-{
-	if (power == 0)
-		return (1);
-	return (nb * power_of(nb, power - 1));
-}
-
-int		ft_sqrt(int nb, int base)
-{
-	int i;
-	int pow;
-
-	i = 1;
-	while (i < 46341)
-	{
-		pow = power_of(base, i);
-		if (nb < pow)
-			return (i);
-		if (nb == pow)
-			return (i + 1);
-		else
-			i++;
-	}
-	return (46341);
-}
 
 int		check_rep(char *base, int len)
 {
@@ -46,6 +21,8 @@ int		check_rep(char *base, int len)
 	int		j;
 
 	i = 0;
+	if (len == 0)
+		return (0);
 	while (i < len)
 	{
 		if (base[i] == '+' || base[i] == '-')
@@ -64,38 +41,39 @@ int		check_rep(char *base, int len)
 	return (1);
 }
 
-void	check_neg(int *nb)
+char	itoa(unsigned int nb, char *base, unsigned int len_base)
 {
-	if (*nb < 0)
+	if (nb >= len_base)
 	{
-		ft_putchar('-');
-		*(nb) = -*(nb);
+		ft_putchar(itoa(nb / len_base, base, len_base));
+		ft_putchar(itoa(nb % len_base, base, len_base));
+		return (0);
+	}
+	else
+	{
+		return (base[nb]);
 	}
 }
 
 void	ft_putnbr_base(int nb, char *base)
 {
-	int		result_length;
-	int		length_base;
-	int		pow;
+	unsigned int	length_base;
+	unsigned int	replace;
 
-	check_neg(&nb);
-	length_base = 0;
-	while (base[length_base])
-		length_base++;
-	if (check_rep(base, length_base + 1))
+	replace = nb;
+	if (nb < 0)
 	{
-		if (length_base > 1)
-		{
-			result_length = ft_sqrt(nb, length_base);
-			while (result_length > 0)
-			{
-				pow = power_of(length_base, result_length - 1);
-				ft_putchar(base[nb / pow]);
-				nb = nb % pow;
-				result_length--;
-			}
-			ft_putchar('\n');
-		}
+		ft_putchar('-');
+		replace = -nb;
+	}
+	length_base = 0;
+	while (base[length_base++])
+		;
+	if (check_rep(base, length_base))
+	{
+		if (replace < length_base - 1)
+			ft_putchar(base[replace]);
+		else
+			itoa(replace, base, length_base - 1);
 	}
 }

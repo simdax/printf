@@ -28,12 +28,5 @@ int main()
 	printf("%s\n", strstr("fsfsdf|||85fs", "fsfsdf|||85fs"));
 	printf("%s\n", strstr("ecA ecB ec", "ect"));
 
-//	printf("claudio\n");
-/* 	char find2[] = "banana"; */
-/* 	substr = ft_strstr(src, find2); */
-/* 	assert_i((int)substr, 0); */
-/* 	assert_s(ft_strstr(find2, "ana"), strstr(find2, "ana")); */
-/* 	assert_i((int)ft_strstr(src, "jin"), (int)strstr(src, "jin")); */
-
 	return (0);
 }
