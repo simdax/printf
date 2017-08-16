@@ -3,16 +3,25 @@
 #include "../../ex02/ft_list_push_front.c"
 #include <unistd.h>
 
-void   ft_list_push_front(t_list **begin_list, void *data);
-t_list *ft_create_elem(void *data);
-t_list *ft_list_last(t_list *begin_list);
+void ft_list_clear(t_list **begin_list);
 
 int main()
 {
 	t_list	*list;
 
-	list = ft_create_elem("coucou");
 	ft_list_push_front(&list, "toi");
 	ft_list_push_front(&list, "lui");
-	printf("%s", ft_list_last(list)->data);
+	/* while (list) */
+/* 	{ */
+/* 		write(1, list->data, 3); */
+/* 		write(1, "\n", 1); */
+/* 		list = list->next; */
+/* 	} */
+	ft_list_clear(&list);
+	while (list)
+	{
+		write(1, list->data, 3);
+		write(1, "\n", 1);
+		list = list->next;
+	}
 }

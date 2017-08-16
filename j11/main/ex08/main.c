@@ -5,7 +5,7 @@
 
 void   ft_list_push_front(t_list **begin_list, void *data);
 t_list *ft_create_elem(void *data);
-t_list *ft_list_last(t_list *begin_list);
+void ft_list_reverse(t_list **begin_list);
 
 int main()
 {
@@ -14,5 +14,13 @@ int main()
 	list = ft_create_elem("coucou");
 	ft_list_push_front(&list, "toi");
 	ft_list_push_front(&list, "lui");
-	printf("%s", ft_list_last(list)->data);
+	ft_list_push_front(&list, "vous");
+	ft_list_push_front(&list, "etc.");
+//	ft_list_reverse(&list);
+
+	while (list)
+	{
+		printf("%s", list->data);
+		list = list->next;
+	}
 }
