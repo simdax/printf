@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*   ft_list_reverse.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/08 15:14:31 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/10 15:31:38 by scornaz          ###   ########.fr       */
+/*   Created: 2017/08/15 17:51:47 by scornaz           #+#    #+#             */
+/*   Updated: 2017/08/15 19:22:13 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_putchar(char c);
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+#include "ft_list.h"
 
-int	main(int argc, char **argv)
+void	ft_list_reverse(t_list **begin_list)
 {
-	(void)argc;
-	argv++;
-	while (*argv)
+	t_list	*prev;
+	t_list	*next;
+
+	prev = NULL;
+	while (*begin_list)
 	{
-		while (**argv)
-		{
-			ft_putchar(**argv);
-			(*argv)++;
-		}
-		ft_putchar('\n');
-		argv++;
+		next = (*begin_list)->next;
+		(*begin_list)->next = prev;
+		prev = *begin_list;
+		*begin_list = next;
 	}
+	*begin_list = prev;
 }

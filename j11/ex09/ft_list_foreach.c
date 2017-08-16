@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_list_foreach.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/08 15:10:03 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/10 15:30:02 by scornaz          ###   ########.fr       */
+/*   Created: 2017/08/15 19:23:26 by scornaz           #+#    #+#             */
+/*   Updated: 2017/08/15 19:43:45 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_putchar(char c);
+#include "ft_list.h"
 
-int		 main(int argc, char **argv)
+void	ft_list_foreach(t_list *begin_list, void (*f)(void *))
 {
-	(void)argc;
-	while (*argv[0])
-		ft_putchar(*argv[0]++);
-	ft_putchar('\n');
-	return (0);
+	while (begin_list)
+	{
+		(*f)(begin_list->data);
+		begin_list = begin_list->next;
+	}
 }

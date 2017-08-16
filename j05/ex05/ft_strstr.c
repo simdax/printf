@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 18:57:57 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/09 15:27:20 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/16 12:10:26 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ char	*ft_strstr(char *str, char *to_find)
 	init(&i, &begin, &marker);
 	while (str[i])
 	{
-		if (to_find[begin + 1] == '\0')
-			return (win(marker, str));
 		if (str[i] == to_find[begin])
 		{
 			if (begin == 0)
 				marker = i;
+			if (to_find[begin + 1] == '\0')
+				return (win(marker, str));
 			begin++;
 		}
 		else if (str[i] != to_find[begin])
