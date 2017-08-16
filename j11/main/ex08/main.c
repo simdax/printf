@@ -16,7 +16,7 @@ int main()
 	ft_list_push_front(&list, "lui");
 	ft_list_push_front(&list, "vous");
 	ft_list_push_front(&list, "etc.");
-//	ft_list_reverse(&list);
+	ft_list_reverse(&list);
 
 	while (list)
 	{
