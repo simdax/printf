@@ -6,17 +6,13 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/14 20:07:53 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/15 12:24:20 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/17 13:40:41 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_putchar(char c);
+#include "ft_stock_par.h"
 
-void	ft_print_words_tables(char **tab)
-{
-	while (*tab)
-		put_str(*tab++);
-}
+void ft_putchar(char c);
 
 void	put_str(char *str)
 {
@@ -25,12 +21,18 @@ void	put_str(char *str)
 	ft_putchar('\n');
 }
 
+void	ft_print_words_tables(char **tab)
+{
+	while (*tab)
+		put_str(*tab++);
+}
+
 void	put_nbr(int nbr)
 {
 	if (nbr > 10)
 	{
-		put_nbr(nbr % 10);
 		put_nbr(nbr / 10);
+		put_nbr(nbr % 10);
 	}
 	else
 		ft_putchar(nbr + 48);

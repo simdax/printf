@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 20:42:36 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/15 18:49:16 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/17 10:22:48 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int		ft_ultimate_range(int **range, int min, int max)
 		return (0);
 	}
 	i = 0;
-	printf("%p", *range);
 	*range = (int*)malloc(sizeof(int) * (max - min));
 	while (i < max - min)
 	{
