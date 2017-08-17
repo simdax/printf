@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/14 20:07:53 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/17 13:40:41 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/17 13:55:10 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@ void	put_str(char *str)
 {
 	while (*str)
 		ft_putchar(*str++);
-	ft_putchar('\n');
 }
 
 void	ft_print_words_tables(char **tab)
 {
 	while (*tab)
+	{
 		put_str(*tab++);
+		ft_putchar('\n');
+	}
 }
 
 void	put_nbr(int nbr)
@@ -40,6 +42,7 @@ void	put_nbr(int nbr)
 
 void ft_show_tab(struct s_stock_par *par)
 {
+	par++;
 	while(par->str)
 	{
 		put_str(par->str);

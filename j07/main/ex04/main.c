@@ -22,10 +22,10 @@ int main()
 {
 	char *str = "rien     du tout les loulous";
 	char *str1 = "";
-	char *str2 = "	fdsjkflsadf	 fdsjk fsajfkl";
+	char *str2 = " fdsafds nb arg ui ui kj fsdfd";
 
 	test(str);
-	test(str1);
 	test(str2);
+	test(str1);
 	return (0);
 }

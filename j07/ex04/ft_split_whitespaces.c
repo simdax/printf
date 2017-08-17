@@ -6,17 +6,24 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 20:43:03 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/14 13:57:48 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/17 16:46:36 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
+
+int		is_sep(char c)
+{
+	return (c == ' ' || c == '\n' || c == '\t' ||
+			c == '\v' || c == '\f' || c == '\r');
+}
 
 int		count_words(char *str, int i, int boolean)
 {
 	if (!str[i])
 		return (0);
-	if (str[i] == ' ' || str[i] == '\n' || str[i] == '\t')
+	if (is_sep(str[i]))
 	{
 		if (boolean)
 			return (1 + count_words(str, i + 1, 0));
@@ -25,11 +32,6 @@ int		count_words(char *str, int i, int boolean)
 	}
 	else
 		return (count_words(str, i + 1, 1));
-}
-
-int		is_sep(char c)
-{
-	return (c == ' ' || c == '\n' || c == '\t');
 }
 
 char	*str_copy(char *src, int len)
@@ -66,13 +68,12 @@ int		put_words(char *str, int i, int boolean, char ***str_tab)
 		**str_tab = str_copy(str, i);
 		return (0);
 	}
-	if (str[i] == ' ' || str[i] == '\n' || str[i] == '\t')
+	else if (is_sep(str[i]))
 	{
 		if (boolean)
 		{
 			**str_tab = str_copy(str, i);
-			if (**str_tab)
-				(*str_tab)++;
+			(*str_tab)++;
 			return (put_words(++str + i, 0, 0, str_tab));
 		}
 		else
@@ -88,9 +89,8 @@ char	**ft_split_whitespaces(char *str)
 	int		size;
 
 	size = count_words(str, 0, 0) + 1;
-	result = (char**)malloc(sizeof(char*) * (size));
+	result = (char**)malloc(sizeof(char*) * (size + 1));
 	put_words(str, 0, 0, &result);
-	result++;
-	*result = NULL;
+	*(++result) = NULL;
 	return (result - size);
 }
