@@ -8,14 +8,14 @@ int main()
 	char src[] = "je suis la premiere phrase";
 	int i = 0;
 
-	while (i < 100)
+	while (i < 20)
 	{
-		char dest[] = "nous sommes la troisieme phrase";
-		char dest1[] = "nous sommes la troisieme phrase";
+		char dest[1000];
+		char dest1[1000];
 		ft_strncpy(dest, src, i);
 		strncpy(dest1, src, i);
-		printf("%s\n", dest);
-		printf("%s\n", dest1);
+		printf("MOOI %s\n", dest);
+		printf("ORIG %s\n", dest1);
 		i += 1;
 	}
 

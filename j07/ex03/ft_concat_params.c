@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/10 16:35:13 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/14 10:24:46 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/17 16:49:23 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ int		length(char **argv)
 
 	i = 0;
 	len = 0;
-	while(argv[i])
+	while (argv[i])
 	{
 		j = 0;
-		while(argv[i][j])
+		while (argv[i][j])
 		{
 			j++;
 			len++;

@@ -1,6 +1,7 @@
 #include "../../ft_list.h"
 #include "../../ex00/ft_create_elem.c"
 #include <unistd.h>
+#include <stdio.h>
 
 void   ft_list_push_front(t_list **begin_list, void *data);
 t_list *ft_create_elem(void *data);
@@ -15,8 +16,7 @@ int main()
 
 	while (list)
 	{
-		write(1, list->data, 3);
-		write(1, "\n", 1);
+		printf("%s\n", list->data);
 		list = list->next;
 	}
 }
