@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 20:17:06 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/16 15:17:01 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/17 09:29:08 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int		ft_putchar(char c);
 
-int		check_rep(char *base, int len)
+int		check_base(char *base, int len)
 {
 	int		i;
 	int		j;
@@ -69,7 +69,7 @@ void	ft_putnbr_base(int nb, char *base)
 	length_base = 0;
 	while (base[length_base++])
 		;
-	if (check_rep(base, length_base))
+	if (check_base(base, length_base))
 	{
 		if (replace < length_base - 1)
 			ft_putchar(base[replace]);

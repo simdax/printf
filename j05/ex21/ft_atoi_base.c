@@ -6,17 +6,17 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 20:17:06 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/09 20:23:41 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/17 10:00:17 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_putchar(char c);
 
-int		power_of(int nb, int power)
+int		pw(int nb, int power)
 {
 	if (power == 0)
 		return (1);
-	return (nb * power_of(nb, power - 1));
+	return (nb * pw(nb, power - 1));
 }
 
 int		index_of(char *base, char c)
@@ -33,16 +33,19 @@ int		index_of(char *base, char c)
 	return (-1);
 }
 
-void	check_neg(int *nb)
+int		check_neg(char *str)
 {
-	if (*nb < 0)
+	if (*str == '-')
 	{
 		ft_putchar('-');
-		*(nb) = -*(nb);
+		return (1);
 	}
+	else if (*str == '+')
+		return (1);
+	return (0);
 }
 
-int		check_base(char *base, int base_len, char *str, int str_len)
+int		check_base(char *base, int base_len, int str_len)
 {
 	int i;
 	int j;
@@ -50,12 +53,6 @@ int		check_base(char *base, int base_len, char *str, int str_len)
 	if (base_len < 2 || str_len == 0)
 		return (0);
 	i = 0;
-	while (*str)
-	{
-		if (*str == '+' || *str == '-')
-			return (0);
-		str++;
-	}
 	while (i < base_len)
 	{
 		if (base[i] == '+' || base[i] == '-')
@@ -74,25 +71,25 @@ int		check_base(char *base, int base_len, char *str, int str_len)
 int		ft_atoi_base(char *str, char *base)
 {
 	int		i;
-	int		len_base;
+	int		l_base;
 	int		str_len;
 	int		result;
 
 	result = 0;
-	len_base = 0;
-	while (base[len_base])
-		len_base++;
-	str_len = 0;
-	while (str[str_len])
-		str_len++;
-	if (!check_base(base, len_base, str, str_len))
+	l_base = -1;
+	str_len = -1;
+	while (base[++l_base])
+		;
+	while (str[++str_len])
+		;
+	if (!check_base(base, l_base, str_len))
 		return (0);
-	i = 0;
+	i = check_neg(str);
 	while (str[i])
 	{
 		if (index_of(base, str[i]) == -1)
-			return (0);
-		result += index_of(base, str[i]) * power_of(len_base, str_len - i - 1);
+			break ;
+		result = index_of(base, str[i]) + result * pw(l_base, str_len - i - 1);
 		i++;
 	}
 	return (result);

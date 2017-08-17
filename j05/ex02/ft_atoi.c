@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/10 09:18:18 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/10 11:35:15 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/17 09:23:02 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,76 +18,48 @@ int		is_num(char c)
 	return (47 < c && c < 58);
 }
 
-int		calc(int *res, char num, int is_neg)
+int		is_w_space(char c)
 {
-	long	test;
-
-	if (*res == 0)
-		*res += (num - 48);
-	else
-	{
-		test = *res;
-		test = test * 10 + (num - 48);
-		if (is_neg)
-		{
-			if (-test < INT_MIN)
-				return (0);
-		}
-		else
-		{
-			if (test > INT_MAX)
-				return (0);
-		}
-		*res = test;
-	}
-	return (1);
+	return (c == ' ' || c == '\t' || c == '\n' ||
+			c == '\v' || c == '\r' || c == '\f');
 }
 
-int		test(char **str, int *is_neg)
+int		calc(int *is_neg, long *tmp, char c)
 {
-	if (**str == ' ')
-		;
-	else if (is_num(**str) || **str == '+')
-	{
+	if (*is_neg == -1)
 		*is_neg = 0;
-		if (**str == '+')
-			(*str)++;
-	}
-	else if (**str == '-')
-	{
-		*is_neg = 1;
-		(*str)++;
-	}
-	else
+	if ((*is_neg && *tmp * 10 > (long)INT_MAX + 1) ||
+		(!*is_neg && *tmp * 10 > INT_MAX))
 		return (0);
+	*tmp = (*tmp * 10) + (c - '0');
 	return (1);
 }
 
 int		ft_atoi(char *str)
 {
-	int is_neg;
-	int res;
+	int		is_neg;
+	long	tmp;
 
 	is_neg = -1;
-	res = 0;
+	tmp = 0;
 	while (*str)
 	{
-		if (is_neg == -1)
-			if (!test(&str, &is_neg))
-				return (res);
-		if (is_neg != -1)
+		if (is_neg == -1 && is_w_space(*str))
+			;
+		else if (is_neg == -1 && *str == '-')
+			is_neg = 1;
+		else if (is_neg == -1 && *str == '+')
+			is_neg = 0;
+		else if (is_num(*str))
 		{
-			if (is_num(*str))
-			{
-				if (!calc(&res, *str, is_neg))
-					return (-1);
-			}
-			else
-				return (res);
+			if (!calc(&is_neg, &tmp, *str))
+				return (-1);
 		}
+		else
+			break ;
 		str++;
 	}
 	if (is_neg)
-		return (-res);
-	return (res);
+		return ((int)-tmp);
+	return ((int)tmp);
 }

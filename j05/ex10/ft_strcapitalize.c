@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 18:47:13 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/10 12:23:24 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/17 08:44:30 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,8 @@ char	*ft_strlowcase(char *str)
 void	upcase(char *str, int *gate, int i)
 {
 	if (*gate && 97 <= str[i] && str[i] <= 122)
-	{
 		str[i] -= 32;
-		*gate = 0;
-	}
+	*gate = 0;
 }
 
 char	*ft_strcapitalize(char *str)
@@ -42,7 +40,7 @@ char	*ft_strcapitalize(char *str)
 	int		j;
 	int		gate;
 
-	seps = " ,+0123456789";
+	seps = " ,+";
 	gate = 1;
 	str = ft_strlowcase(str);
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 11:37:55 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/09 20:24:56 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/17 09:28:01 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		ft_sqrt(int nb, int base)
 		else
 			i++;
 	}
-	return (46341);
+	return (46340);
 }
 
 void	ft_putnbr_base(int nb, char *base)
@@ -62,7 +62,7 @@ void	ft_putstr_non_printable(char *str)
 {
 	while (*str)
 	{
-		if (0 >= *str || *str < 32)
+		if (0 >= *str || *str < 32 || *str == 127)
 		{
 			ft_putchar('\\');
 			ft_putchar('0');

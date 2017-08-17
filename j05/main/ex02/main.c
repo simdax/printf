@@ -8,10 +8,12 @@ int main()
 {
 
 //	printf("%d\n", INT_MAX - INT_MAX < 0);
-
+	printf("%d\n", ft_atoi("42"));
+	printf("%d\n", ft_atoi("-0422"));
+	printf("%d\n", ft_atoi("+-04+22"));
 	printf("%d\n", ft_atoi("+0422"));
 	printf("%d\n", ft_atoi("+04+22"));
-	printf("%d\n", ft_atoi("     0422"));
+	printf("%d\n", ft_atoi(" \t \r \n \v \f    0422"));
 	printf("%d\n", ft_atoi(" 4 2"));
 	printf("%d\n", ft_atoi("-42"));
 	printf("%d\n", ft_atoi(" -2147483648"));
@@ -21,16 +23,17 @@ int main()
 	printf("%d\n", ft_atoi("0123456789"));
 	
 	printf("%d\n", ft_atoi("?  456$#12345645135456456421"));
-	printf("%d\n", ft_atoi("{?  456$#12345645135456456421"));
 	printf("%d\n", ft_atoi("45?46+  456$#12345645135456456421"));
-	printf("%d\n", ft_atoi("*?  456$#12345645135456456421"));
 	printf("%d\n", ft_atoi("\0 %  456$#12345645135456456421"));
 
 	printf("\n ////////// \n\n");
 
+	printf("%d\n", atoi("42"));
+	printf("%d\n", atoi("-0422"));
+	printf("%d\n", atoi("+-04+22"));
 	printf("%d\n", atoi("+0422"));
 	printf("%d\n", atoi("+04+22"));
-	printf("%d\n", atoi("    0422"));
+	printf("%d\n", atoi(" \t \r \n \v \f    0422"));
 	printf("%d\n", atoi(" 4  2"));
 	printf("%d\n", atoi("-42"));
 	printf("%d\n", atoi(" -2147483648"));
@@ -40,9 +43,7 @@ int main()
 	printf("%d\n", atoi("0123456789"));
 
 	printf("%d\n", atoi("?  456$#12345645135456456421"));
-	printf("%d\n", atoi("{?  456$#12345645135456456421"));
 	printf("%d\n", atoi("45?65+  456$#12345645135456456421"));
-	printf("%d\n", atoi("*?  456$#12345645135456456421"));
 	printf("%d\n", atoi("\0 %  456$#12345645135456456421"));
 
 
