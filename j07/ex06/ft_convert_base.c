@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/14 14:13:24 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/17 18:27:40 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/18 11:39:33 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,12 @@ int		check_base(char *base)
 {
 	while (*base)
 	{
-		if (i_of(*base)
+		if (i_of(*base, base))
 			base++;
+		else
+			return (0);
 	}
+	return (1);
 }
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
@@ -84,9 +87,11 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	while (base_to[len_to++])
 		;
 	i = -1;
-	check_base(base_from, len_from);
+	check_base(base_from);
 	while (nbr[++i])
+	{
 		res = res * (len_from - 1) + i_of(nbr[i], base_from);
+	}
 	matoi(res, base_to, len_to - 1, result);
 	str_rev(result);
 	return (result);

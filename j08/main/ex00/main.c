@@ -20,9 +20,9 @@ void	test(char *str)
 
 int main()
 {
-	char *str = "rien     du tout les loulous";
+	char *str = "nb pair d argument";
 	char *str1 = "";
-	char *str2 = " fdsafds nb arg ui ui kj fsdfd";
+	char *str2 = "nb impair args";
 
 	test(str);
 	test(str2);

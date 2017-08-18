@@ -3,13 +3,15 @@
 #include <stdlib.h>
 #include <string.h>
 
+char	**ft_split(char *str, char *seps);
+
 int main()
 {
-	int nb;
-	char str[];
+	char str[] = " ::f:  putain, : de sa race de    merde   ";
+	char **tab;
 
-	ft_split()
-	printf("%s", str);
-	printf("%d", nb);
+	tab = ft_split(str, " ,:");
+	while (*tab)
+		printf("%s\n", *tab++);
 	return (0);
 }

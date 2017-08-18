@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   btree_create_node.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/09 14:19:38 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/17 19:42:20 by scornaz          ###   ########.fr       */
+/*   Created: 2017/08/18 10:13:41 by scornaz           #+#    #+#             */
+/*   Updated: 2017/08/18 10:16:39 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dest, char *src)
-{
-	int i;
+#include  "ft_btree.h"
 
-	i = 0;
-	while (src[i] || i< n)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	//dest[i] = '\0';
-	return (dest);
+t_btree *btree_create_node(void *item)
+{
+	b_tree	*elem;
+	
+	elem = (b_tree*)malloc(sizeof(b_tree));
+	elem.item = item;
+	elem.right = NULL;
+	elem.left = NULL;
+	return (elem);
 }

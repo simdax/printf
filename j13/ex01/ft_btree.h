@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_btree.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/07 18:57:20 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/17 19:40:44 by scornaz          ###   ########.fr       */
+/*   Created: 2017/08/18 10:12:41 by scornaz           #+#    #+#             */
+/*   Updated: 2017/08/18 10:14:47 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char   *ft_strncpy(char *dest, char *src, unsigned int n)
+typedef struct 		s_btree
 {
-	unsigned int i;
+	struct s_btree	*left;
+	struct s_btree	*right;
+	void			*item;
+} 					t_btree;
 
-	i = 0;
-	while (src[i] != '\0' && i < n)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
-}
+#include <stdlib.h>

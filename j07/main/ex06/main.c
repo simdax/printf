@@ -12,8 +12,9 @@ int main(int argc, char **argv)
 	char *base_to = argv[4];
 	
 	if (argc != 4)
-		;
-	printf("%s", ft_convert_base(nbr, base_from, base_to));
+		write(1, "t as oubluie les args", 20);
+	else
+		printf("%s", ft_convert_base(nbr, base_from, base_to));
 
 	return (0);
 }
