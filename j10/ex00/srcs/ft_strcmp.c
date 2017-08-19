@@ -6,21 +6,16 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/14 19:01:12 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/14 19:04:54 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/18 16:31:01 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_strcmp(char *s1, char *s2)
 {
-	while (*s1)
+	while (*s1 && (*s1 == *s2))
 	{
 		s1++;
 		s2++;
-		if (*s2 == '\0')
-			return (-1);
 	}
-	if (*s2 == '\0')
-		return (0);
-	else
-		return (1);
+	return (*s1 - *s2);
 }

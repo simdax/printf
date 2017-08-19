@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/14 19:01:59 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/17 18:11:46 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/18 16:28:20 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ int		ft_strlen(char *str)
 	int i;
 
 	i = 0;
-	while (str[i++])
-		;
-	return (i - 1);
+	while (str[i])
+		i++;
+	return (i);
 }

@@ -6,12 +6,13 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/14 17:26:05 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/18 14:09:57 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/19 15:13:26 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 
 int		is_sep(char c, char *seps)
 {
@@ -24,7 +25,7 @@ int		count_words(char *str, int i, int boolean, char *seps)
 {
 	if (!str[i])
 		return (0);
-	if (is_sep(str[i],seps))
+	if (is_sep(str[i], seps))
 		return (boolean + count_words(str, i + 1, 0, seps));
 	else
 		return (count_words(str, i + 1, 1, seps));
@@ -34,7 +35,7 @@ char	*str_copy(char *src, int from, int to)
 {
 	char	*dest;
 	int		size;
-	
+
 	size = to - from;
 	dest = (char*)malloc(sizeof(char) * (size + 1));
 	while (from <= to)
@@ -49,7 +50,7 @@ void	put_words(char *str, char *seps, char ***str_tab)
 {
 	int i;
 	int mark;
-	
+
 	mark = 0;
 	i = 0;
 	while (str[i])
@@ -63,8 +64,7 @@ void	put_words(char *str, char *seps, char ***str_tab)
 		}
 		i++;
 	}
-  	(*str_tab)++;
- 	**str_tab = NULL;
+	**str_tab = NULL;
 }
 
 char	**ft_split(char *str, char *seps)
@@ -75,5 +75,5 @@ char	**ft_split(char *str, char *seps)
 	size = count_words(str, 0, 0, seps) + 1;
 	result = (char**)malloc(sizeof(result) * (size + 1));
 	put_words(str, seps, &result);
-	return (result - size);
+	return (result - size + 1);
 }

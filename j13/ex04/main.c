@@ -5,45 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/16 15:26:25 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/16 17:21:49 by scornaz          ###   ########.fr       */
+/*   Created: 2017/08/18 16:33:18 by scornaz           #+#    #+#             */
+/*   Updated: 2017/08/18 16:45:51 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "ft_btree.h"
 
-void	print(char **argv, int file)
+void btree_insert_data(t_btree **root, void *item, int (*cmpf)(void *, void *))
 {
-	int		fd;
-	int		ret;
-	char	buf[BUF_SIZE + 1];
+	t_btree	*current;
 
-	fd = open(argv[file], O_RDONLY);
-	while (ret = read(fd, buf, 64))
+	current = *root;
+	if (current)
 	{
-		buf[ret] = '\0';
-		write(1, buf, 64);
+		if (cmpf(current->item, item) < 0)
+			btree_insert_data(current->right);
+		else
+			btree_insert_data(current->right);
 	}
-	buf[ret] = '\0';
-	close(fd);	
-}
-
-int		main(int argc, char **argv)
-{
-	int 	i;
-
-	if (argc == 1)
-	{
-		FILENAME_ERROR;
-	}
-	if (argc >= 2)
-	{
-		i = 1;
-		while (i < argc)
-		{
-			print(argv, i++);
-			write(1, "\n", 1);
-		}
-	}
-	return (0);
+	else
+		current = btree_create_node(item);
 }

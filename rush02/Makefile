@@ -5,21 +5,27 @@
 #                                                     +:+ +:+         +:+      #
 #    By: scornaz <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/08/16 15:24:59 by scornaz           #+#    #+#              #
-#    Updated: 2017/08/17 19:53:07 by scornaz          ###   ########.fr        #
+#    Created: 2017/08/19 11:21:19 by scornaz           #+#    #+#              #
+#    Updated: 2017/08/19 14:52:49 by scornaz          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-FLAGS := -W -Wall -Werror -Wextra
-NAME := ft_display_file
+NAME =	colle02
+CS 	 =	main.c stdin.c diff.c ft_split.c
+SRCS =	$(addprefix srcs/, $(CS))
+OS = 	$(CS:.c=.o)
+OBJS =	$(addprefix objs/, $(OS))
 
-all: 
-	@cc $(FLAGS) srcs/*.c -c 
-	@mv *.o srcs
-	@cc srcs/*.o -o $(NAME)
-
-clean:
-	@rm srcs/*o
-
-fclean: clean
-	@rm main
+all:
+	mkdir -p srcs objs
+	cc -c $(SRCS)
+	mv $(OS) objs
+	cc $(OBJS) -o $(NAME)
+fclean:
+	rm $(OBJS)
+clean: fclean
+	rm $(NAME)
+re:	clean all
+test:
+	@cc tests/$(arg).c srcs/$(arg).c srcs/ft_split.c -o $(arg)
+	@mv $(arg) tests

@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   test_read.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/16 15:30:46 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/17 20:58:01 by scornaz          ###   ########.fr       */
+/*   Created: 2017/08/19 11:26:30 by scornaz           #+#    #+#             */
+/*   Updated: 2017/08/19 12:02:57 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __HEADER_H
-#define __HEADER_H
-
-#include <stdlib.h>
-#include <unistd.h>
 #include <stdio.h>
-#include <fcntl.h>
 
-#define ARGS_ERROR		write(2, "Too many arguments.", 30)
-#define FILENAME_ERROR	write(2, "File name missing.", 30)
-#define CHUNK_SIZE		64
-#define BUF_SIZE		64000
+int main()
+{
+	char buf[100];
+	int ret;
 
-int	ft_atoi(char *str);
-
-#endif
+	ret = read(0, buf, 100);
+	buf[ret] = '\0';
+	printf("%s\n", buf);
+	return (0);
+}

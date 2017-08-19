@@ -5,10 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/18 10:12:41 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/18 10:14:47 by scornaz          ###   ########.fr       */
+/*   Created: 2017/08/18 15:14:10 by scornaz           #+#    #+#             */
+/*   Updated: 2017/08/18 15:17:02 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef __FT_BTREE_H
+#define __FT_BTREE_H
 
 typedef struct 		s_btree
 {
@@ -18,3 +21,10 @@ typedef struct 		s_btree
 } 					t_btree;
 
 #include <stdlib.h>
+#include <stdio.h>
+
+t_btree		*btree_create_node(void *item);
+void		btree_apply_prefix(t_btree *root, void (*applyf)(void *));
+
+
+#endif //FT_BTREE_H
