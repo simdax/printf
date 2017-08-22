@@ -6,13 +6,11 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/14 17:26:05 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/19 15:13:26 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/19 23:08:09 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
+#include "main.h"
 
 int		is_sep(char c, char *seps)
 {
@@ -72,8 +70,8 @@ char	**ft_split(char *str, char *seps)
 	char	**result;
 	int		size;
 
-	size = count_words(str, 0, 0, seps) + 1;
+	size = count_words(str, 0, 0, seps);
 	result = (char**)malloc(sizeof(result) * (size + 1));
 	put_words(str, seps, &result);
-	return (result - size + 1);
+	return (result - size);
 }

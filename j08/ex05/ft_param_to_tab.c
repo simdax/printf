@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/14 19:26:37 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/17 15:24:16 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/21 16:00:28 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ struct s_stock_par	*ft_param_to_tab(int ac, char **av)
 		result[i].str = av[i];
 		result[i].copy = copy_str(av[i]);
 		result[i].tab = ft_split_whitespaces(av[i]);
+		printf("%s\n", result[i].tab[0]);
 		i++;
 	}
 	result[i].str = NULL;

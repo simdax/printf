@@ -6,26 +6,29 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/14 20:07:53 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/17 13:55:10 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/21 15:50:06 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_stock_par.h"
 
-void ft_putchar(char c);
+#include <unistd.h>
 
 void	put_str(char *str)
 {
 	while (*str)
+	{
 		ft_putchar(*str++);
+	}
 }
 
 void	ft_print_words_tables(char **tab)
 {
 	while (*tab)
-	{
-		put_str(*tab++);
+	{	
+		put_str(*tab);
 		ft_putchar('\n');
+		tab++;
 	}
 }
 
@@ -40,10 +43,9 @@ void	put_nbr(int nbr)
 		ft_putchar(nbr + 48);
 }
 
-void ft_show_tab(struct s_stock_par *par)
+void	ft_show_tab(struct s_stock_par *par)
 {
-	par++;
-	while(par->str)
+	while (par->str)
 	{
 		put_str(par->str);
 		ft_putchar('\n');

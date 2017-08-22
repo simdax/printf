@@ -6,8 +6,13 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/14 19:21:28 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/14 19:22:54 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/20 18:32:21 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define ABS(Value)		if (Value < 0) Value += Value * 2;
+#ifndef __FT_ABS_H
+# define __FT_ABS_H
+
+# define ABS(Value)		Value < 0 ? -Value : Value
+
+#endif

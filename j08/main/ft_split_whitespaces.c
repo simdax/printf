@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 20:43:03 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/18 15:10:33 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/21 15:58:16 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int		count_words(char *str, int i, int boolean)
 	else
 		return (count_words(str, i + 1, 1));
 }
+
+#include <unistd.h>
 
 char	*str_copy(char *src, int len)
 {
@@ -91,6 +93,7 @@ char	**ft_split_whitespaces(char *str)
 	size = count_words(str, 0, 0) + 1;
 	result = (char**)malloc(sizeof(char*) * (size + 1));
 	put_words(str, 0, 0, &result);
+//	printf("%s", result[-size-2]);
 	*(++result) = NULL;
 	return (result - size);
 }

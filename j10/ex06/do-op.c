@@ -6,11 +6,11 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/15 10:08:34 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/15 12:17:49 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/22 10:04:11 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
- #include "header.h" 
+#include "header.h" 
 
 calc_func parse(char *op)
 {
@@ -25,14 +25,20 @@ calc_func parse(char *op)
 	i = 0;
 	while (i < 5)
 	{
-		if (!(strcmp(tab[i].label,op)))
+		if (!ft_strcmp(tab[i].label,op))
 			return (tab[i].func);
 		i++;
 	}
 	return (NULL);
 }
 
-void	calc(int i, int j, char *op)
+void	calcul(int i, int j, char *op)
 {
-	printf("%d", parse(op)(i, j));
+	calc_func f;
+
+	f = parse(op);
+	if (f)
+		ft_putnbr(f(i, j)); 
+	else
+		ft_putnbr(0);
 }

@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/10 16:35:13 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/17 16:49:23 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/19 14:12:00 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,10 @@ char	*ft_concat_params(int argc, char **argv)
 		j = 0;
 		while (argv[i][j])
 			res[k++] = argv[i][j++];
-		res[k++] = '\n';
+		if (argv[i + 1])
+			res[k++] = '\n';
 		i++;
 	}
-	res[k++] = '\0';
+	res[k] = '\0';
 	return (res);
 }
