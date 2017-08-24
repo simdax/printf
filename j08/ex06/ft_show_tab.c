@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/14 20:07:53 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/21 15:50:06 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/24 10:29:47 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	put_str(char *str)
 void	ft_print_words_tables(char **tab)
 {
 	while (*tab)
-	{	
+	{
 		put_str(*tab);
 		ft_putchar('\n');
 		tab++;

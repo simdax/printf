@@ -6,13 +6,11 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/15 08:57:50 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/15 09:12:35 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/22 10:21:05 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-void ft_foreach(int *tab, int length, void(*f)(int))
+void	ft_foreach(int *tab, int length, void (*f)(int))
 {
 	int i;
 
@@ -20,7 +18,6 @@ void ft_foreach(int *tab, int length, void(*f)(int))
 	while (i < length)
 	{
 		(*f)(tab[i]);
-		printf("\n");
 		i++;
 	}
 }

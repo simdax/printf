@@ -6,11 +6,11 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/14 19:00:56 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/14 19:05:31 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/22 10:28:31 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
+#include "../header.h"
 
 void	ft_putstr(char *str)
 {

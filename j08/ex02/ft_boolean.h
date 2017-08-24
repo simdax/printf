@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/14 19:14:03 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/14 19:20:27 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/24 10:31:43 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # define FALSE		0
 # define SUCCESS	0
 # define STR(str)	#str
-# define EVEN_MSG	STR(I have an even number of arguments.)
-# define ODD_MSG	STR(I have an odd number of arguments.)
+# define EVEN_MSG	STR(I have an even number of arguments.\n)
+# define ODD_MSG	STR(I have an odd number of arguments.\n)
 
 typedef int			t_bool;
 

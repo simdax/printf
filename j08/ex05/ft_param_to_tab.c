@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/14 19:26:37 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/21 16:00:28 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/24 10:38:20 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char				*copy_str(char *str)
 	int		len;
 
 	len = 0;
-	res = (char*)malloc(sizeof(str) * str_len(str));
+	res = (char*)malloc(sizeof(char) * str_len(str));
 	while ((*res++ = *str++))
 		;
 	*res = '\0';
@@ -43,7 +43,7 @@ struct s_stock_par	*ft_param_to_tab(int ac, char **av)
 	t_stock_par	*result;
 	int			i;
 
-	result = (t_stock_par*)malloc(sizeof(result) * (ac + 1));
+	result = (t_stock_par*)malloc(sizeof(*result) * (ac + 1));
 	i = 0;
 	while (i < ac)
 	{
@@ -51,7 +51,6 @@ struct s_stock_par	*ft_param_to_tab(int ac, char **av)
 		result[i].str = av[i];
 		result[i].copy = copy_str(av[i]);
 		result[i].tab = ft_split_whitespaces(av[i]);
-		printf("%s\n", result[i].tab[0]);
 		i++;
 	}
 	result[i].str = NULL;

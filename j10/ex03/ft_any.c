@@ -6,13 +6,11 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/15 09:27:18 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/15 09:33:43 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/22 10:21:21 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-int		ft_any(char **tab, int(*f)(char*))
+int		ft_any(char **tab, int (*f)(char*))
 {
 	while (*tab)
 	{

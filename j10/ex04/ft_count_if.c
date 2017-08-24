@@ -6,13 +6,11 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/15 09:36:42 by scornaz           #+#    #+#             */
-/*   Updated: 2017/08/15 09:40:11 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/08/22 10:21:27 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-int		ft_count_if(char **tab, int(*f)(char*))
+int		ft_count_if(char **tab, int (*f)(char*))
 {
 	int res;
 
