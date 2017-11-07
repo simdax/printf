@@ -1,0 +1,7 @@
+flags="-Werror -Wall -Wextra"
+
+cd ex$1
+norminette
+gcc $flags ../ft_putchar.c *.c
+./a.out
+
