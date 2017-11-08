@@ -6,17 +6,16 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 20:30:57 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/07 20:38:22 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/08 10:42:45 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_strlen(char *str)
 {
 	int	size;
-	
+
 	size = 0;
 	while (*str++)
 		size++;
-	return size;	
+	return (size);
 }
-

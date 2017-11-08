@@ -6,14 +6,14 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 20:13:52 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/07 20:15:37 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/08 10:35:53 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_putchar(char c);
 
 void	ft_putstr(char *str)
-{	
+{
 	while (*str)
 		ft_putchar(*str++);
 }

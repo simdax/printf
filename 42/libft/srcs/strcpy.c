@@ -1,16 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
+/*   strcpy.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 19:40:28 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/07 19:40:58 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/08 20:24:56 by scornaz           #+#    #+#             */
+/*   Updated: 2017/11/08 20:29:41 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_recursive_factorial(int nb)
+char	*ft_strcpy(char *dst, const char *src)
 {
-	
+	unsigned int	i;
+
+	i = 0;
+	while ((*dst++ = *src++))
+		i++;
+	return (dst - i);
 }

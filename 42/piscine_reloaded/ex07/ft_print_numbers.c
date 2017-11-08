@@ -6,17 +6,17 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 17:17:50 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/07 17:39:32 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/08 12:12:47 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(void);
+void	ft_putchar(char c);
 
 void	ft_print_numbers(void)
 {
 	char	c;
 
 	c = '0';
-	while (c != '9')
+	while (c != ('9' + 1))
 		ft_putchar(c++);
 }

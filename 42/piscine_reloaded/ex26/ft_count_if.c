@@ -6,16 +6,17 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 21:47:07 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/07 21:49:15 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/08 12:19:50 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_count_if(char **tab, int(*f)(char*))
+int	ft_count_if(char **tab, int (*f)(char*))
 {
-	int count = 0;
+	int count;
 
+	count = 0;
 	while (*tab)
-		if (f(*tab) == 1)
+		if (f(*tab++) == 1)
 			count++;
-	return count;
+	return (count);
 }

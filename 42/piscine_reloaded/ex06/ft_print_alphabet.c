@@ -6,21 +6,17 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:50:17 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/07 16:30:11 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/08 12:12:24 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_putchar(char c);
 
-void ft_print_alphabet(void)
+void	ft_print_alphabet(void)
 {
 	char	c;
-		
-	c = 'a';
-	while (c != 'z')
-		ft_putchar(c++);
-}
 
-int main(){
-	ft_print_alphabet();
+	c = 'a';
+	while (c != ('z' + 1))
+		ft_putchar(c++);
 }

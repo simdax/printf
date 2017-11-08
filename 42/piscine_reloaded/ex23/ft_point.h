@@ -6,11 +6,16 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 21:33:30 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/07 21:35:01 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/08 10:53:14 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef	struct s_point {
+#ifndef __FT_POINT_H
+# define __FT_POINT_H
+
+typedef struct	s_point {
 	int x;
 	int y;
-} t_point;
+}				t_point;
+
+#endif

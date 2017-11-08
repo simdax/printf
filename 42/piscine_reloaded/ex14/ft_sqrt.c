@@ -6,19 +6,21 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 19:42:37 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/07 20:08:53 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/08 11:44:50 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_sqrt(int nb)
 {
+	int i;
+
 	if (nb < 1)
 		return (0);
-	int i = 1;
-	while (i * i < nb)
+	i = 1;
+	while (i * i <= nb)
 	{
 		if (i * i == nb)
-			return (i);	
+			return (i);
 		i++;
 	}
 	return (0);

@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_file.c                                     :+:      :+:    :+:   */
+/*   strstr.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 21:49:37 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/08 13:08:56 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/08 20:59:21 by scornaz           #+#    #+#             */
+/*   Updated: 2017/11/08 21:28:05 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <fcntl.h>
+#include <string.h>
 
-int	main(int argc, char **argv)
+char	*strstr(const char *haystack, const char *needle)
 {
-	char	*buffer[64];
-	int		fd;
-	int		rd;
+	unsigned int	i;
 
-	if (argc < 2)
+	i = 0;
+	while (*haystack)
 	{
-		write(1, "File name missing.\n", 19);
-		return (1);
+		if (*haystack++ == needle[i])
+		{
+			i++;
+			if (needle[i] == '\0')
+				return
+		}
+		else
+			i = 0;
 	}
-	if (argc > 2)
-	{
-		write(1, "Too many arguments.\n", 20);
-		return (1);
-	}
-	fd = open(argv[1], O_RDONLY);
-	while ((rd = read(fd, buffer, 64)))
-	{
-		write(1, buffer, rd);
-	}
+	return (NULL);
 }

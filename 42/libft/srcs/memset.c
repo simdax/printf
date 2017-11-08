@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
+/*   memset.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   by: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 19:35:53 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/07 19:38:05 by scornaz          ###   ########.fr       */
+/*   created: 2017/11/08 17:18:48 by scornaz           #+#    #+#             */
+/*   Updated: 2017/11/08 20:10:56 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_iterative_factorial(int nb)
-{
-	int res = 1;
+#include <string.h>
 
-	if (nb == 0)
-		return 1;
-	if (nb < 0)
-		return 0;
-	while (nb > 0)
-		res *= nb;
-	return res;
+void	*ft_memset(void *b, int c, size_t len)
+{
+	int i;
+
+	i = 0;
+	while (len-- > 0)
+		*((unsigned char*)b + i++) = c;
+	return (b);
 }
