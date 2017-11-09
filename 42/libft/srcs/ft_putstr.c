@@ -1,16 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strncpy.c                                          :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 20:30:02 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/08 20:30:20 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/09 12:15:04 by scornaz           #+#    #+#             */
+/*   Updated: 2017/11/09 12:16:35 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*strncpy(char *dst, const char *src, size_t len)
+#include <unistd.h>
+
+void	ft_putstr(char const *s)
 {
-	
+	unsigned int	len;
+
+	len = 0;
+	while (s[len])
+		len++;
+	write(1, s, len);
 }

@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strncat.c                                          :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 20:38:21 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/08 20:38:24 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/09 12:05:47 by scornaz           #+#    #+#             */
+/*   Updated: 2017/11/09 13:33:29 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <stdlib.h>
 
-char	*ft_strncat(char* s1, const char* s2, size_t len)
+void	*ft_memalloc(size_t size)
 {
-	while (*s1++)
-		;
-	while (*s2 && len-- > 0)
-		*s1 = *s2++;
-	return (s1);
+	void	*ptr;
+	
+	ptr = malloc(size--);
+	while (size)
+		ptr[size--] = 0;
+	return (ptr);
 }

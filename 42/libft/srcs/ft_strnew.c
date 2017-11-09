@@ -1,12 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strstr.c                                           :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 20:59:21 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/08 20:59:23 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/09 13:35:18 by scornaz           #+#    #+#             */
+/*   Updated: 2017/11/09 13:38:39 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
+
+char	*ft_strnew(size_t len)
+{
+	char	*res;
+
+	res = (char*)malloc(sizeof(char) * len + 1);
+	if(!res)
+		return (NULL);
+	while (len)
+		res[len--] = '0';
+	return (res);
+}

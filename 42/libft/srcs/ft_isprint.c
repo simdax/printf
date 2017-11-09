@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlcat.c                                          :+:      :+:    :+:   */
+/*   isprint.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 20:40:45 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/08 20:41:54 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/09 11:28:56 by scornaz           #+#    #+#             */
+/*   Updated: 2017/11/09 11:41:04 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-
-char	*ft_strlcat(char *dst, const char *src, size_t len)
+int	ft_isprint(int c)
 {
-	unsigned int	i;
-
-	while (*s1++)
-		;
-	while (*s2)
-		*s1 = *s2++;
-	return (s1);
+	if (32 < c < 127)
+		return (1);
+	return (0);
 }

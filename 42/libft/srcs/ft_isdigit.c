@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strrchr.c                                          :+:      :+:    :+:   */
+/*   isdigit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 20:57:28 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/08 20:57:31 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/09 11:28:14 by scornaz           #+#    #+#             */
+/*   Updated: 2017/11/09 11:41:13 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*strrchr(const char *s, int c)
+int	ft_isdigit(int c)
 {
-	while (*s++)
-		;
-	while (*--s)
-		if (*s == c)
-			return ((char *)s);
-	return (NULL);
+	unsigned char	cc;
+
+	cc = (unsigned char)c;
+	if ('0' <= cc <= '9')
+		return (1);
+	return (0);
 }

@@ -1,14 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strcat.c                                           :+:      :+:    :+:   */
+/*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 20:32:27 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/08 20:32:40 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/09 13:33:57 by scornaz           #+#    #+#             */
+/*   Updated: 2017/11/09 13:35:06 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include <string.h>
 
-char	*strcat(char *restrict s1, const char *restrict s2);
+void	ft_memdel(void **ap)
+{
+	free(*ap);
+	*ap = NULL;
+}

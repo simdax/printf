@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memcmp.c                                           :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 19:58:28 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/08 20:07:01 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/09 12:13:43 by scornaz           #+#    #+#             */
+/*   Updated: 2017/11/09 12:14:49 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <unistd.h>
 
-int	ft_memcmp(void *s1, void *s2, size_t n)
+void	ft_putchar_fd(char c, int fd)
 {
-	unsigned char	*cpy_s1;
-	unsigned char	*cpy_s2;
-	
-	cpy_s1 = (unsigned char*)s2;
-	cpy_s2 = (unsigned char*)s1;
-	while (*cpy_s1 && *cpy_s1++ == *cpy_s2++)
-		;
-	return *cpy_s1 - *cpy_s2;
+	write(fd, &c, 1);
 }
