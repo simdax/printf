@@ -1,45 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsplit.c                                      :+:      :+:    :+:   */
+/*   strcmp.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 14:19:54 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/09 15:13:17 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/09 10:50:28 by scornaz           #+#    #+#             */
+/*   Updated: 2017/11/09 14:47:05 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
-#include <stdlib.h>
 
-static size_t	calc_size(const char *str, char c)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	size_t	res;
-
-	res = 0;
-	while (*str)
-		if (*str++ == c)
-			res++;
-	return (res);
-}
-
-char			**ft_strsplit(char const *s, char c)
-{
-	char	**res;
-
-	if ((res = (char**)malloc(sizeof(char*) * (calc_size(s, c) + 1))))
-		return (NULL);
-	while (*s)
+	while (*s1 && *s1 == *s2)
 	{
-		if (*s != c)
-		{
-			while (*s != c)
-				*(*res)++ = *s++;
-			res++;
-		}
-		s++;
+		s1++;
+		s2++;
 	}
-	*res = NULL;
-	return (res);
+	return (*s1 - *s2);
 }

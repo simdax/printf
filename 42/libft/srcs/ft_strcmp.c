@@ -6,18 +6,18 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 10:50:28 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/09 11:41:41 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/09 20:07:37 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-int	strcmp(const char *s1, const char *s2)
+int	ft_strcmp(const char *s1, const char *s2)
 {
 	while (*s1 && *s1 == *s2)
 	{
 		s1++;
 		s2++;
 	}
-	return (*s1 - *s2);
+	return (*(unsigned char*)s1 - *(unsigned char*)s2);
 }

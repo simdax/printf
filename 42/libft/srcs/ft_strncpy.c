@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 20:30:02 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/08 20:35:53 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/09 18:24:47 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
-	unsigned int	i;
+	char	*cpy;
 
-	i = 0;
-	while (i < len && (*dst++ = *src++))
-		i++;
-	*dst = '\0';
-	return (dst - i);
+	cpy = dst;
+	while (len-- && *src)
+		*cpy++ = *src++;
+	if (++len)
+		while (len--)
+			*cpy++ = '\0';
+	return (dst);
 }

@@ -6,13 +6,13 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 13:22:55 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/09 13:26:55 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/09 14:47:16 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	strequ(const char *s1, const char *s2)
+int	ft_strequ(const char *s1, const char *s2)
 {
 	while (*s1 && *s2 && *s1 == *s2)
 	{

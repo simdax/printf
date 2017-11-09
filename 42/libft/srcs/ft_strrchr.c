@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 20:57:28 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/08 20:58:20 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/09 20:16:55 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,17 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
+	size_t	i;
+	char	cc;
+
+	cc = (char)c;
+	i = 0;
 	while (*s++)
-		;
-	while (*--s)
-		if (*s == c)
+		i++;
+	while (*(--s) && i--)
+		if (*s == cc)
 			return ((char *)s);
+	if (cc == '\0')
+		return ((char*)s);
 	return (NULL);
 }

@@ -6,9 +6,11 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 13:49:17 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/09 13:49:58 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/09 15:11:42 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
@@ -16,12 +18,15 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	unsigned int	i;
 
 	i = 0;
-	while (res[i++])
+	while (s[i++])
 		;
 	res = (char *)malloc(sizeof(char) * (i + 1));
 	i = 0;
 	while (*s)
-		res[i++] = f(i, *s++);
+	{
+		res[i] = f(i, *s++);
+		i++;
+	}
 	res[i] = '\0';
 	return (res);
 }

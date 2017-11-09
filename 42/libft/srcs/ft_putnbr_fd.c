@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 12:19:30 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/09 12:19:45 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/09 15:07:39 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
+	char	value;
+
 	while (n > 10)
 	{
-		write(fd, '0' + n % 10, 1);
-		ft_putnbr(n / 10);
+		value = ('0' + n % 10);
+		write(fd, &value, 1);
+		ft_putnbr_fd(n / 10, fd);
 	}
 }

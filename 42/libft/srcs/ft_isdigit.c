@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 11:28:14 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/09 11:41:13 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/09 15:01:58 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ int	ft_isdigit(int c)
 	unsigned char	cc;
 
 	cc = (unsigned char)c;
-	if ('0' <= cc <= '9')
+	if (('0' <= cc && cc <= '9'))
 		return (1);
 	return (0);
 }

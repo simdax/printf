@@ -1,45 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsplit.c                                      :+:      :+:    :+:   */
+/*   strncpy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 14:19:54 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/09 15:13:17 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/08 20:30:02 by scornaz           #+#    #+#             */
+/*   Updated: 2017/11/08 20:35:53 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
-#include <stdlib.h>
 
-static size_t	calc_size(const char *str, char c)
+char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
-	size_t	res;
+	unsigned int	i;
 
-	res = 0;
-	while (*str)
-		if (*str++ == c)
-			res++;
-	return (res);
-}
-
-char			**ft_strsplit(char const *s, char c)
-{
-	char	**res;
-
-	if ((res = (char**)malloc(sizeof(char*) * (calc_size(s, c) + 1))))
-		return (NULL);
-	while (*s)
-	{
-		if (*s != c)
-		{
-			while (*s != c)
-				*(*res)++ = *s++;
-			res++;
-		}
-		s++;
-	}
-	*res = NULL;
-	return (res);
+	i = 0;
+	while (i < len && (*dst++ = *src++))
+		i++;
+	*dst = '\0';
+	return (dst - i);
 }

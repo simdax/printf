@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmap.c                                        :+:      :+:    :+:   */
+/*   strcat.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 13:44:45 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/09 15:09:58 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/08 20:32:27 by scornaz           #+#    #+#             */
+/*   Updated: 2017/11/09 17:39:35 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-char	*ft_strmap(char const *s, char (*f)(char))
+char	*ft_strcat(char *s1, const char *s2)
 {
-	char			*res;
-	unsigned int	i;
+	char	*ss1;
 
-	i = 0;
-	while (s[i++])
+	ss1 = s1;
+	while (*ss1++)
 		;
-	res = (char *)malloc(sizeof(char) * (i + 1));
-	i = 0;
-	while (*s)
-		res[i++] = f(*s++);
-	res[i] = '\0';
-	return (res);
+	while (*s2)
+		*ss1++ = *s2++;
+	return (s1);
 }
