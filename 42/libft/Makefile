@@ -1,2 +1,2 @@
 all:
-	cc main.c -g srcs/ft_atoi.c && lldb a.out
+	cc main.c -g srcs/libft.a && lldb a.out

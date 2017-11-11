@@ -4,7 +4,7 @@ RULES = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME):
-	gcc -c $(RULES) *.c
+	gcc -I ./ -c $(RULES) *.c
 	ar rc $(NAME) *.o 
 	ranlib $(NAME)
 

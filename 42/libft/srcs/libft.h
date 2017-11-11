@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 14:42:22 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/11 13:56:41 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/11 19:38:54 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,7 @@
 
 # include <string.h>
 # include <stdlib.h>
-//# include "./struct.h"
-
-typedef struct		s_list
-{
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-}					t_list;
+# include "struct.h"
 
 t_list	*ft_lstnew(void const *content, size_t content_size);
 void	ft_lstdelone(t_list **alst, void (*del)(void*, size_t));

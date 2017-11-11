@@ -6,26 +6,36 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 12:06:55 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/09 15:02:35 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/11 19:39:00 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
-	char	*res;
-	int		dizaine;
+	char		*res;
+	size_t		len;
+	long		copy;
 
-	res = (char*)malloc(100);
-	res = res + 100;
-	dizaine = 1;
-	while (n / dizaine > 0)
+	len = 1;
+	if (!(copy = n))
+		return ("0");
+	while ((n /= 10))
+		len++;
+	if (!(res = (char*)malloc((len += copy < 0) + 1)))
+		return (NULL);
+	if (copy < 0)
 	{
-		*res = '0' + n % dizaine;
-		dizaine *= 10;
+		copy = -copy;
+		*res = '-';
 	}
-	if (n < 0)
-		*(--res) = '-';
-	return (res);
+	res += len;
+	*res-- = '\0';
+	while (copy)
+	{
+		*res-- = '0' + copy % 10;
+		copy /= 10;
+	}
+	return (res + (*res != '-'));
 }

@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 12:17:47 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/10 15:33:30 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/11 19:39:04 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_putnbr(int n)
 		write(1, "-", 1);
 		cast = -cast;
 	}
-	if (cast > 10)
+	if (cast > 9)
 		ft_putnbr(cast / 10);
 	value = ('0' + cast % 10);
 	write(1, &value, 1);

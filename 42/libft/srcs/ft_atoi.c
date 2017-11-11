@@ -6,12 +6,12 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 13:28:44 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/11 14:18:17 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/11 14:39:09 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define MAX_INT  2147483647
-#define MIN_INT  -2147483648
+#define MAX_INT	2147483647
+#define MIN_INT	2147483648
 
 static int	ft_isnum(char c)
 {
@@ -31,22 +31,14 @@ int			ft_atoi(const char *str)
 
 	res = 0;
 	neg = 0;
-	while (!ft_isnum(*str))
-	{
-		if (*str == '+' || (neg = (*str == '-')))
-		{
-			str++;
-			break ;
-		}
-		else if (ft_issep(*str))
-			str++;
-		else
-			return (0);
-	}
+	while (ft_issep(*str))
+		str++;
+	if (*str == '+' || (neg = (*str == '-')))
+		str++;
 	while (*str && ft_isnum(*str))
 	{
 		res = (res * 10) + (*(str++) - '0');
-		if (res > 2147483647 && (neg && -res < -2147483648))
+		if (neg ? (res > MIN_INT) : (res > MAX_INT))
 			return (0);
 	}
 	return ((int)(neg ? -res : res));
