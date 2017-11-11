@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strncpy.c                                          :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 20:30:02 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/08 20:35:53 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/10 21:26:10 by scornaz           #+#    #+#             */
+/*   Updated: 2017/11/11 12:55:14 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-char	*ft_strncpy(char *dst, const char *src, size_t len)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	unsigned int	i;
+	t_list	*new_node;
 
-	i = 0;
-	while (i < len && (*dst++ = *src++))
-		i++;
-	*dst = '\0';
-	return (dst - i);
+	if (lst)
+	{
+		new_node = f(lst);
+		if (lst->next)
+			new_node->next = ft_lstmap(lst->next, f);
+		return (new_node);
+	}
+	return (NULL);
 }

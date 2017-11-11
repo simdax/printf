@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strnstr.c                                          :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 10:45:30 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/09 11:41:55 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/11 13:31:27 by scornaz           #+#    #+#             */
+/*   Updated: 2017/11/11 13:31:48 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
-#include <unistd.h>
+#include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	unsigned int	i;
-	unsigned int	j;
+	t_list	*new;
+	void	*content_cpy;
+	size_t	size;
 
-	i = 0;
-	j = 0;
-	while (haystack[i++])
-	{
-		while (haystack[j + i] == needle[j])
-			if (j >= len || !needle[++j])
-				return ((char*)haystack + i);
-		i += j;
-		j = 0;
-	}
-	return (NULL);
+	if (!(new = (t_list*)malloc(sizeof(t_list))))
+		return (NULL);
+	content_cpy = (void*)content;
+	if (!content)
+		size = 0;
+	else
+		size = content_size;
+	new->content = content_cpy;
+	new->content_size = size;
+	new->next = NULL;
+	return (new);
 }

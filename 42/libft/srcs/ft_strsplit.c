@@ -6,12 +6,13 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 14:19:54 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/09 15:13:17 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/11 13:41:38 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 static size_t	calc_size(const char *str, char c)
 {
@@ -19,16 +20,21 @@ static size_t	calc_size(const char *str, char c)
 
 	res = 0;
 	while (*str)
-		if (*str++ == c)
+	{
+		if (!(*str != c && (!*(str + 1) || *(str + 1) == c)))
 			res++;
+		str++;
+	}
 	return (res);
 }
 
 char			**ft_strsplit(char const *s, char c)
 {
 	char	**res;
+	size_t	size;
 
-	if ((res = (char**)malloc(sizeof(char*) * (calc_size(s, c) + 1))))
+	size = (calc_size(s, c));
+	if (!(res = (char**)malloc(sizeof(char*) * size + 1)))
 		return (NULL);
 	while (*s)
 	{
@@ -36,10 +42,11 @@ char			**ft_strsplit(char const *s, char c)
 		{
 			while (*s != c)
 				*(*res)++ = *s++;
+			*(++(*res)) = '\0';
 			res++;
 		}
 		s++;
 	}
 	*res = NULL;
-	return (res);
+	return (res - size);
 }

@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strchr.c                                           :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 20:50:12 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/09 16:07:06 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/10 19:33:42 by scornaz           #+#    #+#             */
+/*   Updated: 2017/11/10 20:11:39 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strchr(const char *s, int c)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	while (*s)
+	t_list	*new_list;
+	t_list	*tmp;
+	unsigned int	count;
+
+	while (lst)
 	{
-		if (*s == c)
-			return ((char *)s);
-		s++;
+		tmp = f(lst);
+		if(!(new_el = ft_lstnew(tmp->content, tmp->content_size)))
+			return (NULL);
+		new_list = new_el;
+		next = new_el;
+		next = next->next;
+		lst = lst->next;		
 	}
-	return (NULL);
+	return (new_list);
 }

@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 13:22:55 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/09 14:47:16 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/10 15:00:56 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	ft_strequ(const char *s1, const char *s2)
 	{
 		s1++;
 		s2++;
-		if (*s1 == *s2 == '\0')
-			return (1);
 	}
-	return (0);
+	if (*s1 - *s2)
+		return (0);
+	return (1);
 }

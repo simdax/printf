@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strncat.c                                          :+:      :+:    :+:   */
+/*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 20:38:21 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/09 17:40:55 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/11 13:35:16 by scornaz           #+#    #+#             */
+/*   Updated: 2017/11/11 13:54:24 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef STRUCT_H
+# define STRUCT_H
+
 #include <string.h>
 
-char	*ft_strncat(char *s1, const char *s2, size_t len)
+typedef struct		s_list
 {
-	char	*ss1;
+	void			*content;
+	size_t			content_size;
+	struct s_list	*next;
+}					t_list;
 
-	ss1 = s1;
-	while (*ss1++)
-		;
-	while (*s2 && len-- > 0)
-		*ss1++ = *s2++;
-	return (s1);
-}
+#endif

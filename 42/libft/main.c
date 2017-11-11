@@ -1,23 +1,34 @@
-#include "include.h"
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/28 12:34:58 by jtoty             #+#    #+#             */
+/*   Updated: 2017/11/11 14:11:36 by scornaz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int main(int argc, char **argv)
+#include <stdlib.h>
+#include <unistd.h>
+#include "srcs/libft.h"
+
+void	ft_print_result(char const **s)
 {
-	void *a = malloc(1000);
-	void *b = malloc(1000);
-	void *c = malloc(1000);
-//	printf("%p\n", ft_memset(a, 'g', 10));
+	while (*s)
+		printf("%s", *s++);
+}
 
-/* printf("%p\n", ft_memset(a, 'g', 10)); */
-/* ft_bzero(a, 10); */
-/* printf("%p\n", a); */
+int		main(int argc, const char *argv[])
+{
 
-/* printf("%p\n", ft_memcpy(b, c, 10)); */
-/* printf("%p\n", ft_memccpy(b, c, 'c', 10)); */
+	printf("%d", ft_atoi("-2147483648"));
 
-	printf("%s\n", strstr("couarf", "arf"));
-	printf("%s\n", strstr("cobobirf", "bobi"));
-	printf("%s\n", strstr("couarfre", "fr"));
-	printf("%s\n", strstr("couafa", "af"));
-
+	//ft_print_result(ft_strsplit("          ", ' '));
+	//ft_print_result(ft_strsplit("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse", ' '));
+	//ft_print_result(ft_strsplit("   lorem   ipsum dolor     sit amet, consectetur   adipiscing elit. Sed non risus. Suspendisse   ", ' '));
+	//ft_print_result(ft_strsplit("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.", 'i'));
+	//ft_print_result(ft_strsplit("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.", 'z'));
+	return (0);
 }

@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlcat.c                                          :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 20:40:45 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/09 17:45:38 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/10 21:21:59 by scornaz           #+#    #+#             */
+/*   Updated: 2017/11/10 21:46:11 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t len)
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	unsigned int	i;
-	unsigned int	j;
-
-	i = 0;
-	j = 0;
-	while (dst[j++])
-		;
-	while (src[i++])
-		;
-	while (*src && len-- > 1)
-		*dst = *src++;
-	*dst = '\0';
-	return (i + j);
+	while (lst)
+	{
+		f(lst);
+		lst = lst->next;
+	}
 }

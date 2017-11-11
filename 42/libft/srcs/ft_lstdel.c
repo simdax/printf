@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strcat.c                                           :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 20:32:27 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/09 17:39:35 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/10 17:26:40 by scornaz           #+#    #+#             */
+/*   Updated: 2017/11/11 12:42:02 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcat(char *s1, const char *s2)
-{
-	char	*ss1;
+#include "libft.h"
 
-	ss1 = s1;
-	while (*ss1++)
-		;
-	while (*s2)
-		*ss1++ = *s2++;
-	return (s1);
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
+{
+	t_list	*head;
+
+	head = *alst;
+	if (head && head->next)
+		ft_lstdel(&(head->next), del);
+	ft_lstdelone(alst, del);
 }
