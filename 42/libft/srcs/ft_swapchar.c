@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 19:25:28 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/10 21:43:07 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/13 13:43:35 by scornaz           #+#    #+#             */
+/*   Updated: 2017/11/13 15:13:37 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_lstiter(t_list *lst, void (*f)(t_list *elem))
+char		*ft_swapchar(char *mot, int i, int j)
 {
-	t_list	*next;
-	next = lst->next;
-	while (next)
-	{
-		f(next);
-		next = lst->next;
-	}
+	char	*copy;
+
+	copy = ft_strdup(mot);
+	copy[i] = mot[j];
+	copy[j] = mot[i];
+	return (copy);
 }

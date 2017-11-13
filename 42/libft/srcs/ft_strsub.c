@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 14:03:10 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/10 15:24:25 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/12 19:42:35 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	size_t	cpy;
 
 	cpy = len;
-	if (!(res = (char*)malloc(sizeof(char) * (len + 1))))
+	if (!s || !(res = (char*)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
 	s += start;
 	while (cpy--)

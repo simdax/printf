@@ -6,16 +6,13 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 11:29:08 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/09 15:14:34 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/12 14:37:11 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_toupper(int c)
 {
-	unsigned char	cc;
-
-	cc = (unsigned char)c;
-	if ('a' <= cc && cc <= 'z')
-		return (cc - 32);
+	if ('a' <= c && c <= 'z')
+		return (c - 32);
 	return (c);
 }

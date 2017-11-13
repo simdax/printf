@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 12:05:47 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/11 19:15:45 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/12 18:03:57 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ void	*ft_memalloc(size_t size)
 {
 	void	*ptr;
 
-	ptr = malloc(size);
+	if (!(ptr = malloc(size)))
+		return (NULL);
 	while (size)
 		((char*)ptr)[size--] = 0;
+	((char*)ptr)[size] = 0;
 	return (ptr);
 }

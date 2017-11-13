@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isalnum.c                                          :+:      :+:    :+:   */
+/*   ft_print_2d.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 11:28:36 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/12 14:18:16 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/13 13:40:40 by scornaz           #+#    #+#             */
+/*   Updated: 2017/11/13 14:15:58 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(int c)
+void	ft_print_2d(char **array)
 {
-	return (ft_isalpha(c) || ft_isdigit(c));
+	if (array)
+		while (*array)
+		{
+			ft_putstr(*array++);
+			ft_putchar('\n');
+		}
 }

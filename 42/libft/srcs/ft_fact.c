@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isalnum.c                                          :+:      :+:    :+:   */
+/*   ft_fact.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 11:28:36 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/12 14:18:16 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/13 13:41:55 by scornaz           #+#    #+#             */
+/*   Updated: 2017/11/13 13:42:06 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_isalnum(int c)
+unsigned int	ft_fact(unsigned int size)
 {
-	return (ft_isalpha(c) || ft_isdigit(c));
+	if (size > 12)
+		return (0);
+	else if (size > 1)
+		return (size * ft_fact(size - 1));
+	return (1);
 }

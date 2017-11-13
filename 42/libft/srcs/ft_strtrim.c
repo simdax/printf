@@ -6,12 +6,11 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 14:08:37 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/10 16:09:28 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/13 15:16:44 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <string.h>
+#include "libft.h"
 
 static int	is_blank(char c)
 {
@@ -20,12 +19,13 @@ static int	is_blank(char c)
 
 char		*ft_strtrim(char const *s)
 {
-	char			*copy;
-	unsigned int	start;
-	unsigned int	end;
-	unsigned int	i;
+	char	*copy;
+	int		start;
+	int		end;
+	int		i;
 
-	copy = (char*)s;
+	if (!(copy = (char*)s))
+		return (NULL);
 	start = -1;
 	end = -1;
 	while (is_blank(s[++start]))
@@ -33,10 +33,10 @@ char		*ft_strtrim(char const *s)
 	while (copy[++end])
 		;
 	if (start == end)
-		return ("");
+		return (ft_strdup(""));
 	while (is_blank(copy[--end]))
 		;
-	if (!(copy = (char*)malloc(sizeof(char) * (end - start + 1))))
+	if (!(copy = (char*)malloc(sizeof(char) * (end - start))))
 		return (NULL);
 	s += start;
 	i = 0;

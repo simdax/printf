@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_rotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 19:33:42 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/10 20:11:39 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/13 13:49:50 by scornaz           #+#    #+#             */
+/*   Updated: 2017/11/13 15:16:06 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+static int	modulo(int a, int b)
 {
-	t_list	*new_list;
-	t_list	*tmp;
-	unsigned int	count;
+	int r;
 
-	while (lst)
+	r = a % b;
+	return (r < 0 ? r + b : r);
+}
+
+char		*ft_rotate(const char *s, int rotation)
+{
+	char	*res;
+	size_t	size;
+	size_t	i;
+
+	i = 0;
+	size = ft_strlen(s);
+	res = ft_strnew(size);
+	if (!s)
+		return (NULL);
+	while (i < size)
 	{
-		tmp = f(lst);
-		if(!(new_el = ft_lstnew(tmp->content, tmp->content_size)))
-			return (NULL);
-		new_list = new_el;
-		next = new_el;
-		next = next->next;
-		lst = lst->next;		
+		res[i] = s[modulo(i + rotation, size)];
+		i++;
 	}
-	return (new_list);
+	return (res);
 }

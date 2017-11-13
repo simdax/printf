@@ -6,16 +6,13 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 11:28:00 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/09 21:30:16 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/12 14:20:28 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isalpha(int c)
 {
-	unsigned char	cc;
-
-	cc = (unsigned char)c;
-	if (('A' <= cc && cc <= 'Z') || ('a' <= cc && cc <= 'z'))
+	if (('A' <= c && c <= 'Z') || ('a' <= c && c <= 'z'))
 		return (1);
 	return (0);
 }

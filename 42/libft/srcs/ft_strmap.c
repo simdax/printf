@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 13:44:45 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/09 15:09:58 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/12 19:12:38 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,13 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	char			*res;
 	unsigned int	i;
 
+	if (!s)
+		return (NULL);
 	i = 0;
 	while (s[i++])
 		;
-	res = (char *)malloc(sizeof(char) * (i + 1));
+	if (!(res = (char *)malloc(sizeof(char) * i)))
+		return (NULL);
 	i = 0;
 	while (*s)
 		res[i++] = f(*s++);

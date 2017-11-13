@@ -6,12 +6,13 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 13:41:08 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/09 13:42:04 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/12 19:19:45 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_striter(char *s, void (*f)(char *))
 {
-	while (*s)
-		f(s++);
+	if (f && s && *s)
+		while (*s)
+			f((char*)s++);
 }

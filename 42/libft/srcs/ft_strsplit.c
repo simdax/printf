@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 14:19:54 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/11 18:53:04 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/12 19:41:42 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,10 @@ static char		*copy(const char *s, char c)
 	char	*cpy;
 
 	i = 0;
-	while (s[i] != c)
+	while (s[i] && s[i] != c)
 		i++;
-	cpy = (char*)malloc(sizeof(char) * i);
+	if (!(cpy = (char*)malloc(sizeof(char) * i)))
+		return (NULL);
 	cpy[i] = '\0';
 	while (--i >= 0)
 		cpy[i] = s[i];
@@ -46,18 +47,21 @@ char			**ft_strsplit(char const *s, char c)
 	char	**res;
 	size_t	size;
 
+	if (!s)
+		return (NULL);
 	size = (calc_size((char*)s, c));
 	if (!(res = (char**)malloc(sizeof(char*) * (size + 1))))
 		return (NULL);
 	while (*s)
 	{
-		if (*s != c)
+		if (*s && *s != c)
 		{
 			*res++ = copy(s, c);
 			while (*s && *s != c)
 				s++;
 		}
-		s++;
+		else
+			s++;
 	}
 	*res = NULL;
 	return (res - size);
