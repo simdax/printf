@@ -6,19 +6,24 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 10:53:07 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/15 13:40:09 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/15 16:29:11 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define BUF_SIZE	32
+#ifndef GET_NEXT_LINE_H
+#define GET_NEXT_LINE_H
 
-#include <stdlib.h>
-#include "libft.h"
-#include <fcntl.h>
-#include <unistd.h>
+# define BUFF_SIZE	32
+
+# include <stdlib.h>
+# include "libft.h"
+# include <fcntl.h>
+# include <unistd.h>
 
 typedef struct	s_buf
 {
 	size_t	size;
 	char	*content;
 }				t_buf;
+
+#endif

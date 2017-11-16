@@ -1,7 +1,7 @@
 #!/bin/bash
 
 makefile=`cat ~/42/Makefile`
-files=`ls *.c`
+files=`ls *.c | tr '\n' ' '`
 dir=`basename $(pwd)`
 
 makefile="${makefile/ofiles/$files}"

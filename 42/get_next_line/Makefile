@@ -1,9 +1,9 @@
 NAME = get_next_line
 
-FLAGS = -Wall -Werror -Wextra
-FILES = get_next_line.c
+FLAGS = -g -Wall -Werror -Wextra
+FILES = get_next_line.c 
 OBJS = $(FILES:%.c=%.o)
-INCLUDES = ~/42/42/libft/
+INCLUDES = ~/42/srcs
 CC = gcc
 
 all: $(NAME)
@@ -22,4 +22,3 @@ fclean: clean
 
 re: fclean
 	make all
-	

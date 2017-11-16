@@ -6,19 +6,16 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 10:40:23 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/15 14:03:49 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/15 19:18:19 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-//static int	count;
-//count = 0;
-
-char	*cat(char *s1, char *s2)
+char		*cat(char *s1, char *s2)
 {
 	char	*res;
-	
+
 	res = (char*)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	while (*s1)
 		*res++ = *s1++;
@@ -35,43 +32,72 @@ char	*cat(char *s1, char *s2)
 	return (res);
 }
 
-void	replace_char (char **str, char c1, char c2)
+static int	replace_char(char str[BUFF_SIZE], char c1, char c2)
 {
 	char	*s;
+	size_t	i;
 
-	s = *str;
+	s = str;
+	i = 0;
 	while (*s)
+	{
 		if (*s == c1)
 		{
 			*s = c2;
-			break ;
+			return (1);
 		}
+		i++;
+		s++;
+	}
+	return (0);
 }
 
-t_buf	read_buffer(int fd)
+void		read_buffer(int fd)
 {
-	char	*res;
-	char	tmp[BUF_SIZE];
-	t_buf	buf;
+	char			*res;
+	static char		tmp[BUFF_SIZE] = "";
 
-	res = ft_strdup("");
-	while (read(fd, tmp, O_RDONLY))
-		res = ft_strcat(res, tmp);
-	buf.content = res;
-	buf.size = ft_strlen(res);
-	return (buf);
+	res = ft_strcat(res, tmp);
+	if ((replace_char(tmp, '\n', '\0')))
+	{
+		ft_memmove(tmp, tmp + ft_strlen(res) + 1, ft_strlen(res) + 1);
+		write(1, res, ft_strlen(res));
+		return ;
+	}
+	else 
+	{
+		while (read(fd, tmp, BUFF_SIZE))
+		{
+			if (replace_char(tmp, '\n', '\0'))
+			{
+				res = ft_strcat(res, tmp);
+				ft_memmove(tmp, tmp + ft_strlen(res) + 1, ft_strlen(res) + 1);
+				break ;
+			}
+			res = ft_strcat(res, tmp);
+		}
+	}
+	if (ft_strlen(res))
+		write(1, res, ft_strlen(res));
 }
 
-int main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
-	int 	fd;
-	t_buf	print;
+	int			fd;
 
 	if (argc != 2)
 		return (0);
 	if ((fd = open(argv[1], O_RDONLY)))
 	{
-		print = read_buffer(fd);
-		write(1, print.content, print.size);
+		read_buffer(fd);
+		ft_putchar('\n');
+		read_buffer(fd);
+		ft_putchar('\n');
+		read_buffer(fd);
+		ft_putchar('\n');
+		read_buffer(fd);
+		ft_putchar('\n');
+		read_buffer(fd);
+		ft_putchar('\n');
 	}
 }
