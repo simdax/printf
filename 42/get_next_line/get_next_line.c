@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 10:40:23 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/15 19:18:19 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/16 11:55:31 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,53 +32,59 @@ char		*cat(char *s1, char *s2)
 	return (res);
 }
 
-static int	replace_char(char str[BUFF_SIZE], char c1, char c2)
+static int	replace_char(char s[BUFF_SIZE], char c1, char c2)
 {
-	char	*s;
 	size_t	i;
 
-	s = str;
 	i = 0;
 	while (*s)
 	{
 		if (*s == c1)
 		{
 			*s = c2;
-			return (1);
+			return (i + 1);
 		}
 		i++;
 		s++;
 	}
-	return (0);
+	return (-1);
 }
 
 void		read_buffer(int fd)
 {
 	char			*res;
+	int				i;
+	size_t			res_len;
 	static char		tmp[BUFF_SIZE] = "";
 
-	res = ft_strcat(res, tmp);
-	if ((replace_char(tmp, '\n', '\0')))
+	i = 0;
+	if ((i = replace_char(tmp, '\n', '\0')) != -1)
 	{
-		ft_memmove(tmp, tmp + ft_strlen(res) + 1, ft_strlen(res) + 1);
-		write(1, res, ft_strlen(res));
+		ft_putstr(tmp);
+		ft_bzero(tmp, i);
+		ft_memmove(tmp, tmp + i, BUFF_SIZE - i);
 		return ;
 	}
 	else 
 	{
+		res = ft_strcat(ft_strdup(""), tmp);
 		while (read(fd, tmp, BUFF_SIZE))
 		{
-			if (replace_char(tmp, '\n', '\0'))
-			{
-				res = ft_strcat(res, tmp);
-				ft_memmove(tmp, tmp + ft_strlen(res) + 1, ft_strlen(res) + 1);
-				break ;
-			}
 			res = ft_strcat(res, tmp);
+			res_len = ft_strlen(res);
+			if ((i = replace_char(res, '\n', '\0')) != -1)
+			{
+				ft_putstr(res);
+				ft_bzero(res, i);
+				ft_memmove(res, res + i, res_len - i);
+				ft_strcpy(tmp, res);
+				free(res);
+				res = NULL;
+				return ;
+			}
 		}
-	}
-	if (ft_strlen(res))
 		write(1, res, ft_strlen(res));
+	}
 }
 
 int			main(int argc, char **argv)
@@ -89,15 +95,10 @@ int			main(int argc, char **argv)
 		return (0);
 	if ((fd = open(argv[1], O_RDONLY)))
 	{
-		read_buffer(fd);
+		int n = 15;
+		while (n--)
+	{read_buffer(fd);
 		ft_putchar('\n');
-		read_buffer(fd);
-		ft_putchar('\n');
-		read_buffer(fd);
-		ft_putchar('\n');
-		read_buffer(fd);
-		ft_putchar('\n');
-		read_buffer(fd);
-		ft_putchar('\n');
+	}
 	}
 }
