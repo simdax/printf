@@ -7,7 +7,7 @@
 
 #  ╓─────[ Target ]─  
 #  ╙───────────────────── ─ ─ 
-NAME = _dir_
+NAME = printf
 
 #  ╓─────[ Compiler ]─  
 #  ╙───────────────────── ─ ─ 
@@ -18,8 +18,8 @@ LDFLAGS = -lft
 #  ╓─────[ Functions ]─  
 #  ╙───────────────────── ─ ─
 
-SRC = _files_
-INC = _includes_
+SRC = main.c mm.c 
+INC = ~/42/srcs/
 OBJ = $(SRC:.c=.o)
 
 vpath %.c srcs/

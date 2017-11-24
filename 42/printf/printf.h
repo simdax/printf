@@ -1,29 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   printf.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/15 10:53:07 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/24 12:35:15 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/24 14:29:39 by scornaz           #+#    #+#             */
+/*   Updated: 2017/11/24 14:54:50 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-#define GET_NEXT_LINE_H
+#include <stdarg.h>
 
-# define BUFF_SIZE	1000000
+int ft_printf(const char* format, ...);
 
-# include <stdlib.h>
-# include "libft.h"
-# include <fcntl.h>
-# include <unistd.h>
-
-typedef struct	s_buf
-{
-	size_t	size;
-	char	*content;
-}				t_buf;
-
-#endif

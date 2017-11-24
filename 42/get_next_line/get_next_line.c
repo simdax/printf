@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 10:40:23 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/24 12:29:58 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/24 14:13:23 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,22 +60,22 @@ int			try_read(char **s)
 	return (0);
 }
 
-int			read_buffer(int fd)
+int			get_next_line(int fd)
 {
 	int				i;
 	char			buf[BUFF_SIZE];
-	static char		*tmp = NULL;
+	static char		*tmp[64];
 
 	i = 0;
-	if (tmp && try_read(&tmp))
+	if (tmp[fd] && try_read(&tmp[fd]))
 		return (1);
 	else 
 	{
 		while ((i = read(fd, buf, BUFF_SIZE)))
 		{
 			buf[i] = '\0';
-			tmp = realloc_cat(tmp, buf);
-			if (try_read(&tmp))
+			tmp[fd] = realloc_cat(tmp[fd], buf);
+			if (try_read(&tmp[fd]))
 				return(1);
 		}
 		return (0);
@@ -86,11 +86,11 @@ int			main(int argc, char **argv)
 {
 	int			fd;
 
-	if (argc != 2)
-		return (0);
-	if ((fd = open(argv[1], O_RDONLY)))
+	if (argc == 1)
+		get_next_line(0);
+	else if ((fd = open(argv[1], O_RDONLY)))
 	{
-		while (read_buffer(fd))
+		while (get_next_line(fd))
 		{
 			ft_putchar('\n');
 		}
