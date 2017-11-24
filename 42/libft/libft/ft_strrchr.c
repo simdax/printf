@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 20:57:28 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/16 18:28:49 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/16 18:49:58 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ char	*ft_strrchr(const char *s, int c)
 	s += i;
 	while (i >= 0)
 	{
-		--s;
 		if (*s == c)
 			return ((char *)s);
 		--i;
+		--s;
 	}
 	return (NULL);
 }

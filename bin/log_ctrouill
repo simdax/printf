@@ -1,0 +1,3 @@
+#!/bin/zsh
+cd 	~/.emacs.d
+git log --graph --abbrev-commit --all

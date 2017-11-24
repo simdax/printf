@@ -1,9 +1,11 @@
 #!/bin/bash
 
 makefile=`cat ~/42/Makefile`
-files=`ls *.c | tr '\n' ' '`
 dir=`basename $(pwd)`
-
-makefile="${makefile/ofiles/$files}"
-
-echo "${makefile/odir/$dir}" 
+srcs=./$1
+includes=${2:-"~/42/srcs/"}
+files=`cd $srcs ; ls *.c | tr '\n' ' '`
+makefile="${makefile/_files_/$files}"
+makefile="${makefile/_srcs_/$srcs}"
+makefile="${makefile/_includes_/$includes}"
+echo "${makefile/_dir_/$dir}" 
