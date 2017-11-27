@@ -8,18 +8,18 @@ void	itoa_base(unsigned int i, size_t base)
 	ft_putchar("0123456789abcdef"[i % base]);
 }
 
-
-
+void	print(t_num *num)
+{
+	itoa_base(*(int*)num->value, 10);
+}
 
 int		main(void)
 {
-//	ft_printf("%5", "fsdfsdf");
-	//double	a = 1000;
-	//printf("%e", a);
-//	int		b = 1000;
+	t_num	a;
+	int		value = 50;
 
-	itoa_base(1564, 10);
-	
-
+	a.self = &a;
+	a.value = &value;
+	print(&a);
 }
 
