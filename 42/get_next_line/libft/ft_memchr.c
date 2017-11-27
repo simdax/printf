@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strcpy.c                                           :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nschwarz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 20:24:56 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/25 15:30:55 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/13 12:03:09 by nschwarz          #+#    #+#             */
+/*   Updated: 2017/11/13 15:30:10 by nschwarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dst, const char *src)
-{
-	unsigned int	i;
+#include "libft.h"
 
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	unsigned char	tofind;
+	unsigned char	*ptr;
+	int				i;
+
+	tofind = (unsigned char)c;
+	ptr = (unsigned char *)s;
 	i = 0;
-	while (src[i])
+	while (n--)
 	{
-		dst[i] = src[i];
+		if (ptr[i] == tofind)
+			return (ptr + i);
 		i++;
 	}
-	dst[i] = '\0';
-	return (dst);
+	return (NULL);
 }

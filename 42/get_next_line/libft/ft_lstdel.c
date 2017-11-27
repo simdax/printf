@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strcpy.c                                           :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nschwarz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 20:24:56 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/25 15:30:55 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/14 14:39:36 by nschwarz          #+#    #+#             */
+/*   Updated: 2017/11/14 14:42:28 by nschwarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dst, const char *src)
-{
-	unsigned int	i;
+#include "libft.h"
 
-	i = 0;
-	while (src[i])
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
+{
+	t_list	*next;
+
+	while (*alst != NULL)
 	{
-		dst[i] = src[i];
-		i++;
+		next = (*alst)->next;
+		ft_lstdelone(alst, del);
+		*alst = next;
 	}
-	dst[i] = '\0';
-	return (dst);
 }

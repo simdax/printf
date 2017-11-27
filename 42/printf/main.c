@@ -1,25 +1,28 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/24 14:27:21 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/24 15:04:06 by scornaz          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "printf.h"
-#include "libft.h"
 
-int ft_printf(const char* format, ...)
+void	print_arg(t_num *num)
 {
-	va_list ap;
-	va_start(ap, format);
-	i=2;
-	while (i--)
-		ft_putstr(va_arg(ap, char*));
-	va_end(ap);
-	return (0);
+	print_value(num->value, num->type, &num->count);
 }
+
+void	create_arg(void *value, char type, int padding, int precision, int alternate, int sign)
+{
+	t_num	a;
+	
+	a.value = value;
+	a.count = 0;
+	a.type = type;
+	a.padding = padding;
+	a.precision = precision;
+	a.alternate = alternate;
+	a.sign = sign;
+	print_arg(&a);
+}
+
+int		main(void)
+{
+	int a = 50;
+
+	create_arg(&a, 'c', 5, 5, 1, 1, 0);
+}
+

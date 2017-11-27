@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strcpy.c                                           :+:      :+:    :+:   */
+/*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nschwarz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 20:24:56 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/25 15:30:55 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/13 17:14:13 by nschwarz          #+#    #+#             */
+/*   Updated: 2017/11/15 11:29:34 by nschwarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dst, const char *src)
+void	ft_striter(char *s, void (*f)(char *))
 {
-	unsigned int	i;
-
-	i = 0;
-	while (src[i])
+	if (!s || !f)
+		return ;
+	while (*s != '\0')
 	{
-		dst[i] = src[i];
-		i++;
+		f(s);
+		s++;
 	}
-	dst[i] = '\0';
-	return (dst);
 }

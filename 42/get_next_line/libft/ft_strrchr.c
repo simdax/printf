@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strcpy.c                                           :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nschwarz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 20:24:56 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/25 15:30:55 by scornaz          ###   ########.fr       */
+/*   Created: 2017/11/13 15:36:48 by nschwarz          #+#    #+#             */
+/*   Updated: 2017/11/14 13:19:09 by nschwarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dst, const char *src)
-{
-	unsigned int	i;
+#include "libft.h"
+#include <string.h>
 
-	i = 0;
-	while (src[i])
+char	*ft_strrchr(const char *s, int c)
+{
+	char	*str;
+
+	str = (char *)s + ft_strlen(s);
+	while (*str != c)
 	{
-		dst[i] = src[i];
-		i++;
+		if (str == s)
+			return (NULL);
+		str--;
 	}
-	dst[i] = '\0';
-	return (dst);
+	return (str);
 }

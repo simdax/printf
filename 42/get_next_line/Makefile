@@ -1,24 +1,52 @@
+#  ╓─────[ Target ]─  
+#  ╙───────────────────── ─ ─ 
 NAME = get_next_line
 
-FLAGS = -g -Wall -Werror -Wextra
-FILES = get_next_line.c 
-OBJS = $(FILES:%.c=%.o)
-INCLUDES = ~/42/srcs
+#  ╓─────[ Compiler ]─  
+#  ╙───────────────────── ─ ─ 
 CC = gcc
+CCFLAGS = -Wall -Werror -Wextra -g
+LDFLAGS = -lft
 
+#  ╓─────[ Functions ]─  
+#  ╙───────────────────── ─ ─
+
+SRC = get_next_line.c main.c
+INC = libft
+LIBFT = libft
+OBJ = $(SRC:.c=.o)
+
+vpath %.c srcs/
+
+#  ╓─────[ Procedures ]─  
+#  ╙───────────────────── ─ ─
 all: $(NAME)
 
-$(OBJS): $(FILES)
-	$(CC) -c -I $(INCLUDES) $(FLAGS) $(FILES)
+$(NAME): $(OBJ)
+	#@$(MAKE) lib
+	@$(CC) $(OBJ) $(CCFLAGS) $(LDFLAGS) -o $(NAME)
+	@echo "\n\033[0;32m [OK] \033[0m \033[0;33m Linking binary:\033[0m " $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) -lft $(OBJS) -o $(NAME)
+%.o : %.c
+	@echo "\033[0;32m [OK] \033[0m \033[0;33m Compiling:\033[0m " $@
+	@$(CC) $(CCFLAGS) -I$(INC)  -c -o $@ $<
 
 clean:
-	rm -f $(OBJS)
+	@/bin/rm -Rf $(OBJ)
+	@/bin/rm -rf $(OBJSPATH)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@make -C $(LIBFT) fclean
+	@echo  "\033[0;31m [✗] \033[0m \033[0;33m Removed last build: \033[0m " $(NAME)
 
-re: fclean
-	make all
+re:
+	@$(MAKE) fclean
+	@$(MAKE) all
+
+lib:
+	@make -C $(LIBFT)
+
+#  ╓─────[ Call me maybe ]─  
+#  ╙───────────────────── ─ ─ 
+.PHONY: all lib clean fclean re
