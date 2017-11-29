@@ -11,8 +11,8 @@ LDFLAGS = -lft
 #  ╓─────[ Functions ]─  
 #  ╙───────────────────── ─ ─
 
-SRC = ft_printf.c main.c 
-INC = ~/42/srcs/
+SRC = ft_printf.c main.c print.c 
+INC = $(HOME)/42/srcs/
 OBJ = $(SRC:.c=.o)
 
 vpath %.c srcs/
@@ -22,12 +22,12 @@ vpath %.c srcs/
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	#@$(MAKE) lib
 	@$(CC) $(OBJ) $(CCFLAGS) $(LDFLAGS) -o $(NAME)
 	@echo "\n\033[0;32m [OK] \033[0m \033[0;33m Linking binary:\033[0m " $(NAME)
 
 %.o : %.c
 	@echo "\033[0;32m [OK] \033[0m \033[0;33m Compiling:\033[0m " $@
+	@echo	@$(CC) $(CCFLAGS) -I$(INC)  -c -o $@ $<
 	@$(CC) $(CCFLAGS) -I$(INC)  -c -o $@ $<
 
 clean:

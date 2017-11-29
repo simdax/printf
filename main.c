@@ -1,25 +1,28 @@
 #include "printf.h"
 
-
-void	itoa_base(unsigned int i, size_t base)
+void	print_arg(t_num *num)
 {
-	if (i > base)
-		itoa_base(i / base, base);
-	ft_putchar("0123456789abcdef"[i % base]);
+	print_value(num->value, num->type, &num->count);
 }
 
-void	print(t_num *num)
+void	create_arg(void *value, char type, int padding, int precision, int alternate, int sign)
 {
-	itoa_base(*(int*)num->value, 10);
+	t_num	a;
+	
+	a.value = value;
+	a.count = 0;
+	a.type = type;
+	a.padding = padding;
+	a.precision = precision;
+	a.alternate = alternate;
+	a.sign = sign;
+	print_arg(&a);
 }
 
 int		main(void)
 {
-	t_num	a;
-	int		value = 50;
+	int a = 50;
 
-	a.self = &a;
-	a.value = &value;
-	print(&a);
+	create_arg(&a, 'c', 5, 5, 1, 0);
 }
 
