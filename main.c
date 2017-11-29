@@ -24,5 +24,6 @@ int		main(void)
 	int a = 50;
 
 	create_arg(&a, 'c', 5, 5, 1, 0);
+	return (0);
 }
 
