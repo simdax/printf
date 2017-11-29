@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 14:27:21 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/27 10:35:15 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/11/29 18:14:03 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int		count_percents(const char *str)
 	return (count);
 }
 
-int			ft_printf(const char* str, ...)
+int				ft_printf(const char* str, ...)
 {
 	va_list arg;
 	int		nb_args;
@@ -36,11 +36,15 @@ int			ft_printf(const char* str, ...)
 	if (nb_args) {
 		
 	}
-	va_start(arg, str);
-	while (nb_args--) {
-		ft_putstr(str);
-		str = va_arg(arg, const char*);	    
+	else
+	{
+		va_start(arg, str);
+		while (nb_args--) {
+			ft_putstr(str);
+			str = va_arg(arg, const char*);	    
+			//create arg
+		}
+		va_end(arg);
 	}
-	va_end(arg);
 	return (0);
 }

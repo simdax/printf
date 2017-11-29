@@ -12,7 +12,7 @@ LDFLAGS = -lft
 #  ╙───────────────────── ─ ─
 
 SRC = ft_printf.c main.c print.c 
-INC = $(HOME)/42/srcs/
+INC = $(HOME)/42/srcs/ includes
 OBJ = $(SRC:.c=.o)
 
 vpath %.c srcs/
