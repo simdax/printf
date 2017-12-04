@@ -1,15 +1,5 @@
 #include "printf.h"
 
-void	print_arg(t_num *num)
-{
-	if (num->padding >= 0)
-		print_padding(num->padding, num->type_padding, &num->count);
-	print_sign(num->sign, &num->count);
-	write(1, num->value, num->str_len);
-	if (num->padding < 0)
-		print_padding(-num->padding, num->type_padding, &num->count);
-}
-
 char	*m_itoa(long long val, int base)
 {
   char *res;
@@ -40,22 +30,24 @@ void	parse_value(int value, char type, t_num *a)
 
 void	re_orga(t_num *a)
 {
-  size_t	padding;
-
   a->count = 0;
-  a->precision = a->precision - a->str_len;
-  padding = a->str_len + IF(a->precision);
-  a->padding = padding > 0 ? padding : 0;
+  a->precision = IF(a->precision - a->str_len);
+  a->left = a->padding >= 0;
+  a->padding = ABS(a->padding);
+  a->padding -= a->str_len + a->precision;
 }
 
 void	parse_flags(char *str, t_num *a)
 {
+  a->type_padding = ' ';
+  a->sign = 0;
+  a->alternate = 0;
   while (*str)
     {
       if (*str == '#')
 	a->alternate = 1;
       if (*str == '0')
-	a->padding = '0';
+	a->type_padding = '0';
       if (*str == '+')
         a->sign = 1;
       if (*str == '-')
@@ -69,10 +61,6 @@ int	main(int argc, char **argv)
 {
   t_num		*a;
 
-  /* a = (t_num) {.sign = 0, .alternate = 0, .padding = 0, */
-  /*      .type_padding = 0, .precision = 0, .value = NULL, */
-  /*      .str_len = 0, .count = 0 */
-  /* }; */
   (void)argc;
   a = (t_num*)malloc(sizeof(*a));
   parse_value(atoi(argv[1]), 'd', a);
@@ -80,6 +68,8 @@ int	main(int argc, char **argv)
   a->precision = argc > 3 ? atoi(argv[3]) : 0 ;
   if (argc > 4)
     parse_flags(argv[4], a);
+  else
+    parse_flags("", a);
   re_orga(a);
   print_arg(a);
   free(a->value);

@@ -5,7 +5,7 @@ NAME = create_args
 #  ╙───────────────────── ─ ─
 
 SRC = all_itoas.c cast.c main.c print.c 
-INC = -I../libft -I../includes
+INC = -I../libft -I../includes -I includes
 OBJ = $(SRC:.c=.o)
 
 

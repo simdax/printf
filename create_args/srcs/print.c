@@ -12,14 +12,23 @@
 
 #include "printf.h"
 
-void	print_value(void *val, char type, size_t *c, size_t precision)
+void	print_arg(t_num *num)
 {
-  int cc;
+  if (num->alternate)
+    print_alternate(num->type);
+  if (num->left)
+    print_padding(num->padding, num->type_padding, &num->count);
+  print_sign(num->sign, &num->count);
+  print_padding(num->precision, '0', &num->count);
+  write(1, num->value, num->str_len);
+  if (!num->left)
+    print_padding(-num->padding, num->type_padding, &num->count);
+}
 
-  cc = *c;
-  choose_itoa(type, val, c);
-  if (cc - *c < precision)
-    print_padding(precision - cc - *c , 'p', c);
+void	print_alternate(char type)
+{
+  if (type == 'c')
+    write(1, "0x", 2);
 }
 
 void	print_padding(size_t count, char with, size_t *c)
