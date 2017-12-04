@@ -3,7 +3,7 @@
 makefile=`cat ~/42/Makefile`
 dir=`basename $(pwd)`
 srcs=./$1
-includes=${2:-"~/42/srcs/"}
+includes=${2:-"./libft"}
 files=`cd $srcs ; ls *.c | tr '\n' ' '`
 makefile="${makefile/_files_/$files}"
 makefile="${makefile/_srcs_/$srcs}"

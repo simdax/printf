@@ -1,19 +1,19 @@
 #  ╓─────[ Target ]─  
 #  ╙───────────────────── ─ ─ 
-NAME = _dir_
+NAME := _dir_
 
 #  ╓─────[ Compiler ]─  
 #  ╙───────────────────── ─ ─ 
-CC = gcc
-CCFLAGS = -Wall -Werror -Wextra -g
-LDFLAGS = -lft
+CC := gcc
+CCFLAGS := -Wall -Werror -Wextra -g
+LDFLAGS := libft/libft.a
 
-#  ╓─────[ Functions ]─  
+#────[ Functions ]─  
 #  ╙───────────────────── ─ ─
 
-SRC = _files_
-INC = _includes_
-OBJ = $(SRC:.c=.o)
+SRC := _files_
+INC := $(addprefix -I, _includes_)
+OBJ := $(SRC:.c=.o)
 
 vpath %.c srcs/
 
@@ -22,13 +22,12 @@ vpath %.c srcs/
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	#@$(MAKE) lib
 	@$(CC) $(OBJ) $(CCFLAGS) $(LDFLAGS) -o $(NAME)
 	@echo "\n\033[0;32m [OK] \033[0m \033[0;33m Linking binary:\033[0m " $(NAME)
 
 %.o : %.c
 	@echo "\033[0;32m [OK] \033[0m \033[0;33m Compiling:\033[0m " $@
-	@$(CC) $(CCFLAGS) -I$(INC)  -c -o $@ $<
+	@$(CC) $(CCFLAGS) $(INC)  -c -o $@ $<
 
 clean:
 	@/bin/rm -Rf $(OBJ)
@@ -36,7 +35,6 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
-	@make -C $(LIBFT) fclean
 	@echo  "\033[0;31m [✗] \033[0m \033[0;33m Removed last build: \033[0m " $(NAME)
 
 re:
@@ -45,6 +43,9 @@ re:
 
 lib:
 	@make -C $(LIBFT)
+
+test:
+	cd tests && ./main
 
 #  ╓─────[ Call me maybe ]─  
 #  ╙───────────────────── ─ ─ 
