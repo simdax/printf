@@ -7,7 +7,7 @@ void		itoa_base_dioux(unsigned int *i, size_t base, size_t *c)
       unsigned int val = *i / base;
       itoa_base_dioux(&val, base, c);
     }
-  ft_putchar("0123456789abcdef"[*i % base]);
+  ft_putchar("0123456789abcdef"[(*i % base)]);
   *c += 1;	
 }
 
