@@ -12,7 +12,7 @@ LDFLAGS := ../libft/libft.a
 #  ╙───────────────────── ─ ─
 
 SRC := main.c parser.c 
-INC := $(addprefix -I, includes)
+INC := $(addprefix -I, includes ../libft)
 OBJ := $(SRC:.c=.o)
 
 vpath %.c srcs/
