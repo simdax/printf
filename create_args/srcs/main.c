@@ -5,7 +5,7 @@ void	print_arg(t_num *num)
 	if (num->padding >= 0)
 		print_padding(num->padding, num->type_padding, &num->count);
 	print_sign(num->sign, &num->count);
-	print_value(&num->value, num->type, &num->count, num->precision);
+	write(1, num->value, num->str_len);
 	if (num->padding < 0)
 		print_padding(-num->padding, num->type_padding, &num->count);
 }
@@ -31,38 +31,56 @@ char	*m_itoa(long long val, int base)
   return (res);
 }
 
-/* int	*parse_flags(char *str, t_num *a) */
-/* { */
-/*   int  	flags = {0, 0, 0, 0, 0}; */
+void	parse_value(int value, char type, t_num *a)
+{
+  a->value = m_itoa(value, 10);
+  a->str_len = strlen(a->value);
+  a->type = type;
+}
 
-/*   while (*str) */
-/*     { */
-/*       if (*str == '#') */
-/* 	a->alternate = 1; */
-/* 	if (*str == '0') */
-/* 	  if (*str == '+') */
-/* 	    if (*str == '-') */
-/* 	      if (*str == ' ') */
-/*       flags[0] */
+void	re_orga(t_num *a)
+{
+  size_t	padding;
 
-/* 	} */
-/* } */
+  a->count = 0;
+  a->precision = a->precision - a->str_len;
+  padding = a->str_len + IF(a->precision);
+  a->padding = padding > 0 ? padding : 0;
+}
+
+void	parse_flags(char *str, t_num *a)
+{
+  while (*str)
+    {
+      if (*str == '#')
+	a->alternate = 1;
+      if (*str == '0')
+	a->padding = '0';
+      if (*str == '+')
+        a->sign = 1;
+      if (*str == '-')
+	a->sign = -1;
+      //if (*str == ' ')
+	//rien
+    }
+}
 
 int	main(int argc, char **argv)
 {
-  t_num	a;
-  size_t l;
+  t_num		*a;
 
-  l = 0;
-  a.count = 0;
-  if (argc > 1)
-      a.value = m_itoa(atoi(argv[1]), 10);
-  a.type = argc > 2 ? argv[2][0] :  'd';
-  a.padding = argc > 3 ? atoi(argv[3]) : 0;
-  a.type_padding = argc > 4 ? argv[4][0] : ' ';
-  a.precision = argc > 5 ? atoi(argv[5]) : 0;
-  a.alternate = argc > 6 ? atoi(argv[6]) : 0;
-  a.sign = argc > 7 ? atoi(argv[7]) : 0;
-  printf("%s", a.value);
-  free(a.value);
+  /* a = (t_num) {.sign = 0, .alternate = 0, .padding = 0, */
+  /*      .type_padding = 0, .precision = 0, .value = NULL, */
+  /*      .str_len = 0, .count = 0 */
+  /* }; */
+  (void)argc;
+  a = (t_num*)malloc(sizeof(*a));
+  parse_value(atoi(argv[1]), 'd', a);
+  a->padding = argc > 2 ? atoi(argv[2]) : 0;
+  a->precision = argc > 3 ? atoi(argv[3]) : 0 ;
+  if (argc > 4)
+    parse_flags(argv[4], a);
+  re_orga(a);
+  print_arg(a);
+  free(a->value);
 }
