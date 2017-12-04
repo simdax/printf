@@ -1,13 +1,53 @@
-NAME = args
-FILES = main.c print.c all_itoas.c
-CC = gcc -g
-TESTS = `cat t-db`
+#  ╓─────[ Target ]─  
+#  ╙───────────────────── ─ ─ 
+NAME = create_args
+#────[ Functions ]─  
+#  ╙───────────────────── ─ ─
 
-all:
-	$(CC) $(FILES) -lft -I ../includes/ -I $(HOME)/42/srcs -o $(NAME)
+SRC = all_itoas.c cast.c main.c print.c 
+INC = -I../libft -I../includes
+OBJ = $(SRC:.c=.o)
+
+
+#  ╓─────[ Compiler ]─  
+#  ╙───────────────────── ─ ─ 
+
+CC = gcc 
+CCFLAGS = -Wall -Werror -Wextra -g
+LDFLAGS = ../libft/libft.a
+
+vpath %.c srcs/
+
+#  ╓─────[ Procedures ]─  
+#  ╙───────────────────── ─ ─
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	@$(CC) $(OBJ) $(CCFLAGS) $(LDFLAGS) -o $(NAME)
+	@echo "\n\033[0;32m [OK] \033[0m \033[0;33m Linking binary:\033[0m " $(NAME)
+
+%.o : %.c
+	@echo "\033[0;32m [OK] \033[0m \033[0;33m Compiling:\033[0m " $@
+	$(CC) $(CCFLAGS) $(INC)  -c -o $@ $<
+
+clean:
+	@/bin/rm -Rf $(OBJ)
+	@/bin/rm -rf $(OBJSPATH)
+
+fclean: clean
+	@rm -f $(NAME)
+	@echo  "\033[0;31m [✗] \033[0m \033[0;33m Removed last build: \033[0m " $(NAME)
+
+re:
+	@$(MAKE) fclean
+	@$(MAKE) all
+
+lib:
+	@make -C $(LIBFT)
 
 test:
-	sh tests.t
+	cd tests && ./main	
 
-debug:
-	lldb $(NAME) $(TESTS)
+#  ╓─────[ Call me maybe ]─  
+#  ╙───────────────────── ─ ─ 
+.PHONY: all lib clean fclean re
