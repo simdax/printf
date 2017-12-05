@@ -1,0 +1,9 @@
+# for arg in ${@:-.}
+# do
+# 	ctags $arg/*
+# 	cat tags | cut -d ^ -f 2 | sed 's/).*/);/'
+# done
+# rm tags
+
+d=${@:-.}
+ctags -x $d/*c | cut -c35-500 | sed 's/$/;/'

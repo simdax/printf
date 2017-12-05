@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [ -z $1 ]
+then
+	echo "allez coco, mets des args !"
+	exit 1
+fi
+
+if [ -d $1 ]
+then
+	read -p "attention ça va defoncer le fichier. ok y ?" a
+	case $a in
+		""|y|Y) echo "on y va"; rm -rf $1;;
+		* ) echo "tu es sage"; exit 1;;
+	esac
+fi
+
+name=main
+mkdir $1
+cd $1
+touch test_expect_success
+touch test_expect_failure
+cp $HOME/42/test_gens.sh $name
+chmod +x $name

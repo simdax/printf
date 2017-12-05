@@ -1,0 +1,27 @@
+if [ -z $1 ]
+	then echo "args !!!!"
+	exit 1
+fi
+
+mkdir $1
+cd $1
+mkdir srcs includes
+module tests
+echo "
+#include \"$1.h"
+
+int main(int argc, char**argv)
+{
+	return (0);
+}
+" > srcs/main.c
+echo "
+#ifndef $(echo $1 | tr '[:lower:]' '[:upper:]' )_H
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+#endif
+" > includes/$1.h
+gentags srcs > includes/prototypes.h
+mmake srcs > Makefile

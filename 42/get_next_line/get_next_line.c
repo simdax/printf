@@ -6,7 +6,7 @@
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 10:40:23 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/29 16:03:55 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/12/05 14:52:43 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int		try_read(char **s, char **line)
 	{
 		*line = ft_strsub(*s, 0, i);
 		tmp = ft_strdup(*s + i);
-		free(*s);
+//		free(*s);
 		*s = tmp;
 		return (1);
 	}
