@@ -1,0 +1,7 @@
+int main()
+{
+  char *line;
+  fd = open(argv[1], O_RDONLY);
+  while (fd && gnl(fd, &line))
+    printf("%s", line);
+}

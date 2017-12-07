@@ -33,11 +33,9 @@ static int		replace_char(char *s, char c1, char c2)
 static int		try_read(char **s, char **line)
 {
 	int		i;
-	size_t	len;
 	char	*tmp;
 
 	i = 0;
-	len = ft_strlen(*s);
 	if ((i = replace_char(*s, '\n', '\0')) != -1)
 	{
 		*line = ft_strsub(*s, 0, i);
