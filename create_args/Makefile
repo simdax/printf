@@ -1,20 +1,20 @@
-	#  ╓─────[ Target ]─  
+#  ╓─────[ Target ]─  
 #  ╙───────────────────── ─ ─ 
-NAME = create_args
-#────[ Functions ]─  
-#  ╙───────────────────── ─ ─
-
-SRC = all_itoas.c cast.c main.c print.c 
-INC = -I../libft -I../includes -I includes
-OBJ = $(SRC:.c=.o)
-
+NAME := create_args
 
 #  ╓─────[ Compiler ]─  
 #  ╙───────────────────── ─ ─ 
+CC := gcc
+CCFLAGS := -Wall -Werror -Wextra -g
+LDFLAGS := ../libft/libft.a
+LIB := ../libft
 
-CC = gcc 
-CCFLAGS = -Wall -Werror -Wextra -g
-LDFLAGS = ../libft/libft.a
+#────[ Functions ]─   
+#  ╙───────────────────── ─ ─
+
+SRC := main.c print.c 
+INC := $(addprefix -I, includes ..$/libft ../includes)
+OBJ := $(SRC:.c=.o)
 
 vpath %.c srcs/
 
@@ -22,13 +22,16 @@ vpath %.c srcs/
 #  ╙───────────────────── ─ ─
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) ../libft/libft.a
 	@$(CC) $(OBJ) $(CCFLAGS) $(LDFLAGS) -o $(NAME)
 	@echo "\n\033[0;32m [OK] \033[0m \033[0;33m Linking binary:\033[0m " $(NAME)
 
+../libft/libft.a:
+	cd ../libft && make
+
 %.o : %.c
 	@echo "\033[0;32m [OK] \033[0m \033[0;33m Compiling:\033[0m " $@
-	$(CC) $(CCFLAGS) $(INC)  -c -o $@ $<
+	@$(CC) $(CCFLAGS) $(INC)  -c -o $@ $<
 
 clean:
 	@/bin/rm -Rf $(OBJ)
@@ -45,8 +48,11 @@ re:
 lib:
 	@make -C $(LIBFT)
 
-test:
-	cd tests && ./main	
+test: all
+	cd tests && ./main
+
+commit: test
+	git commit -am "passe les tests"
 
 #  ╓─────[ Call me maybe ]─  
 #  ╙───────────────────── ─ ─ 
