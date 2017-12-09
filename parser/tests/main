@@ -1,18 +1,22 @@
 #!/bin/bash
 
-tests=(	"0+#-' " "111111"
-		" " "000001"
-		"#0 ##" "101001")
+tests=(	"0+#-' " 	"111111"
+	" "		 	"000001"
+	"#0 ##" 	"101001"
+	"0+-ri" 	"110100"	
+	"0+-10.10" 	"110100"
+	"0+-010.10" 	"110100"
+)
 
 function cmp
 {
-	eval $red; echo "GROS TEST \n\n" 
-	diff <(eval $1) <(echo -n $2)
-	echo "\n"
+	eval $red; echo "GROS TEST $3" 
+	if [ -n $3 ] ; then
+	    diff <(eval $1) <(echo -n $2)
+	fi
 }
 
-cmp "../parser \"${tests[0]}\"" ${tests[1]}
-cmp "../parser \"${tests[2]}\"" ${tests[3]}
-cmp "../parser \"${tests[4]}\"" ${tests[5]}
-
+for i in $(seq 0 2 ${#tests[@]}); do
+	cmp "../parser \"${tests[$i]}\"" ${tests[$(($i + 1))]} $i
+done
 
