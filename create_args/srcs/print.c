@@ -6,7 +6,7 @@
 //   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2017/11/27 19:30:47 by scornaz           #+#    #+#             //
-/*   Updated: 2017/11/29 16:41:48 by scornaz          ###   ########.fr       */
+/*   Updated: 2017/12/09 12:41:18 by scornaz          ###   ########.fr       */
 //                                                                            //
 // ************************************************************************* //
 
@@ -33,9 +33,10 @@ void	print_alternate(char type)
 
 void	print_padding(size_t count, char with, size_t *c)
 {
-  while (count--) {
+  while (count) {
     ft_putchar(with);
     *c += 1;
+	--count;
   }
 }
 

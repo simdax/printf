@@ -1,24 +1,19 @@
 #!/bin/bash
 
-cmd=../../$(basename $(dirname $(pwd)))
-fichiers=$(ls test_*)
-function cmp {
-	echo `eval $1`
-	echo `eval $2`
-	return diff <(eval $1) <(eval $2)
-}
+range1=(0 1 2)
+range2=(0 1 2)
+range3=(0 1 2)
 
-test_description='OSEF'
-. sharness.sh
-
-i=0
-for fichier in $fichiers ; do
-	while IFS='' read -r line || [[ -n "$line" ]]; do
-		$fichier "test $i" " 
-			$line
-		"
-		let "i++"
-	done < ../$fichier
+for i in $range1; do
+	for j in $range2; do
+		for k in $range3; do
+			echo $i $j $k
+			res=`gtimeout 1 ./test $i $j $k`
+		 	case $res in
+				124) eval $red; echo KO ;;
+				*)	eval $green; echo $res ;;
+			esac
+		done
+	done
 done
-	
-test_done	
+
