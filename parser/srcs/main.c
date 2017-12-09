@@ -2,10 +2,8 @@
 
 int main(int argc, char **argv)
 {
-  (void)argv;
-  if (argc == 2)
-    {
-      
-    }
-  
+	t_flags t;
+	if (argc > 1)
+ 		t = parse(argv[0]);
+	printf("%d", t);	
 }
