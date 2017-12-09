@@ -1,0 +1,24 @@
+#!/bin/bash
+
+cmd=../../$(basename $(dirname $(pwd)))
+fichiers=$(ls test_*)
+function cmp {
+	echo `eval $1`
+	echo `eval $2`
+	return diff <(eval $1) <(eval $2)
+}
+
+test_description='OSEF'
+. sharness.sh
+
+i=0
+for fichier in $fichiers ; do
+	while IFS='' read -r line || [[ -n "$line" ]]; do
+		$fichier "test $i" " 
+			$line
+		"
+		let "i++"
+	done < ../$fichier
+done
+	
+test_done	

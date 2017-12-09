@@ -1,38 +1,40 @@
+
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/12/09 14:30:39 by scornaz           #+#    #+#             */
+/*   Updated: 2017/12/09 18:49:55 by scornaz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parser.h"
 
-static char	*is_flag(char *str)
+static t_flags	take_flags(char *str)
 {
-  int i;
-
-  i = 0;
-  while (*str)
-    {
-      if (*str == '#' || *str == '0' ||
-  	  *str == ' ' || *str == '+' ||
-  	  *str == '-')
-	{i++;}
-      else
-	break ;
-      str++;
-    }
-  return (ft_strndup(str, i));
+	t_flags		flags = {0, 0, 0, 0, 0, 0};
+	
+	while (*str)
+	{
+		SET(flags.zero, '0', *str);
+		SET(flags.plus, '+', *str);
+		SET(flags.hash, '#', *str);
+		SET(flags.minus, '-', *str);
+		SET(flags.space, ' ', *str);
+		SET(flags.apostrophe, 39, *str);
+		if (!ft_strany(*str, "0#+- '"))
+			break;
+		str++;
+	}
+	return (flags);
 }
 
-static 
-
-char	**parser(char *str)
+t_flags				parse(char *str)
 {
-  char	*res[4];
-  
-  res[0] = is_flag(str);
-  str += ft_strlen(res[0]);
-  res[1] = ft_atoi(str);
-  str += ft_strlen(res[1]);
-    if (str[0] == '.')
-      {
-	res[2] = ft_atoi(str);
-	str += ft_strlen(res[1]);
-      }
-  res[3] = str[0];
-  return (res);
+	t_flags		flags;
+
+	flags = take_flags(str);
+	return (flags);
 }

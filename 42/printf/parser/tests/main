@@ -1,17 +1,22 @@
-fichiers=$(ls test_*)
+#!/bin/bash
 
-test_description='OSEF'
-. sharness.sh
+tests=(	"0+#-' " 	"111111"
+	" "		 	"000001"
+	"#0 ##" 	"101001"
+	"0+-ri" 	"110100"	
+	"0+-10.10" 	"110100"
+	"0+-010.10" 	"110100"
+)
 
-i=0
+function cmp
+{
+	eval $red; echo "GROS TEST $3" 
+	if [ -n $3 ] ; then
+	    diff <(eval $1) <(echo -n $2)
+	fi
+}
 
-for fichier in $fichiers ; do
-	while IFS='' read -r line || [[ -n "$line" ]]; do
-		$fichier "test $i" " 
-			$line
-		"
-		i++
-	done < ../$fichier
+for i in $(seq 0 2 ${#tests[@]}); do
+	cmp "../parser \"${tests[$i]}\"" ${tests[$(($i + 1))]} $i
 done
-	
-test_done	
+

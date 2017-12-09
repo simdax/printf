@@ -13,10 +13,12 @@ LIB := ../libft
 #  ╙───────────────────── ─ ─
 
 SRC := main.c print.c 
-INC := $(addprefix -I, includes ..$/libft ../includes)
+INC := $(addprefix -I, includes ../libft ../includes)
 OBJ := $(SRC:.c=.o)
 
 vpath %.c srcs/
+
+ARGS_DEBUG := 5 5 5
 
 #  ╓─────[ Procedures ]─  
 #  ╙───────────────────── ─ ─
@@ -47,6 +49,9 @@ re:
 
 lib:
 	@make -C $(LIBFT)
+
+debug: all
+	lldb $(NAME) $(ARGS_DEBUG)
 
 test: all
 	cd tests && ./main

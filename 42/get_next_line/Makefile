@@ -6,7 +6,7 @@ NAME = get_next_line
 #  ╙───────────────────── ─ ─ 
 CC = gcc
 CCFLAGS = -Wall -Werror -Wextra -g
-LDFLAGS = -lft
+LDFLAGS = libft/libft.a
 
 #  ╓─────[ Functions ]─  
 #  ╙───────────────────── ─ ─

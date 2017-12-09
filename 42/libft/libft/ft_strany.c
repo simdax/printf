@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   ft_strany.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/09 14:27:19 by scornaz           #+#    #+#             */
-/*   Updated: 2017/12/09 17:19:49 by scornaz          ###   ########.fr       */
+/*   Created: 2017/12/09 16:57:27 by scornaz           #+#    #+#             */
+/*   Updated: 2017/12/09 18:39:10 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#ifndef PARSER_H
-# define PARSER_H
-
-typedef struct	s_flags
+int		ft_strany(char c, char *str)
 {
-	int			zero;
-	int			plus;
-	int			hash;
-	int			minus;
-	int			apostrophe;
-	int			space;
-}				t_flags;
+	int res;
 
-#define SET(x,c,s)	x = x || s == c
-
-# include <stdio.h>
-# include "libft.h"
-# include "prototypes.h"
-
-
-#endif
+	res = 0;
+	while (*str)
+	{
+		res = res || *str == c;
+		str++;
+	}
+	return (res);
+}
