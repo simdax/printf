@@ -1,9 +1,18 @@
 #include "parser.h"
 
+void print_struct(t_flags t)
+{
+	printf("%d", t.zero);	
+	printf("%d", t.plus);	
+	printf("%d", t.hash);	
+	printf("%d", t.minus);	
+	printf("%d", t.apostrophe);	
+	printf("%d", t.space);	
+}
+
 int main(int argc, char **argv)
 {
 	t_flags t;
-	if (argc > 1)
- 		t = parse(argv[0]);
-	printf("%d", t);	
+ 	t = parse(argv[1]);
+	print_struct(t);
 }

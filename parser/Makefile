@@ -27,7 +27,7 @@ $(NAME): $(OBJ)
 
 %.o : %.c
 	@echo "\033[0;32m [OK] \033[0m \033[0;33m Compiling:\033[0m " $@
-	@$(CC) $(CCFLAGS) $(INC)  -c -o $@ $<
+	$(CC) $(CCFLAGS) $(INC)  -c -o $@ $<
 
 clean:
 	@/bin/rm -Rf $(OBJ)
@@ -44,8 +44,15 @@ re:
 lib:
 	@make -C $(LIBFT)
 
-test:
+test: all
 	cd tests && ./main
+
+prod:
+	make CCFLAGS= -Wall -Wextra -Werror re
+
+debug:
+	make CCFLAGS=-g re 
+	lldb $(NAME) '#0 '	
 
 #  ╓─────[ Call me maybe ]─  
 #  ╙───────────────────── ─ ─ 

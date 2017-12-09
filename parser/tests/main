@@ -1,6 +1,18 @@
 #!/bin/bash
 
-tests=(	"0+#-'" 
-		" " 
-		"#0 ##")
-11111" "00000" "00000" "00000")
+tests=(	"0+#-' " "111111"
+		" " "000001"
+		"#0 ##" "101001")
+
+function cmp
+{
+	eval $red; echo "GROS TEST \n\n" 
+	diff <(eval $1) <(echo -n $2)
+	echo "\n"
+}
+
+cmp "../parser \"${tests[0]}\"" ${tests[1]}
+cmp "../parser \"${tests[2]}\"" ${tests[3]}
+cmp "../parser \"${tests[4]}\"" ${tests[5]}
+
+
