@@ -4,7 +4,8 @@ cmd=../../$(basename $(dirname $(pwd)))
 fichiers=$(ls test_*)
 function cmp {
 	echo `eval $1`
-	diff <(eval $1) <(eval $2)
+	echo `eval $2`
+	return diff <(eval $1) <(eval $2)
 }
 
 test_description='OSEF'
@@ -14,7 +15,7 @@ i=0
 for fichier in $fichiers ; do
 	while IFS='' read -r line || [[ -n "$line" ]]; do
 		$fichier "test $i" " 
-			cmp '$cmd $line' 'printf $line %d'
+			$line
 		"
 		let "i++"
 	done < ../$fichier

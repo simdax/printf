@@ -48,8 +48,11 @@ re:
 lib:
 	@make -C $(LIBFT)
 
-test:
+test: all
 	cd tests && ./main
+
+commit: test
+	git commit -am "passe les tests"
 
 #  ╓─────[ Call me maybe ]─  
 #  ╙───────────────────── ─ ─ 

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+for i in {2..5}; do
+	for j in {2..5}; do
+		for k in {2..5}; do
+			echo $i $j $k
+		 	gtimeout 1 ./main2 $i $j $k
+		done
+	done
+done
+

@@ -8,7 +8,7 @@ cd $1
 mkdir srcs includes
 module tests
 echo "
-#include \"$1.h"
+#include \"$1.h\"
 
 int main(int argc, char**argv)
 {
@@ -21,7 +21,11 @@ echo "
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <fcntl.h>
+
+# include "libft.h"
+# include "prototypes.h"
 #endif
 " > includes/$1.h
 gentags srcs > includes/prototypes.h
-mmake srcs > Makefile
+mmake srcs "includes ../libft" > Makefile
