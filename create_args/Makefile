@@ -12,8 +12,8 @@ LIB := ../libft
 #────[ Functions ]─   
 #  ╙───────────────────── ─ ─
 
-SRC := main.c print.c 
-INC := $(addprefix -I, includes ../libft ../includes)
+SRC := parse.c print.c 
+INC := $(addprefix -I, includes ../libft)
 OBJ := $(SRC:.c=.o)
 
 vpath %.c srcs/
@@ -25,7 +25,8 @@ ARGS_DEBUG := 5 5 5
 all: $(NAME)
 
 $(NAME): $(OBJ) ../libft/libft.a
-	@$(CC) $(OBJ) $(CCFLAGS) $(LDFLAGS) -o $(NAME)
+	@$(CC) $(INC) main.c -c
+	@$(CC) main.o $(OBJ) $(CCFLAGS) $(LDFLAGS) -o $(NAME)
 	@echo "\n\033[0;32m [OK] \033[0m \033[0;33m Linking binary:\033[0m " $(NAME)
 
 ../libft/libft.a:
@@ -48,7 +49,8 @@ re:
 	@$(MAKE) all
 
 lib:
-	@make -C $(LIBFT)
+	ar -rc $(NAME).a $(OBJ)
+	ranlib $(NAME).a
 
 debug: all
 	lldb $(NAME) $(ARGS_DEBUG)

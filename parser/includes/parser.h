@@ -22,6 +22,9 @@ typedef struct	s_flags
 	int			minus;
 	int			apostrophe;
 	int			space;
+	int			precision;
+    	int			width;
+       	int			type;	
 }				t_flags;
 
 #define SET(x,c,s)	x = x || s == c
@@ -29,6 +32,5 @@ typedef struct	s_flags
 # include <stdio.h>
 # include "libft.h"
 # include "prototypes.h"
-
 
 #endif

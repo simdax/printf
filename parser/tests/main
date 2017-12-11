@@ -16,7 +16,7 @@ function cmp
 	fi
 }
 
-for i in $(seq 0 2 ${#tests[@]}); do
+for i in $(seq 0 2 $((${#tests[@]} - 1))); do
 	cmp "../parser \"${tests[$i]}\"" ${tests[$(($i + 1))]} $i
 done
 

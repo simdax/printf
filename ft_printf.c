@@ -11,40 +11,37 @@
 /* ************************************************************************** */
 
 #include "printf.h"
-#include "libft.h"
 
 static int		count_percents(const char *str)
 {
-	int count;
+  int count;
 
-	count = 0;
-	while (*str) {
-		if (*str == '%') {
-			count++;
-		}
-		str++;
-	}
-	return (count);
+  count = 0;
+  while (*str) {
+    if (*str == '%') {
+      count++;
+    }
+    str++;
+  }
+  return (count);
 }
 
-int				ft_printf(const char* str, ...)
+int			ft_printf(const char* str, ...)
 {
-	va_list arg;
-	int		nb_args;
-
-	nb_args = count_percents(str);
-	if (nb_args) {
-		
-	}
-	else
-	{
-		va_start(arg, str);
-		while (nb_args--) {
-			ft_putstr(str);
-			str = va_arg(arg, const char*);	    
-			//create arg
-		}
-		va_end(arg);
-	}
-	return (0);
+  va_list	arg;
+  int		nb_args;
+  t_flags	flags;
+  
+  nb_args = count_percents(str);
+  if (nb_args){
+    va_start(arg, str);
+    while (nb_args--) {
+      ft_putstr(str);
+      flags = parse((char*)str);
+      str = va_arg(arg, const char*);	    
+      //create arg
+    }
+    va_end(arg);
+  }
+  return (0);
 }

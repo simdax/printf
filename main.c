@@ -1,10 +1,8 @@
 #include "printf.h"
 
-int		main(void)
+int		main(int argc, char **argv)
 {
-	int a = 50;
-
-	ft_printf("coucou les loulous");
-	return (0);
+  ft_printf("coucou %les loulous", 50, "bob");
+  return (0);
 }
 
