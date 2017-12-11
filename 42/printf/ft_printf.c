@@ -27,7 +27,7 @@ static int		count_percents(const char *str)
 	return (count);
 }
 
-int				ft_printf(const char* str, ...)
+int			ft_printf(const char* str, ...)
 {
 	va_list arg;
 	int		nb_args;
