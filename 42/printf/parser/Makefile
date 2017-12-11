@@ -5,7 +5,7 @@ NAME := parser
 #  ╓─────[ Compiler ]─  
 #  ╙───────────────────── ─ ─ 
 CC := gcc
-CCFLAGS := #-Wall -Werror -Wextra -g
+CCFLAGS := -g #-Wall -Werror -Wextra -g
 LDFLAGS := ../libft/libft.a
 
 #────[ Functions ]─  
@@ -21,7 +21,7 @@ vpath %.c srcs/
 #  ╙───────────────────── ─ ─
 all: $(NAME)
 
-$(NAME): $(OBJ) modules.a
+$(NAME): $(OBJ) 
 	@echo "\n\033[0;32m [OK] \033[0m \033[0;33m Linking binary:\033[0m " $(NAME)
 	@$(CC) $(OBJ) $(CCFLAGS) $(LDFLAGS) -o $(NAME)
 

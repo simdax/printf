@@ -14,36 +14,35 @@
 
 static int		count_percents(const char *str)
 {
-  int count;
+    int count;
 
-  count = 0;
-  while (*str) {
-    if (*str == '%') {
-      count++;
+    count = 0;
+    while (*str) {
+	if (*str == '%') {
+	    count++;
+	}
+	str++;
     }
-    str++;
-  }
-  return (count);
+    return (count);
 }
 
 int			ft_printf(const char* str, ...)
 {
-  va_list	arg;
-  int		nb_args;
-  t_flags	flags;
-  
-  nb_args = count_percents(str);
-  if (nb_args){
-    va_start(arg, str);
-    while (nb_args--) {
-      ft_putstr(str);
-      flags = parse((char*)str);
-      if (flags.type = 'd')
-	  ft_putstr("prout");
-      str = va_arg(arg, const char*);	    
-      //create arg
+    va_list	arg;
+    int		nb_args;
+    t_flags	flags;
+    
+    nb_args = count_percents(str);
+    if (nb_args){
+	va_start(arg, str);
+	while (nb_args--) {
+	    flags = parse((char*)(str = (ft_strchr(str, '%') + 1)));
+	    if (flags.type == 'l')
+		ft_putstr("prout");
+	    //	    str = va_arg(arg, const char*);	    
+	    //create arg
+	}
+	va_end(arg);
     }
-    va_end(arg);
-  }
-  return (0);
+    return (0);
 }
