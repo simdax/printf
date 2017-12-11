@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   ft_nbrsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/09 14:27:19 by scornaz           #+#    #+#             */
-/*   Updated: 2017/12/09 17:19:49 by scornaz          ###   ########.fr       */
+/*   Created: 2017/12/11 18:40:18 by scornaz           #+#    #+#             */
+/*   Updated: 2017/12/11 18:40:24 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#ifndef PARSER_H
-# define PARSER_H
-
-typedef struct	s_flags
+int	ft_nbrsize(int nbr)
 {
-	int			zero;
-	int			plus;
-	int			hash;
-	int			minus;
-	int			apostrophe;
-	int			space;
-	int			precision;
-    	int			width;
-       	char			type;	
-}				t_flags;
+	int	res;
 
-#define SET(x,c,s)	x = x || s == c
-
-# include <stdio.h>
-# include "libft.h"
-# include "prototypes.h"
-
-#endif
+	res = 1;
+	while ((nbr /= 10))
+		res++;
+	return (res);
+}

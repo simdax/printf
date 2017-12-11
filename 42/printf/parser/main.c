@@ -7,7 +7,10 @@ void print_struct(t_flags t)
     printf("%d", t.hash);	
     printf("%d", t.minus);	
     printf("%d", t.apostrophe);	
-    printf("%d", t.space);	
+    printf("%d", t.space);
+    printf("%d", t.width);
+    printf("%d", t.precision);
+    printf("%c", t.type);	
 }
 
 int main(int argc, char **argv)

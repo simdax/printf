@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "create_args.h"
+
 int	main(int argc, char **argv)
 {
 	t_num		*a;

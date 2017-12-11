@@ -5,14 +5,14 @@ NAME = printf
 #  ╓─────[ Compiler ]─  
 #  ╙───────────────────── ─ ─ 
 CC = gcc
-CCFLAGS = -Wall -Werror -Wextra -g
-LDFLAGS = libft/libft.a
+CCFLAGS = -g # -Wall -Werror -Wextra
+LDFLAGS = libft/libft.a parser/parser.a create_args/create_args.a
 
 #  ╓─────[ Functions ]─  
 #  ╙───────────────────── ─ ─
 
-SRC = ft_printf.c parser/parser.a create_args/create_args.a
-INC = $(addprefix -I, libft includes)
+SRC = ft_printf.c 
+INC = $(addprefix -I, libft includes create_args/includes parser/includes)
 OBJ = $(SRC:.c=.o)
 
 vpath %.c srcs/

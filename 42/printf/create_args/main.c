@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 	a = (t_num*)malloc(sizeof(*a));
 	parse_value(atoi(argv[1]), 'd', a);
 	a->padding = argc > 2 ? atoi(argv[2]) : 0;
-	a->precision = argc > 3 ? atoi(argv[3]) : 0 ;
+	a->precision = argc > 3 ? atoi(argv[3]) : 0;
 	if (argc > 4)
 		parse_flags(argv[4], a);
 	else
