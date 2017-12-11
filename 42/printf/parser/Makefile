@@ -43,13 +43,14 @@ re:
 	@$(MAKE) all
 
 lib:
-	@make -C $(LIBFT)
+	ar -rc $(NAME).a $(OBJ) 
+	ranlib $(NAME).a
 
 test: all
 	cd tests && ./main
 
 prod:
-	make CCFLAGS= -Wall -Wextra -Werror re
+	make CCFLAGS="-Wall -Wextra -Werror" re
 
 debug:
 	make CCFLAGS=-g re 

@@ -5,7 +5,7 @@ NAME := _dir_
 #  ╓─────[ Compiler ]─  
 #  ╙───────────────────── ─ ─ 
 CC := gcc
-CCFLAGS := -Wall -Werror -Wextra -g
+CCFLAGS := 
 LDFLAGS := libft/libft.a
 
 #────[ Functions ]─  
@@ -22,8 +22,10 @@ vpath %.c srcs/
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(OBJ) $(CCFLAGS) $(LDFLAGS) -o $(NAME)
 	@echo "\n\033[0;32m [OK] \033[0m \033[0;33m Linking binary:\033[0m " $(NAME)
+	$(CC) main.c $(INC)
+	@$(CC) main.o $(OBJ) $(CCFLAGS) $(LDFLAGS) -o $(NAME)
+
 
 %.o : %.c
 	@echo "\033[0;32m [OK] \033[0m \033[0;33m Compiling:\033[0m " $@
@@ -42,10 +44,21 @@ re:
 	@$(MAKE) all
 
 lib:
-	@make -C $(LIBFT)
+	ar -rc $(NAME).a $(OBJ)
+	ranlib $(NAME).a
+
+debug:
+	make CCFLAGS=-g re
+	lldb $(NAME)
+
+prod:
+	make CCFLAGS="-Wall -Wextra -Werror" re
 
 test:
 	cd tests && ./main
+
+commit: test
+	git commit -am "passés les tests"
 
 #  ╓─────[ Call me maybe ]─  
 #  ╙───────────────────── ─ ─ 

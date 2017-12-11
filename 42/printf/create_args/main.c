@@ -5,45 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: scornaz <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/24 14:27:21 by scornaz           #+#    #+#             */
-/*   Updated: 2017/11/29 18:14:03 by scornaz          ###   ########.fr       */
+/*   Created: 2017/12/08 18:53:49 by scornaz           #+#    #+#             */
+/*   Updated: 2017/12/08 18:54:39 by scornaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "create_args.h"
 
-static int		count_percents(const char *str)
+int	main(int argc, char **argv)
 {
-	int count;
+	t_num		*a;
 
-	count = 0;
-	while (*str) {
-		if (*str == '%') {
-			count++;
-		}
-		str++;
-	}
-	return (count);
-}
-
-int			ft_printf(const char* str, ...)
-{
-	va_list arg;
-	int		nb_args;
-
-	nb_args = count_percents(str);
-	if (nb_args) {
-		
-	}
+	(void)argc;
+	a = (t_num*)malloc(sizeof(*a));
+	parse_value(atoi(argv[1]), 'd', a);
+	a->padding = argc > 2 ? atoi(argv[2]) : 0;
+	a->precision = argc > 3 ? atoi(argv[3]) : 0 ;
+	if (argc > 4)
+		parse_flags(argv[4], a);
 	else
-	{
-		va_start(arg, str);
-		while (nb_args--) {
-			ft_putstr(str);
-			str = va_arg(arg, const char*);	    
-			//create arg
-		}
-		va_end(arg);
-	}
-	return (0);
+		parse_flags("", a);
+	re_orga(a);
+	print_arg(a);
+	free(a->value);
 }

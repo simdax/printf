@@ -6,13 +6,13 @@ NAME = printf
 #  ╙───────────────────── ─ ─ 
 CC = gcc
 CCFLAGS = -Wall -Werror -Wextra -g
-LDFLAGS = -lft
+LDFLAGS = libft/libft.a
 
 #  ╓─────[ Functions ]─  
 #  ╙───────────────────── ─ ─
 
-SRC = ft_printf.c main.c print.c 
-INC = $(HOME)/42/srcs/ includes
+SRC = ft_printf.c parser/parser.a create_args/create_args.a
+INC = $(addprefix -I, libft includes)
 OBJ = $(SRC:.c=.o)
 
 vpath %.c srcs/
@@ -27,8 +27,8 @@ $(NAME): $(OBJ)
 
 %.o : %.c
 	@echo "\033[0;32m [OK] \033[0m \033[0;33m Compiling:\033[0m " $@
-	@echo	@$(CC) $(CCFLAGS) -I$(INC)  -c -o $@ $<
-	@$(CC) $(CCFLAGS) -I$(INC)  -c -o $@ $<
+	@echo	@$(CC) $(CCFLAGS) $(INC)  -c -o $@ $<
+	@$(CC) $(CCFLAGS) $(INC)  -c -o $@ $<
 
 clean:
 	@/bin/rm -Rf $(OBJ)
