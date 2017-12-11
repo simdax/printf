@@ -38,6 +38,8 @@ int			ft_printf(const char* str, ...)
     while (nb_args--) {
       ft_putstr(str);
       flags = parse((char*)str);
+      if (flags.type = 'd')
+	  ft_putstr("prout");
       str = va_arg(arg, const char*);	    
       //create arg
     }

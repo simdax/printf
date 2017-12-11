@@ -21,13 +21,13 @@ vpath %.c srcs/
 #  ╙───────────────────── ─ ─
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) modules.a
 	@echo "\n\033[0;32m [OK] \033[0m \033[0;33m Linking binary:\033[0m " $(NAME)
 	@$(CC) $(OBJ) $(CCFLAGS) $(LDFLAGS) -o $(NAME)
 
 %.o : %.c
 	@echo "\033[0;32m [OK] \033[0m \033[0;33m Compiling:\033[0m " $@
-	$(CC) $(CCFLAGS) $(INC)  -c -o $@ $<
+	$(CC) $(CCFLAGS) $(INC) -c -o $@ $<
 
 clean:
 	@/bin/rm -Rf $(OBJ)
@@ -39,8 +39,9 @@ fclean: clean
 
 re: fclean all
 
-lib:
-	ar -rc $(NAME).a $(LIB_OBJ) 
+lib: re
+	rm -rf $(NAME).a
+	ar rc $(NAME).a $(LIB_OBJ) 
 	ranlib $(NAME).a
 
 test: all
