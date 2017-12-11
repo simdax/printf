@@ -2,9 +2,7 @@
 
 int		main(void)
 {
-	int a = 50;
-
-	ft_printf("coucou les loulous");
-	return (0);
+  ft_printf("coucou %les loulous", 50, "bob");
+  return (0);
 }
 

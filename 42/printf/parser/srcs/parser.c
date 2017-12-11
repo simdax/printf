@@ -12,18 +12,18 @@
 
 #include "parser.h"
 
-static t_flags	take_flags(char *str)
+static t_flags	take_flags(char **s, t_flags *flags)
 {
-	t_flags		flags = {0, 0, 0, 0, 0, 0};
-	
+	char		*str = *s;
+	    
 	while (*str)
 	{
-		SET(flags.zero, '0', *str);
-		SET(flags.plus, '+', *str);
-		SET(flags.hash, '#', *str);
-		SET(flags.minus, '-', *str);
-		SET(flags.space, ' ', *str);
-		SET(flags.apostrophe, 39, *str);
+		SET(flags->zero, '0', *str);
+		SET(flags->plus, '+', *str);
+		SET(flags->hash, '#', *str);
+		SET(flags->minus, '-', *str);
+		SET(flags->space, ' ', *str);
+		SET(flags->apostrophe, 39, *str);
 		if (!ft_strany(*str, "0#+- '"))
 			break;
 		str++;
@@ -33,8 +33,13 @@ static t_flags	take_flags(char *str)
 
 t_flags				parse(char *str)
 {
-	t_flags		flags;
-
-	flags = take_flags(str);
+    	t_flags		flags = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+	char	*point = ft_strchr(str, '.');
+	
+	flags = take_flags(&str, &flags);
+	flags.width = ft_atoi(str);
+	if (point && point[1])
+	    flags.precision = ft_atoi(point + 1);
+	flags.type = point[1];
 	return (flags);
 }

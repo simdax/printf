@@ -33,9 +33,8 @@ int			ft_printf(const char* str, ...)
 
 	nb_args = count_percents(str);
 	if (nb_args) {
-		
+	  parser
 	}
-	else
 	{
 		va_start(arg, str);
 		while (nb_args--) {
