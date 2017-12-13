@@ -35,4 +35,3 @@ void	re_orga(t_num *a)
     //a->left = a->padding >= 0;
     a->padding = IF(ABS(a->padding) - a->str_len + a->precision);
 }
-o

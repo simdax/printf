@@ -34,8 +34,10 @@ static void	take_flags(char **s, t_flags *flags)
 t_flags				parse(char *str)
 {
     t_flags		flags;
+    char		*cpy;
 
-    flags = (t_flags){0, 0, 0, 0, 0, 0, 0, 0, 0};
+    cpy = str;
+    flags = (t_flags){0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     take_flags(&str, &flags);
     flags.width = ft_atoi(str);
     str += flags.width ? ft_nbrsize(flags.width) : 0;
@@ -48,5 +50,6 @@ t_flags				parse(char *str)
 	}
     if (*str)
 	flags.type = str[0];
+    flags.count = str - cpy;
     return (flags);
 }

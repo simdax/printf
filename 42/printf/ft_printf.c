@@ -30,6 +30,7 @@ int	flags2print(va_list arg, t_flags flags)
 	a.padding = IF(ABS(a.padding) - a.str_len + a.precision);
 	print_arg(&a);
 	free(a.value);
+	return (a.count);
 }
 
 
@@ -52,15 +53,23 @@ int			ft_printf(const char* str, ...)
     va_list	arg;
     int		nb_args;
     t_flags	flags;
-    
+    char	*cpy;
+    int		count;
+
+    count = 0;
     nb_args = count_percents(str);
     if (nb_args){
 	va_start(arg, str);
 	while (nb_args--) {
-	    flags = parse((char*)(str = (ft_strchr(str, '%') + 1)));
-	    flags2print(arg, flags);
+	    cpy = ft_strchr(str, '%');
+	    count += cpy - str;
+	    write(1, str, cpy - str);
+	    flags = parse(cpy + 1);
+	    count += flags2print(arg, flags);
+	    str = cpy + flags.count + 2;
 	}
 	va_end(arg);
+	ft_putstr(str);
     }
-    return (0);
+    return (count);
 }
