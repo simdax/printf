@@ -1,19 +1,19 @@
 #!/bin/bash
 
-range1=(0 1 2)
+range3=(1 20 50)
 range2=(0 1 2)
-range3=(0 1 2)
+range1=(0 1 2)
 
-for i in $range1; do
-	for j in $range2; do
-		for k in $range3; do
-			echo $i $j $k
-			res=`gtimeout 1 ./test $i $j $k`
-		 	case $res in
-				124) eval $red; echo KO ;;
-				*)	eval $green; echo $res ;;
-			esac
-		done
+for i in ${range1[@]}; do
+    for j in ${range2[@]}; do
+	for k in ${range3[@]}; do
+	    echo $i $j $k
+	    #res=`timeout 1 ./test $i $j $k`
+# 	    res=`./test $i $j $k`
+# 	    case $res in
+#  		124) echo `tput setaf 2`KO ;;
+#  		*)   echo `tput setaf 9`$res ;;
+#  	    esac
 	done
+    done
 done
-

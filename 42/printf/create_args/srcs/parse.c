@@ -32,9 +32,8 @@ void	re_orga(t_num *a)
 {
 	a->count = 0;
 	a->precision = IF(a->precision - a->str_len);
-	a->left = a->padding >= 0;
-	a->padding = ABS(a->padding);
-	a->padding -= a->str_len + a->precision;
+	//	a->left = a->padding >= 0;
+	a->padding = IF(ABS(a->padding) - a->str_len + a->precision);
 }
 
 void	parse_flags(char *str, t_num *a)
@@ -42,6 +41,7 @@ void	parse_flags(char *str, t_num *a)
 	a->type_padding = ' ';
 	a->sign = 0;
 	a->alternate = 0;
+	a->left = 1;
 	while (*str)
 	{
 		if (*str == '#')
@@ -51,9 +51,7 @@ void	parse_flags(char *str, t_num *a)
 		if (*str == '+')
 			a->sign = 1;
 		if (*str == '-')
-			a->sign = -1;
-		//if (*str == ' ')
-		//rien
+			a->left = -1;
 	}
 }
 

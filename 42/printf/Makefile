@@ -48,6 +48,11 @@ fclean: clean
 re:
 	@$(MAKE) fclean
 	@$(MAKE) all
+debug: all
+	lldb $(NAME)
+
+test:
+	cd tests && ./main
 
 lib:
 	@make -C $(LIBFT)

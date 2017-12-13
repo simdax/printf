@@ -5,7 +5,7 @@ NAME := create_args
 #  ╓─────[ Compiler ]─  
 #  ╙───────────────────── ─ ─ 
 CC := gcc
-CCFLAGS := -Wall -Werror -Wextra -g
+CCFLAGS := -g #ppWextra Wextra Wextra 
 LDFLAGS := ../libft/libft.a
 LIB := ../libft
 
@@ -25,7 +25,7 @@ ARGS_DEBUG := 5 5 5
 all: $(NAME)
 
 $(NAME): $(OBJ) ../libft/libft.a
-	@$(CC) $(INC) main.c -c
+	@$(CC) $(CCFLAGS) $(INC) main.c -c
 	@$(CC) main.o $(OBJ) $(CCFLAGS) $(LDFLAGS) -o $(NAME)
 	@echo "\n\033[0;32m [OK] \033[0m \033[0;33m Linking binary:\033[0m " $(NAME)
 

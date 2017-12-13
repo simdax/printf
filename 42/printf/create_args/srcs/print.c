@@ -38,7 +38,7 @@ void	print_padding(size_t count, char with, size_t *c)
   while (count) {
     ft_putchar(with);
     *c += 1;
-	--count;
+    --count;
   }
 }
 

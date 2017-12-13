@@ -40,7 +40,7 @@ int			ft_printf(const char* str, ...)
 	    if (flags.type == 'l')
 		ft_putstr("prout");
 	    //	    str = va_arg(arg, const char*);	    
-	    //create arg
+	    print();
 	}
 	va_end(arg);
     }

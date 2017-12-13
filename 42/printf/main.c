@@ -2,7 +2,7 @@
 
 int		main(int argc, char **argv)
 {
-  ft_printf("coucou %#01.10fles loulous", 50, "bob");
+  ft_printf("coucou %#01.10dles %dloulous", 50, "bob");
   return (0);
 }
 
