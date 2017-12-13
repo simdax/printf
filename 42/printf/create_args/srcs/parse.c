@@ -32,31 +32,7 @@ void	re_orga(t_num *a)
 {
     a->count = 0;
     a->precision = IF(a->precision - a->str_len);
-    //	a->left = a->padding >= 0;
+    //a->left = a->padding >= 0;
     a->padding = IF(ABS(a->padding) - a->str_len + a->precision);
 }
-
-/* void	parse_flags(t_flags a, t_num *a) */
-/* { */
-    
-/* } */
-
-void	parse_flags(char *str, t_num *a)
-{
-    a->type_padding = ' ';
-    a->sign = 0;
-    a->alternate = 0;
-    a->left = 1;
-    while (*str)
-	{
-	    if (*str == '#')
-		a->alternate = 1;
-	    if (*str == '0')
-		a->type_padding = '0';
-	    if (*str == '+')
-		a->sign = 1;
-	    if (*str == '-')
-		a->left = -1;
-	    ++str;
-	}
-}
+o

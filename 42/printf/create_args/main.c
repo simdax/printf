@@ -12,6 +12,26 @@
 
 #include "create_args.h"
 
+void	parse_flags(char *str, t_num *a)
+{
+    a->type_padding = ' ';
+    a->sign = 0;
+    a->alternate = 0;
+    a->left = 1;
+    while (*str)
+	{
+	    if (*str == '#')
+		a->alternate = 1;
+	    if (*str == '0')
+		a->type_padding = '0';
+	    if (*str == '+')
+		a->sign = 1;
+	    if (*str == '-')
+		a->left = -1;
+	    ++str;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_num		*a;

@@ -12,6 +12,27 @@
 
 #include "printf.h"
 
+int	flags2print(va_list arg, t_flags flags)
+{
+	t_num		a;
+	int		value;
+
+	value = va_arg(arg, int);
+	parse_value(value, flags.type, &a);
+	a.left = flags.minus ? 0 : 1;
+	a.sign = value > 0;
+	a.padding = flags.width;
+	a.precision = flags.precision;
+	a.alternate = flags.hash;
+	a.type_padding = flags.zero ? '0' : ' ';
+	a.count = 0;
+	a.precision = IF(a.precision - a.str_len);
+	a.padding = IF(ABS(a.padding) - a.str_len + a.precision);
+	print_arg(&a);
+	free(a.value);
+}
+
+
 static int		count_percents(const char *str)
 {
     int count;
@@ -37,10 +58,7 @@ int			ft_printf(const char* str, ...)
 	va_start(arg, str);
 	while (nb_args--) {
 	    flags = parse((char*)(str = (ft_strchr(str, '%') + 1)));
-	    if (flags.type == 'l')
-		ft_putstr("prout");
-	    //	    str = va_arg(arg, const char*);	    
-	    print();
+	    flags2print(arg, flags);
 	}
 	va_end(arg);
     }
